@@ -1,23 +1,9 @@
 import Link from 'next/link'
-import initFirebase from "../services/firebase";
+import "../services/firebase"
+import firebase from 'firebase/app'
+import Router from "next/router";
 
 export default function Home() {
-  const loginWithGoogle = () => {
-    initFirebase.auth().signInWithPopup(new initFirebase.auth.GoogleAuthProvider()).then(
-      (userCred) => {
-        console.log(userCred);
-      }
-    )
-  }
-
-  const loginWithFacebook = () => {
-    initFirebase.auth().signInWithPopup(new initFirebase.auth.FacebookAuthProvider()).then(
-      (userCred) => {
-        console.log(userCred);
-      }
-    )
-  }
-
   return (
     <div className='page-home'>
      <Link href='other-page'> link to other page</Link>
