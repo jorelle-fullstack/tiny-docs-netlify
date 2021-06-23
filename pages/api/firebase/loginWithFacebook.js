@@ -19,7 +19,7 @@ const LoginWithFacebook = () => {
                             .firestore()
                             .collection("users")
                             .doc(userCred.user.uid)
-                            .set({
+                            .set({ // Set Collection Data
                                 firstName:  userCred.additionalUserInfo.profile.first_name,
                                 lastName: userCred.additionalUserInfo.profile.last_name,
                                 email: userCred.additionalUserInfo.profile.email,

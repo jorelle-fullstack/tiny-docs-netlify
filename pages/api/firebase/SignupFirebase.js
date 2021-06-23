@@ -5,12 +5,12 @@ import 'firebase/firestore'
 const SignupWithFirebase = (first_name, last_name, email, password) => {
     const signUp = () => {
         try{
-            firebase.auth().createUserWithEmailAndPassword("sugma2@bawls.com", "password2").then(function(user){
+            firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
                 firebase
                 .firestore()
                 .collection("users")
                 .doc(user.user.uid)
-                .set({
+                .set({ //Set Collection Data
                     firstName:  first_name,
                     lastName: last_name,
                     email: email,
