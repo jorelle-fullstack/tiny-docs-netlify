@@ -2,7 +2,7 @@ import Link from 'next/link'
 import "../services/firebase"
 import firebase from 'firebase/app'
 import Router from "next/router";
-import LoginWithGoogle from '../components/api/loginWithGoogle';
+import LoginWithGoogle from './api/firebase/loginWithGoogle';
 
 export default function Home() {
   return (

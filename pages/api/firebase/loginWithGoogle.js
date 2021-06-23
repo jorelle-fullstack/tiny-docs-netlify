@@ -1,5 +1,5 @@
 import firebase from 'firebase/app'
-import "../../services/firebase"
+import "../../../services/firebase"
 import Router from "next/router";
 
 const LoginWithGoogle = () => {
