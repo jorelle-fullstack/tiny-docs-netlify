@@ -21,8 +21,6 @@ export default function Home() {
   return (
     <div className='page-home'>
      <Link href='other-page'> link to other page</Link>
-     <button onClick={loginWithGoogle}>Login With Google</button>
-    <button onClick={loginWithFacebook}>Login With Facebook</button>
     </div>
   )
 }
