@@ -5,8 +5,10 @@ import Router from "next/router";
 const LoginWithGoogle = () => {
     const login = () => {
         try{
+            //Firebase Auth with Google
             firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
                 (userCred) => {
+                    //Do something if login is successful
                   console.log(userCred);
                 }
               )
