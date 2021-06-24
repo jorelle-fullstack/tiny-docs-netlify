@@ -25,6 +25,7 @@ const SignupWithFirebase = () => {
           lastName,
           email,
           password,
+          user_type:"freemium",
           time_stamp: firebase.firestore.Timestamp.now()
         })
         .then(
