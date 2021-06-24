@@ -7,7 +7,7 @@ export const login = (type) => {
 
   try {
 
-    let loginType = new firebase.auth.GoogleAuthProvider()
+    let loginType
     switch (type) {
       case 'google':
         loginType = new firebase.auth.GoogleAuthProvider()
@@ -18,7 +18,6 @@ export const login = (type) => {
 
       default:
         throw 'Login type Unrecognized'
-        break;
     }
 
     //Firebase Auth with Google
