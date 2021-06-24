@@ -1,0 +1,56 @@
+.page-login,
+.page-register {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
+  > div {
+    flex: 1 0 0;
+  }
+  .first-wrapper {
+    background-color: $secondary-brown;
+
+    .title {
+      margin-bottom: 50px;
+    }
+
+    .content-holder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+      max-width: 470px;
+      margin: 0 auto;
+    }
+    .form {
+      width: 100%;
+    }
+    .btn {
+      margin-bottom: 20px;
+    }
+    .forgot {
+      margin-top: -20px;
+      margin-bottom: 50px;
+      margin-left: 20px;
+      display: block;
+
+      font-size: 16px;
+    }
+    .member{
+      font-size: 16px;
+    }
+    .external-login-wrapper {
+      width: 100%;
+      margin-top: 30px;
+      margin-bottom: 30px;
+
+      display: flex;
+      > button {
+        width: 100%;
+        &:first-child {
+          margin-right: 30px;
+        }
+      }
+    }
+  }
+}
