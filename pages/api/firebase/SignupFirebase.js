@@ -29,7 +29,10 @@ const SignupWithFirebase = () => {
         })
         .then(
           console.log(user)
-        )
+          // Do something like redirect, store cookies, go to splash page
+        ).catch((error) => {
+          console.log(error.code);
+        })
       })
     }
     catch(error){

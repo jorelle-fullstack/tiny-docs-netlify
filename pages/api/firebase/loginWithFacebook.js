@@ -27,10 +27,14 @@ const LoginWithFacebook = () => {
               })
               .then(
                 console.log("Data was successfully sent to cloud firestore")
-              )
+                // Do something like redirect, store cookies, go to splash page
+              ).catch((error) => {
+                console.log(error.code);
+              })
             }
             else{
               console.log("logged in successfully")
+              // Do something like redirect, store cookies, go to splash page
             }
           }
           catch(error){
