@@ -27,29 +27,45 @@ export const login = (type) => {
         // Check if user is new
         var isNewUser = userCred.additionalUserInfo.isNewUser;
 
-        // If user is new, save information to database
         try {
+          // If user is new, save information to database
           if (isNewUser == true) {
             firebase
               .firestore()
               .collection("users")
               .doc(userCred.user.uid)
               .set({
-                firstName: userCred.additionalUserInfo.profile.given_name,
-                lastName: userCred.additionalUserInfo.profile.family_name,
+                firstName: firstName ? userCred.additionalUserInfo.profile.given_name: userCred.additionalUserInfo.profile.firstname,
+                lastName: lastName ? userCred.additionalUserInfo.profile.family_name: userCred.additionalUserInfo.profile.lastname,
                 email: userCred.additionalUserInfo.profile.email,
+                user_type: "freemium",
                 time_stamp: firebase.firestore.Timestamp.now()
               })
-              .then(
-                console.log("Data was successfully sent to cloud firestore")
+              .then(function(){
                 // Do something like redirect the user to the dedicated page & store the user's data localstorage or cookies
-
-              )
+                if (userCred) {
+                  // User is signed in.
+                  console.log("Data was successfully sent to cloud firestore")
+                  console.log(userCred);
+                }
+                else {
+                  // No user is signed in.
+                  console.log("no user signed in");
+                }
+              }
+            )
           }
           else {
-
-            // Do something like redirect the user to the dedicated page & store the user's data localstorage or cookies
-            console.log("logged in successfully");
+            if (userCred) {
+              // Do something like redirect the user to the dedicated page & store the user's data localstorage or cookies
+              // User is signed in.
+              console.log("logged in successfully");
+              console.log(userCred);
+            }
+            else {
+              // No user is signed in.
+              console.log("no user signed in");
+            }
           }
         }
         catch (error) {
