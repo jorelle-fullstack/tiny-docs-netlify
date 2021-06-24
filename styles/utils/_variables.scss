@@ -1,4 +1,4 @@
-//main: ../main.scss
+ //main: ../main.scss
 
 // -----------------------------------------------------------------------------
 // This file contains all application-wide Sass variables.
@@ -7,18 +7,29 @@
 /// Regular font family
 /// @type List
 $text-font-stack: 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$font-lato: 'Lato', 'sans-serif'!default;
 
 /// Code (monospace) font family
 /// @type List
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+$code-font-stack: 'Lato', 'sans-serif';
 
 /// Copy text color
 /// @type Color
-$text-color: #222 !default;
+$text-color: black !default;
 
 /// Main brand color
 /// @type Color
 $brand-color: #E50050 !default;
+$primary-blue:#6ac7c0;
+$primary-pink:#fd6683;
+$primary-yellow:#FFD64E;
+
+$secondary-blue:#61c9e4;
+$secondary-darker-blue:#003B76;
+$secondary-yellow:#FCEA8B;
+$secondary-grey:#F5EFE4;
+
+
 
 /// Relative or absolute URL where all assets are served from
 /// @type String
