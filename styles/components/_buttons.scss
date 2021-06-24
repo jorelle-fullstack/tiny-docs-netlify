@@ -1,0 +1,40 @@
+.btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 63px;
+
+  font: 700 20px $font-lato;
+  text-transform: uppercase;
+
+  border-radius: 100px;
+  background: none;
+  border: none;
+
+  transition: all 0.1s ease-in-out;
+
+  // &:hover {
+  //   transform: translateY(-5px);
+  //   // box-shadow: 0 5px rgb(106, 199, 192);
+  // }
+
+  &--blue {
+    background: $primary-blue;
+    color: $secondary-darker-blue;
+    // &:hover {
+    //   transform: translateY(-5px);
+    //   box-shadow: 0 9px #356A5F;
+    // }
+  }
+
+  &--red {
+    background: $primary-pink;
+    color: $secondary-darker-blue;
+  }
+
+  &--yellow {
+    background: $primary-yellow;
+    color: $secondary-darker-blue;
+  }
+}
