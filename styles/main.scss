@@ -15,7 +15,8 @@
 // Layout-related sections
 @import
   'layout/header',
-  'layout/footer';
+  'layout/footer',
+  'layout/forms';
 
 // Components
 @import
@@ -24,4 +25,5 @@
 // Page-specific styles
 @import
   'pages/home',
-  'pages/about';
+  'pages/about',
+  'pages/login-register';
