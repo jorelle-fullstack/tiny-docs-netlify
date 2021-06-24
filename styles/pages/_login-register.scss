@@ -1,0 +1,28 @@
+.page-login,
+.page-register {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
+  > div {
+    flex: 1 0 0;
+  }
+  .first-wrapper {
+    background-color: $secondary-brown;
+
+    .title{
+      margin-bottom: 50px;
+    }
+
+    .form-holder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+    }
+    .form {
+      width: 100%;
+      max-width: 470px;
+    }
+  }
+}
