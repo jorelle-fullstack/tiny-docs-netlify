@@ -2,6 +2,7 @@ import { Button } from '../../components/global'
 import { useForm } from "react-hook-form";
 import Link from 'next/link'
 import { login } from '../../auth'
+import Input from '../../components/form/Input'
 
 import registerBg from '../../assets/images/register.svg'
 import googleImg from '../../assets/images/google.svg'
@@ -11,6 +12,8 @@ const index = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
 
+  const watchPassword = watch("password");
+
 
   return (
     <div className='page-register'>
@@ -19,18 +22,40 @@ const index = () => {
           <h1 className='title'>Sign up</h1>
           <form onSubmit={handleSubmit(onSubmit)} className='form'>
             <div className="input-group">
-              <input defaultValue="" placeholder='First Name' {...register("fName", { required: true })} type='text' />
+              <Input register={{ ...register("fName", { required: true }) }} errors={errors} type="text" placeholder="First Name" />
 
-              <input defaultValue="" placeholder='Last Name'{...register("sName", { required: true })} type='text' />
-
+              <Input register={{ ...register("sName", { required: true }) }} errors={errors} type="text" placeholder="Last Name" />
             </div>
-            <input defaultValue="" placeholder='Email'{...register("email", { required: true })} type='email' />
 
-            <input defaultValue="" placeholder='Password'{...register("password", { required: true })} type='password' />
+            <Input register={{ ...register("email", { required: true }) }} errors={errors} type="email" placeholder="Enter Email" />
 
-            <input defaultValue="" placeholder='Confirm password'{...register("confirmPassword", { required: true })} type='password' />
+            <Input register={{
+              ...register("password",
+                {
+                  required: true,
+                  pattern: {
+                    value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*.#?&])[A-Za-z\d@$!%.*#?&]{6,}$/,
+                    message: 'Your password must contain at least one number and symbol'
+                  }
+                })
+            }} errors={errors} type="password" placeholder="Password" />
 
-            {errors.email && <span>This field is required</span>}
+
+
+            <Input
+              type="password"
+              placeholder="Confirm password"
+              errors={errors}
+              register={{
+                ...register("confirmPass", {
+                  validate: {
+                    checkUrl: (pass) => pass === watchPassword || 'Password did not match'
+                  }
+                })
+              }}
+            />
+
+
             <Button type='submit' className='btn--red'>Sign Up</Button>
           </form>
 

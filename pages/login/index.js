@@ -2,7 +2,7 @@ import { Button } from '../../components/global'
 import { useForm } from "react-hook-form";
 import Link from 'next/link'
 import { login } from '../../auth'
-
+import Input from '../../components/form/Input'
 import loginBg from '../../assets/images/login.svg'
 import googleImg from '../../assets/images/google.svg'
 import fbImg from '../../assets/images/facebook.svg'
@@ -20,13 +20,15 @@ const index = () => {
         <div className="content-holder">
           <h1 className='title'>Login</h1>
           <form onSubmit={handleSubmit(onSubmit)} className='form'>
-            <input defaultValue="" placeholder='Enter Email'{...register("email", { required: true })} type='email' />
-            <input defaultValue="" placeholder='Enter Password'{...register("password", { required: true })} type='password' />
+
+            <Input register={{ ...register("email", { }) }} errors={errors} type="email" placeholder="Enter Email" />
+
+            <Input register={{ ...register("password", { required: true }) }} errors={errors} type="password" placeholder="Enter Password" />
+
             <Link href='/forgot' passHref>
               <a className='forgot'>Forgot Password</a>
             </Link>
 
-            {errors.email && <span>This field is required</span>}
             <Button type='submit' className='btn--blue'>Login</Button>
           </form>
 
