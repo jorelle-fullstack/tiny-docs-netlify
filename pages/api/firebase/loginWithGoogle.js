@@ -2,6 +2,8 @@ import firebase from 'firebase/app'
 import "../../../services/firebase"
 import "firebase/firestore"
 import Router from "next/router";
+import { Button } from '../../../components/global'
+import googleImg from '../../../assets/images/google.svg'
 
 const LoginWithGoogle = () => {
   const login = () => {
@@ -47,9 +49,7 @@ const LoginWithGoogle = () => {
       console.log("logged in not successful");
     }
   }
-  return (
-    <button onClick={login}>Login With Google</button>
-  )
+  return (<Button onClick={login}><img src={googleImg.src} alt="" /></Button>)
 }
 
 export default LoginWithGoogle
