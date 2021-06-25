@@ -8,7 +8,16 @@ import {login} from '../../auth'
 
 const index = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    console.log(data)
+    firebase.auth().signInWithEmailAndPassword(data.email, data.password).then(function(user){ //firebase login
+        console.log(user);
+    }).catch((error) => {
+      console.log(error.code);
+    })
+  };
+
+
 
   console.log(googleImg)
 
