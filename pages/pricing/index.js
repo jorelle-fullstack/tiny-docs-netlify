@@ -1,4 +1,4 @@
-import Plans from "../../components/global/Plans";
+import { Plans } from "../../components/global";
 
 const index = () => {
   return (
