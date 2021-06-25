@@ -1,16 +1,18 @@
 import { Button } from '../../components/global'
 import { useForm } from "react-hook-form";
 import Link from 'next/link'
+import { login } from '../../auth'
+
+import loginBg from '../../assets/images/login.svg'
 import googleImg from '../../assets/images/google.svg'
 import fbImg from '../../assets/images/facebook.svg'
-import {login} from '../../auth'
-
 
 const index = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
 
-  console.log(googleImg)
+  console.log({ ...register('email', {required:true}) })
+
 
   return (
     <div className='page-login'>
@@ -25,7 +27,7 @@ const index = () => {
             </Link>
 
             {errors.email && <span>This field is required</span>}
-            <Button className='btn--blue'>Login</Button>
+            <Button type='submit' className='btn--blue'>Login</Button>
           </form>
 
           <p>- Or Login With - </p>
@@ -35,11 +37,11 @@ const index = () => {
             <Button onClick={e => login('facebook')}><img src={fbImg.src} alt="" /></Button>
           </div>
           <Link href='/' passHref>
-            <a className='member'>Not a Member? Signu Up Now!</a>
+            <a className='member'>Not a Member? Sign Up Now!</a>
           </Link>
         </div>
       </div>
-      <div className="second-wrapper">
+      <div className="second-wrapper" style={{ backgroundImage: `url(${loginBg.src})` }}>
 
       </div>
 
