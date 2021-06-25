@@ -25,7 +25,8 @@ export const login = (type) => {
       (userCred) => {
         // Check if user is new
         var isNewUser = userCred.additionalUserInfo.isNewUser;
-
+        var firstName, lastName = '';
+        console.log(userCred);
         try {
           // If user is new, save information to database
           if (isNewUser == true) {
@@ -34,8 +35,8 @@ export const login = (type) => {
               .collection("users")
               .doc(userCred.user.uid)
               .set({
-                firstName: firstName ? userCred.additionalUserInfo.profile.given_name: userCred.additionalUserInfo.profile.firstname,
-                lastName: lastName ? userCred.additionalUserInfo.profile.family_name: userCred.additionalUserInfo.profile.lastname,
+                firstName: firstName ? userCred.additionalUserInfo.profile.given_name : userCred.additionalUserInfo.profile.first_name,
+                lastName: lastName ? userCred.additionalUserInfo.profile.family_name : userCred.additionalUserInfo.profile.last_name,
                 email: userCred.additionalUserInfo.profile.email,
                 user_type: "freemium",
                 time_stamp: firebase.firestore.Timestamp.now()
