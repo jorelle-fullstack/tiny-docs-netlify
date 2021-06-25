@@ -40,10 +40,12 @@ export const login = async (type) => {
           email: userCred.additionalUserInfo.profile.email,
           time_stamp: firebase.firestore.Timestamp.now()
         })
-      console.log('%c 👥 New user Saved! ', 'color:Green;background:White;padding:5px;', saveUserToDb);
+      console.log('%c 👥 New user Saved! ', 'color:Green;background:White;padding:5px;', userCred);
+      handleSuccessAuthentication(userCred)
 
     } else {
       console.log('%c 👩‍🦰 Log in success ', 'color:Green;background:White;padding:5px;', userCred);
+      handleSuccessAuthentication(userCred)
     }
   } catch (error) {
     console.log('%c ❌ Error on Auth process ', 'color:yellow;background:black;padding:5px;', error);
@@ -51,8 +53,13 @@ export const login = async (type) => {
 }
 
 function handleSuccessAuthentication(data) {
+
   if (!data) return
 
-  localStorage.token = data.token
+  const { credential, user } = data
+
+
+  localStorage.token = credential.accessToken
+  localStorage.user = JSON.stringify(user)
 
 }
