@@ -3,11 +3,15 @@ import firebase from 'firebase/app'
 import '../services/firebase'
 import "firebase/firestore"
 
+/**
+ * 
+ * @param {*} type facebook || google 
+ */
 export const login = (type) => {
 
   try {
 
-    let loginType
+    let loginType = new firebase.auth.GoogleAuthProvider()
     switch (type) {
       case 'google':
         loginType = new firebase.auth.GoogleAuthProvider()
@@ -18,6 +22,7 @@ export const login = (type) => {
 
       default:
         throw 'Login type Unrecognized'
+        break;
     }
 
     //Firebase Auth with Google

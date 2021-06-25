@@ -11,7 +11,7 @@ const index = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
 
-  console.log({ ...register('email', {required:true}) })
+  console.log({ ...register('email', { required: true }) })
 
 
   return (
@@ -20,9 +20,9 @@ const index = () => {
         <div className="content-holder">
           <h1 className='title'>Login</h1>
           <form onSubmit={handleSubmit(onSubmit)} className='form'>
-            <input defaultValue="test" {...register("email", { required: true })} type='email' />
-            <input defaultValue="test" {...register("password", { required: true })} type='password' />
-            <Link href='/' passHref>
+            <input defaultValue="" placeholder='Enter Email'{...register("email", { required: true })} type='email' />
+            <input defaultValue="" placeholder='Enter Password'{...register("password", { required: true })} type='password' />
+            <Link href='/forgot' passHref>
               <a className='forgot'>Forgot Password</a>
             </Link>
 
@@ -36,7 +36,7 @@ const index = () => {
             <Button onClick={e => login('google')}><img src={googleImg.src} alt="" /></Button>
             <Button onClick={e => login('facebook')}><img src={fbImg.src} alt="" /></Button>
           </div>
-          <Link href='/' passHref>
+          <Link href='/register   ' passHref>
             <a className='member'>Not a Member? Sign Up Now!</a>
           </Link>
         </div>

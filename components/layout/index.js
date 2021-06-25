@@ -8,7 +8,7 @@ const CoreLayout = ({ children }) => {
   const { asPath } = useRouter()
   
 
-  const noNavigationRoutes = ['/login', '/register', '/forgot-password']
+  const noNavigationRoutes = ['/login', '/register', '/forgot', '/forgot/reset-confirmation']
   return (
     <>
       {!noNavigationRoutes.includes(asPath) && <Header />}

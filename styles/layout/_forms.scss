@@ -2,7 +2,7 @@
   input {
     display: block;
     width: 100%;
-    padding: 20px 20px;
+    padding: 20px 28px;
     margin-bottom: 30px;
 
     font-size: 20px;
@@ -11,5 +11,11 @@
     border: none;
     background: white;
     border-radius: 100px;
+  }
+  .input-group {
+    display: flex;
+    & :first-child {
+      margin-right: 10px;
+    }
   }
 }
