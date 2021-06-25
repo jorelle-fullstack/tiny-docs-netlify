@@ -30,8 +30,6 @@ const orders = () => {
       // })
   }  
 
-  //handler
-
   return (
     <Elements stripe={stripeTestPromise}>
 			<PaymentForm />
