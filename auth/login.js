@@ -30,14 +30,15 @@ export const login = async (type) => {
     var isNewUser = userCred.additionalUserInfo.isNewUser;
 
     if (isNewUser == true) {
-      const saveUserToDb = await firebase
+      await firebase
         .firestore()
         .collection("users")
         .doc(userCred.user.uid)
         .set({
-          firstName: userCred.additionalUserInfo.profile.given_name,
-          lastName: userCred.additionalUserInfo.profile.family_name,
+          firstName: firstName ? userCred.additionalUserInfo.profile.given_name : userCred.additionalUserInfo.profile.first_name,
+          lastName: lastName ? userCred.additionalUserInfo.profile.family_name : userCred.additionalUserInfo.profile.last_name,
           email: userCred.additionalUserInfo.profile.email,
+          user_type: "freemium",
           time_stamp: firebase.firestore.Timestamp.now()
         })
       console.log('%c 👥 New user Saved! ', 'color:Green;background:White;padding:5px;', userCred);
