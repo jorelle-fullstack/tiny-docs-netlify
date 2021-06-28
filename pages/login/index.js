@@ -6,8 +6,12 @@ import Input from '../../components/form/Input'
 import loginBg from '../../assets/images/login.svg'
 import googleImg from '../../assets/images/google.svg'
 import fbImg from '../../assets/images/facebook.svg'
+import { useState } from "react";
 
 const index = () => {
+
+  const [submitting, setsubmitting] = useState(false)
+
   const {
     register,
     handleSubmit,
@@ -18,12 +22,14 @@ const index = () => {
 
 
   const onSubmit = async (data) => {
+    console.log(data)
+    setsubmitting(true)
     const res = await passwordBasedLogin(data)
-
+    setsubmitting(false)
 
     if (!res.message) return
     if (res.message.includes('password')) {
-      setError('general', {
+      setError('email', {
         type: 'manual',
         message: 'The Password or Email is invalid'
       })
@@ -42,13 +48,13 @@ const index = () => {
 
             <Input showError={false} register={{ ...register("password", { required: true }) }} errors={errors} type="password" placeholder="Enter Password" />
 
-            {errors.general && <span className="form--error">{errors.general.message} </span>}
+            {errors.email && <span className="form--error">{errors.email.message} </span>}
 
             <Link href='/forgot' passHref>
               <a className='forgot'>Forgot Password</a>
             </Link>
 
-            <Button type='submit' className='btn--blue'>Login</Button>
+            <Button loading={submitting} type='submit' className='btn--blue'>Login</Button>
           </form>
 
           <p>- Or Login With - </p>

@@ -3,13 +3,28 @@ import Link from 'next/link'
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/router'
 import Input from '../../components/form/Input'
+import { useState } from "react";
+import axios from 'axios'
 
 const index = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const [submitting, setsubmitting] = useState(false)
 
   const router = useRouter()
-  const onSubmit = data => {
-    router.push('/forgot/reset-confirmation')
+  const onSubmit = async (data) => {
+
+    try {
+      setsubmitting(true)
+      await axios.post('/api/firebase/forgotpass/', {
+        email: data.email
+      })
+      setsubmitting(false)
+      router.push('/forgot/reset-confirmation')
+
+    } catch (error) {
+      console.log('%c ⚠ Error sending forgot request ', 'color:yellow;background:black;padding:5px;', error);
+      setsubmitting(false)
+    }
   }
 
   return (
@@ -20,7 +35,7 @@ const index = () => {
 
           <Input register={{ ...register("email", { required: true }) }} errors={errors} type="text" placeholder="Enter Email " />
 
-          <Button type='submit' className='btn--blue'>reset password</Button>
+          <Button loading={submitting} type='submit' className='btn--blue'>reset password</Button>
         </form>
 
         <Link href='/register' passHref>

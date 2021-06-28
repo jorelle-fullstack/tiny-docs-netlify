@@ -7,13 +7,16 @@ import Input from '../../components/form/Input'
 import registerBg from '../../assets/images/register.svg'
 import googleImg from '../../assets/images/google.svg'
 import fbImg from '../../assets/images/facebook.svg'
+import { useState } from "react";
 
 const index = () => {
+  const [submitting, setsubmitting] = useState(false)
   const { register, handleSubmit, watch, setError, formState: { errors } } = useForm();
   const onSubmit = async (data) => {
     console.log(data)
+    setsubmitting(true)
     const res = await passwordBaseRegister(data)
-
+    setsubmitting(false)
 
     if (!res.message) return
     if (res.message.includes('email')) {
@@ -57,7 +60,7 @@ const index = () => {
                 })
               }}
             />
-            <Button type='submit' className='btn--red'>Sign Up</Button>
+            <Button loading={submitting} type='submit' className='btn--red'>Sign Up</Button>
           </form>
           <p>- Or Login With - </p>
           <div className="external-login-wrapper">
