@@ -1,5 +1,5 @@
 import { Button } from '../../components/global'
-import check from '../../assets/images/check.svg'
+import check from '../../assets/images/check-green.svg'
 import { useRouter } from 'next/router'
 
 

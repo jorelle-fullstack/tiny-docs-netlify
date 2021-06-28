@@ -526,6 +526,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-15.12.4.tgz#e1cf817d70a1e118e81922c4ff6683ce9d422e26"
   integrity sha512-zrNj1+yqYF4WskCMOHwN+w9iuD12+dGm0rQ35HLl9/Ouuq52cEtd0CH9qMgrdNmi5ejC1/V7vKEXYubB+65DkA==
 
+"@types/node@>=8.1.0":
+  version "15.12.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.12.5.tgz#9a78318a45d75c9523d2396131bd3cca54b2d185"
+  integrity sha512-se3yX7UHv5Bscf8f1ERKvQOD6sTyycH3hdaoozvaLxgUiY5lIGEeH37AD0G0Qi9kPqihPn0HOfd2yaIEN9VwEg==
+
 "@typescript-eslint/parser@^4.20.0":
   version "4.28.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-4.28.0.tgz#2404c16751a28616ef3abab77c8e51d680a12caa"
@@ -3615,9 +3620,9 @@ stripe@8.132.0:
     qs "^6.6.0"
 
 stripe@^8.156.0:
-  version "8.156.0"
-  resolved "https://registry.yarnpkg.com/stripe/-/stripe-8.156.0.tgz#040de551df88d71ef670a8c8d4df114c3fa6eb4b"
-  integrity sha512-q+bixlhaxnSI/Htk/iB1i5LhuZ557hL0pFgECBxQNhso1elxIsOsPOIXEuo3tSLJEb8CJSB7t/+Fyq6KP69tAQ==
+  version "8.157.0"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-8.157.0.tgz#e885031ab955891286b79287886dc9983e209cd0"
+  integrity sha512-9GNtWEAeTO4D1V6yZl9hyyi0Zgz20uAtw8nwWrip3V0tEaJcKDL6IAqKssy5hqcDrkHNN3Wxa767D8Mcg7B/Yg==
   dependencies:
     "@types/node" ">=8.1.0"
     qs "^6.6.0"
