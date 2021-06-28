@@ -1,0 +1,130 @@
+.section-our-story {
+  padding: 60px 0;
+  background-color: $white;
+
+  .content__wrapper {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 118px;
+
+    background-color: $primary-blue;
+    border-radius: 21px;
+    box-shadow: 0px 20px 0px #20625D;
+
+    &--knob {
+      position: absolute;
+      left: 3%;
+      top: 25%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      & > div {
+        &:nth-of-type(2) {
+          margin-top: -2px !important;
+        }
+        
+        &:nth-of-type(3) {
+          margin-top: -20px !important;
+        }
+      }
+    }
+
+    &--inner {
+      position: relative;
+
+      padding: 60px;
+      width: 708px;
+
+      background-color: $white;
+      border-radius: 21px;
+      box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.25);
+
+      p {
+        text-align: center;
+        color: $secondary-darker-blue;
+
+        &:first-of-type {
+          margin-bottom: 30px;
+
+          font-weight: 700;
+        }
+        
+        &:last-of-type {
+          font-size: 16px;
+        }
+      }
+    }
+
+    &--image {
+      position: absolute;
+      right: 7%;
+      bottom: 0;
+    }
+  }
+}
+
+
+@media (min-width: 1200px) and (max-width: 1350px) {
+  .section-our-story {
+    .content__wrapper {
+      &--image {
+        right: 2%;
+      }
+    }
+  }
+}
+
+@include respond-to(lg-down) {
+  .section-our-story {
+    padding: 60px 0 330px;
+
+    .content__wrapper {
+      &--knob {
+        left: 1%;
+      }
+
+      &--image {
+        right: 0;
+        bottom: -45%;
+      }
+    }
+  }
+}
+
+@include respond-to(md-down) {
+  .section-our-story {
+    .content__wrapper {
+      &--inner {
+        padding: 20px;
+        width: 100%;
+      }
+
+      &--image {
+        bottom: -56%;
+      }
+    }
+  }
+}
+
+@include respond-to(sm-down) {
+  .section-our-story {
+    .content__wrapper {
+      flex-direction: column;
+      padding: 35px 20px;
+
+      &--knob {
+        display: none;
+      }
+      
+      &--image {
+        bottom: -382px;
+      }
+    }
+  }
+}

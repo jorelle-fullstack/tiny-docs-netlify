@@ -1,4 +1,4 @@
-import { Button } from '../../components/global'
+import { Button } from "../../components/global";
 import { useForm } from "react-hook-form";
 import Link from 'next/link'
 import { login } from '../../auth'
@@ -8,14 +8,19 @@ import googleImg from '../../assets/images/google.svg'
 import fbImg from '../../assets/images/facebook.svg'
 
 const index = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
 
   console.log({ ...register('email', { required: true }) })
 
 
   return (
-    <div className='page-login'>
+    <div className="page-login">
       <div className="first-wrapper">
         <div className="content-holder">
           <h1 className='title'>Login</h1>
@@ -48,7 +53,7 @@ const index = () => {
       </div>
 
     </div>
-  )
-}
+  );
+};
 
-export default index
+export default index;

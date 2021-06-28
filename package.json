@@ -13,6 +13,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "clsx": "^1.1.1",
     "firebase": "^8.6.8",
     "next": "11.0.1",
     "react": "17.0.2",

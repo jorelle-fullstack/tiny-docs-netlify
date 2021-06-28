@@ -16,7 +16,12 @@
 @import
   'layout/header',
   'layout/footer',
-  'layout/forms';
+  'layout/forms',
+  'layout/plans',
+  'layout/banner',
+  'layout/section-our-story',
+  'layout/section-our-team',
+  'layout/section-our-advisors';
 
 // Components
 @import
@@ -26,4 +31,5 @@
 @import
   'pages/home',
   'pages/about',
-  'pages/login-register';
+  'pages/login-register',
+  'pages/pricing';

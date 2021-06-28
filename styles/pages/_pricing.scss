@@ -1,0 +1,14 @@
+.page-pricing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  background-color: $secondary-brown;
+}
+
+@include respond-to(md-down) {
+  .page-pricing {
+    height: auto;
+  }
+}
