@@ -26,7 +26,7 @@ const index = () => {
           <h1 className='title'>Login</h1>
           <form onSubmit={handleSubmit(onSubmit)} className='form'>
 
-            <Input register={{ ...register("email", { }) }} errors={errors} type="email" placeholder="Enter Email" />
+            <Input register={{ ...register("email", {}) }} errors={errors} type="email" placeholder="Enter Email" />
 
             <Input register={{ ...register("password", { required: true }) }} errors={errors} type="password" placeholder="Enter Password" />
 
