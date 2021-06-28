@@ -1,6 +1,6 @@
 body {
   color: $text-color;
-  font: normal 125% / 1.4 $font-lato;
+  font: normal 16px $font-lato;
 }
 
 .hero-text{
@@ -9,6 +9,10 @@ body {
 
 h1 {
   font-size: 48px;
+}
+
+h2 {
+  font-size: 30px;
 }
 
 h4 {

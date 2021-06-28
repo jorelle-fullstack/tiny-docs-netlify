@@ -1,14 +1,26 @@
 import Link from 'next/link'
 import "../services/firebase"
-import firebase from 'firebase/app'
-import Router from "next/router";
-import Order from "../pages/api/firebase/orders"
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+
 
 export default function Home() {
+  const router = useRouter()
+
+  const authorized = false
+
+
+  useEffect(() => {
+    router.push('/login')
+  }, [])
+
+
   return (
     <div className='page-home'>
-      <Link href='other-page'> link to other page</Link>
-      <Order/>
+      <Link href='/login'> Login page</Link>
+
+      <button onClick={e => router.push('/login')}>login</button>
+
     </div>
   )
 }

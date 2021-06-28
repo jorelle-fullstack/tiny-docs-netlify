@@ -2,7 +2,7 @@
   input {
     display: block;
     width: 100%;
-    padding: 20px 20px;
+    padding: 20px 28px;
     margin-bottom: 30px;
 
     font-size: 20px;
@@ -11,5 +11,30 @@
     border: none;
     background: white;
     border-radius: 100px;
+  }
+  .input-group {
+    display: flex;
+    & :first-child {
+      margin-right: 10px;
+    }
+  }
+  .input-wrapper {
+    position: relative;
+  }
+  .asterisk {
+    color: red;
+    position: absolute;
+    right: 17px;
+    top: 20px;
+    font-size: 30px;
+  }
+  &--error {
+    display: block;
+
+    margin-top: -28px;
+    padding-left: 18px;
+    margin-bottom: 29px;
+
+    color: red;
   }
 }

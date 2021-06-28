@@ -1,40 +1,40 @@
-import { Button } from '../../components/global'
+import { Button } from "../../components/global";
 import { useForm } from "react-hook-form";
 import Link from 'next/link'
+import { login } from '../../auth'
+import Input from '../../components/form/Input'
+import loginBg from '../../assets/images/login.svg'
 import googleImg from '../../assets/images/google.svg'
 import fbImg from '../../assets/images/facebook.svg'
-import {login} from '../../auth'
-
 
 const index = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => {
-    console.log(data)
-    firebase.auth().signInWithEmailAndPassword(data.email, data.password).then(function(user){ //firebase login
-        console.log(user);
-    }).catch((error) => {
-      console.log(error.code);
-    })
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
 
+  console.log({ ...register('email', { required: true }) })
 
-
-  console.log(googleImg)
 
   return (
-    <div className='page-login'>
+    <div className="page-login">
       <div className="first-wrapper">
         <div className="content-holder">
           <h1 className='title'>Login</h1>
           <form onSubmit={handleSubmit(onSubmit)} className='form'>
-            <input defaultValue="test" {...register("email", { required: true })} type='email' />
-            <input defaultValue="test" {...register("password", { required: true })} type='password' />
-            <Link href='/' passHref>
+
+            <Input register={{ ...register("email", {}) }} errors={errors} type="email" placeholder="Enter Email" />
+
+            <Input register={{ ...register("password", { required: true }) }} errors={errors} type="password" placeholder="Enter Password" />
+
+            <Link href='/forgot' passHref>
               <a className='forgot'>Forgot Password</a>
             </Link>
 
-            {errors.email && <span>This field is required</span>}
-            <Button className='btn--blue'>Login</Button>
+            <Button type='submit' className='btn--blue'>Login</Button>
           </form>
 
           <p>- Or Login With - </p>
@@ -43,17 +43,17 @@ const index = () => {
             <Button onClick={e => login('google')}><img src={googleImg.src} alt="" /></Button>
             <Button onClick={e => login('facebook')}><img src={fbImg.src} alt="" /></Button>
           </div>
-          <Link href='/' passHref>
-            <a className='member'>Not a Member? Signu Up Now!</a>
+          <Link href='/register   ' passHref>
+            <a className='member'>Not a Member? Sign Up Now!</a>
           </Link>
         </div>
       </div>
-      <div className="second-wrapper">
+      <div className="second-wrapper" style={{ backgroundImage: `url(${loginBg.src})` }}>
 
       </div>
 
     </div>
-  )
-}
+  );
+};
 
-export default index
+export default index;

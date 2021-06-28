@@ -1,0 +1,86 @@
+.banner {
+  position: relative;
+
+  padding-bottom: 34px;
+
+  background-color: $white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+
+      display: block;
+      width: 100%;
+      height: 130px;
+    }
+
+  &.banner {
+    &--about-us {
+      background-image: url('../../assets/images/pink-wave.png');
+      
+      &:before {
+        background-color: $secondary-pink;
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--left {
+      h1 {
+        font-size: 64px;
+        color: $white;
+      }
+    
+      p {
+        max-width: 80%;
+    
+        color: $white;
+      }
+
+      .btn {
+        margin-top: 40px;
+      }
+    }
+  }
+}
+
+@include respond-to(md-down) {
+  .banner {
+    padding: 40px 0 70px;
+
+    background-size: contain;
+
+    &:before {
+      height: 86%;
+    }
+
+    &__wrapper {
+      flex-direction: column;
+
+      &--left {
+        position: relative;
+        z-index: 2;
+
+        h1 {
+          font-size: 48px;
+        }
+
+        p {
+          max-width: 100%;
+        }
+
+        .btn {
+          height: 63px;
+        }
+      }
+    }
+  }
+}

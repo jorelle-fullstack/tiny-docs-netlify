@@ -3,10 +3,13 @@ import firebase from 'firebase/app'
 import '../services/firebase'
 import "firebase/firestore"
 
-export const login = (type) => {
+/**
+ * 
+ * @param {*} type facebook || google 
+ */
+export const login = async (type) => {
 
   try {
-
     let loginType = new firebase.auth.GoogleAuthProvider()
     switch (type) {
       case 'google':
@@ -22,44 +25,42 @@ export const login = (type) => {
     }
 
     //Firebase Auth with Google
-    firebase.auth().signInWithPopup(loginType).then(
-      (userCred) => {
-        // Check if user is new
-        var isNewUser = userCred.additionalUserInfo.isNewUser;
+    const userCred = await firebase.auth().signInWithPopup(loginType)
+    // Check if user is new
+    var isNewUser = userCred.additionalUserInfo.isNewUser;
 
-        // If user is new, save information to database
-        try {
-          if (isNewUser == true) {
-            firebase
-              .firestore()
-              .collection("users")
-              .doc(userCred.user.uid)
-              .set({
-                firstName: userCred.additionalUserInfo.profile.given_name,
-                lastName: userCred.additionalUserInfo.profile.family_name,
-                email: userCred.additionalUserInfo.profile.email,
-                time_stamp: firebase.firestore.Timestamp.now()
-              })
-              .then(
-                console.log("Data was successfully sent to cloud firestore")
-                // Do something like redirect the user to the dedicated page & store the user's data localstorage or cookies
+    if (isNewUser == true) {
+      await firebase
+        .firestore()
+        .collection("users")
+        .doc(userCred.user.uid)
+        .set({
+          firstName: firstName ? userCred.additionalUserInfo.profile.given_name : userCred.additionalUserInfo.profile.first_name,
+          lastName: lastName ? userCred.additionalUserInfo.profile.family_name : userCred.additionalUserInfo.profile.last_name,
+          email: userCred.additionalUserInfo.profile.email,
+          user_type: "freemium",
+          time_stamp: firebase.firestore.Timestamp.now()
+        })
+      console.log('%c 👥 New user Saved! ', 'color:Green;background:White;padding:5px;', userCred);
+      handleSuccessAuthentication(userCred)
 
-              )
-          }
-          else {
-
-            // Do something like redirect the user to the dedicated page & store the user's data localstorage or cookies
-            console.log("logged in successfully");
-          }
-        }
-        catch (error) {
-          console.log(error);
-        }
-      }
-    )
+    } else {
+      console.log('%c 👩‍🦰 Log in success ', 'color:Green;background:White;padding:5px;', userCred);
+      handleSuccessAuthentication(userCred)
+    }
   } catch (error) {
-    console.log(error);
-    console.log("logged in not successful");
+    console.log('%c ❌ Error on Auth process ', 'color:yellow;background:black;padding:5px;', error);
   }
 }
 
+function handleSuccessAuthentication(data) {
+
+  if (!data) return
+
+  const { credential, user } = data
+
+
+  localStorage.token = credential.accessToken
+  localStorage.user = JSON.stringify(user)
+
+}

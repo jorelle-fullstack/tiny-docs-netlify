@@ -55,6 +55,15 @@ textarea {
     @include appearance(none);
   }
 }
+.form-title{
+  margin-bottom: 50px;
+  text-align: center;
+
+}
+
+body {
+  overflow-x: hidden;
+}
 
 .container {
   padding: 0 15px;
@@ -79,6 +88,54 @@ textarea {
 
   @include respond-to(xs) {
     width: 100%;
+  }
+}
+
+.toggle-menu {
+  position: relative;
+  top: 0;
+  left: 5px;
+
+  float: right;
+  width: 36px;
+  height: 28px;
+
+  line-height: 1;
+
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+
+  @include respond-to(lg-up) {
+    display: none;
+  }
+
+  @include respond-to(md-down) {
+    &.is-close {
+      display: none;
+    }
+
+    &.is-open {
+      display: block;
+    }
+  }
+
+  .icon-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+
+    background: #ffffff;
+    box-shadow: none;
+
+    transition: 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+  }
+
+  .icon-bar + .icon-bar {
+    margin-top: 5px;
   }
 }
 
