@@ -12,7 +12,13 @@ export default async function handler (req, res) {
           payment_method_types: [paymentMethodType],
           confirmation_method: 'manual',
         });
-        res.json({ clientSecret: payment.client_secret});
+        res.json({ clientSecret: payment.client_secret}).then(async function(req,res){
+          // const paymentIntent = await stripe.paymentIntents.confirm(
+          //   res,
+          //   {payment_method: 'pm_card_visa'}
+          // );
+          // console.log(paymentIntent);
+        });
       }
       catch(e){
         res.status(400).json({ error: { message: e.message }})
