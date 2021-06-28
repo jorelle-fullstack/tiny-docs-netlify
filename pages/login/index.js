@@ -7,9 +7,10 @@ import loginBg from '../../assets/images/login.svg'
 import googleImg from '../../assets/images/google.svg'
 import fbImg from '../../assets/images/facebook.svg'
 import { useState } from "react";
+import { useRouter } from 'next/router'
 
 const index = () => {
-
+  const router = useRouter()
   const [submitting, setsubmitting] = useState(false)
 
   const {
@@ -27,13 +28,16 @@ const index = () => {
     const res = await passwordBasedLogin(data)
     setsubmitting(false)
 
-    if (!res.message) return
-    if (res.message.includes('password')) {
+    if (!res.message) {
+      return router.push('/about-us')
+    } else if (res.message.includes('password')) {
       setError('email', {
         type: 'manual',
         message: 'The Password or Email is invalid'
       })
     }
+
+
 
   };
 

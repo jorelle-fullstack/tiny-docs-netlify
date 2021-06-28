@@ -9,7 +9,10 @@ import googleImg from '../../assets/images/google.svg'
 import fbImg from '../../assets/images/facebook.svg'
 import { useState } from "react";
 
+import { useRouter } from 'next/router'
+
 const index = () => {
+  const router = useRouter()
   const [submitting, setsubmitting] = useState(false)
   const { register, handleSubmit, watch, setError, formState: { errors } } = useForm();
   const onSubmit = async (data) => {
@@ -18,7 +21,9 @@ const index = () => {
     const res = await passwordBaseRegister(data)
     setsubmitting(false)
 
-    if (!res.message) return
+    if (!res.message) {
+      return router.push('/about-us')
+    }
     if (res.message.includes('email')) {
       setError('email', {
         type: 'manual',

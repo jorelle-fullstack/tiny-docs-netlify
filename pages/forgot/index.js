@@ -34,7 +34,6 @@ const index = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="form">
 
           <Input register={{ ...register("email", { required: true }) }} errors={errors} type="text" placeholder="Enter Email " />
-
           <Button loading={submitting} type='submit' className='btn--blue'>reset password</Button>
         </form>
 

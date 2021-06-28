@@ -2,7 +2,6 @@
 import BeatLoader from "react-spinners/BeatLoader";
 
 const Button = ({ children, className, loading, type = 'button', onClick = () => null }) => {
-  console.log(loading)
   const handleclick = () => {
     onClick()
   }

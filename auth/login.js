@@ -2,6 +2,8 @@
 import firebase from 'firebase/app'
 import '../services/firebase'
 import "firebase/firestore"
+import { useRouter } from 'next/router'
+
 
 /**
  * 3rd party Login
@@ -127,5 +129,4 @@ function handleSuccessAuthentication(data, type = '') {
 
   localStorage.token = credential.accessToken
   localStorage.user = JSON.stringify(user)
-
 }
