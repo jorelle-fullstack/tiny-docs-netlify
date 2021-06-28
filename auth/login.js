@@ -4,7 +4,7 @@ import '../services/firebase'
 import "firebase/firestore"
 
 /**
- * 
+ * 3rd party Login
  * @param {*} type facebook || google 
  */
 export const login = async (type) => {
@@ -21,7 +21,6 @@ export const login = async (type) => {
 
       default:
         throw 'Login type Unrecognized'
-        break;
     }
 
     //Firebase Auth with Google
@@ -53,12 +52,78 @@ export const login = async (type) => {
   }
 }
 
-function handleSuccessAuthentication(data) {
+/**
+ * 
+ * @param {*} type login 
+ */
+export const passwordBasedLogin = async ({ email, password }) => {
+  console.log(email, password)
+  try {
+    const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password)
+
+    console.log('%c 👩‍🦰 Log in success ', 'color:Green;background:White;padding:5px;', userCredential);
+    handleSuccessAuthentication(userCredential, 'passwordBased')
+    return userCredential
+
+  } catch (error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log('%c ❌ Error on Auth process ', 'color:yellow;background:black;padding:5px;', error);
+    return error
+  }
+}
+
+/**
+ * 
+ * @param {*} type register 
+ */
+export const passwordBaseRegister = async ({ email, password, fName, lName }) => {
+
+  try {
+    const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password)
+    var user = userCredential.user;
+
+    await firebase
+      .firestore()
+      .collection("users")
+      .doc(user.uid)
+      .set({
+        firstName: fName,
+        lastName: lName,
+        email,
+        user_type: "freemium",
+        time_stamp: firebase.firestore.Timestamp.now()
+      })
+
+    console.log('%c 👥 Hooray! user created ', 'color:Green;background:White;padding:5px;', userCredential);
+    handleSuccessAuthentication(userCredential, 'passwordBased')
+    return user
+
+  } catch (error) {
+    var errorCode = error.code;
+    var errorMessage = error.message; ``
+    console.log('%c ❌ Error on Auth process ', 'color:yellow;background:black;padding:5px;', errorMessage);
+    return error
+  }
+}
+
+
+/**
+ * 
+ * @param {*} data 
+ * @param {*} type newPasswordBased || ''
+ * @returns 
+ */
+function handleSuccessAuthentication(data, type = '') {
 
   if (!data) return
-
   const { credential, user } = data
 
+  if (type === 'passwordBased') {
+    localStorage.token = user.Aa
+    localStorage.user = JSON.stringify(user)
+    return
+  }
 
   localStorage.token = credential.accessToken
   localStorage.user = JSON.stringify(user)

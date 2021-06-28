@@ -1,4 +1,8 @@
-import {login} from './login'
+import { login, passwordBasedLogin, passwordBaseRegister } from './login'
 
 
-export { login }
+export {
+  login,
+  passwordBasedLogin,
+  passwordBaseRegister
+}
