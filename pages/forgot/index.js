@@ -19,7 +19,7 @@ const index = () => {
         email: data.email
       })
       setsubmitting(false)
-      router.push('/forgot/reset-confirmation')
+      router.push('/forgot/reset-confirmation?success=true')
 
     } catch (error) {
       console.log('%c ⚠ Error sending forgot request ', 'color:yellow;background:black;padding:5px;', error);

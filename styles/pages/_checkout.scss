@@ -1,0 +1,55 @@
+.page-checkout {
+  padding-top: 45px;
+  display: flex;
+
+  > div {
+  }
+  .wrapper {
+  }
+  .steps {
+    flex-basis: 60%;
+
+    &__form-wrapper {
+    }
+  }
+  .side-bar {
+    flex-grow: 1;
+  }
+  .checkout-wrapper {
+    background-color: white;
+    padding: 35px 81px;
+    margin: 15px;
+    border-radius: 8px;
+
+    .step-title {
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 30px;
+      span {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .form {
+    input {
+      border: 1px solid #d8d8d8;
+      font-size: 16px;
+      padding: 15px 24px;
+    }
+    .asterisk {
+      top: 12px;
+    }
+  }
+
+  .btn {
+    font-size: 16px;
+    height: 51px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    &.container {
+      width: 1255px;
+    }
+  }
+}
