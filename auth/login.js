@@ -3,11 +3,11 @@ import firebase from 'firebase/app'
 import '../services/firebase'
 import "firebase/firestore"
 import { useRouter } from 'next/router'
-
+import axios from 'axios'
 
 /**
  * 3rd party Login
- * @param {*} type facebook || google 
+ * @param {*} type facebook || google
  */
 export const login = async (type) => {
 
@@ -29,6 +29,7 @@ export const login = async (type) => {
     const userCred = await firebase.auth().signInWithPopup(loginType)
     // Check if user is new
     var isNewUser = userCred.additionalUserInfo.isNewUser;
+    var firstName, lastName, email = "";
 
     if (isNewUser == true) {
       await firebase
@@ -42,6 +43,7 @@ export const login = async (type) => {
           user_type: "freemium",
           time_stamp: firebase.firestore.Timestamp.now()
         })
+
       console.log('%c 👥 New user Saved! ', 'color:Green;background:White;padding:5px;', userCred);
       handleSuccessAuthentication(userCred)
 
@@ -55,8 +57,8 @@ export const login = async (type) => {
 }
 
 /**
- * 
- * @param {*} type login 
+ *
+ * @param {*} type login
  */
 export const passwordBasedLogin = async ({ email, password }) => {
   console.log(email, password)
@@ -76,14 +78,29 @@ export const passwordBasedLogin = async ({ email, password }) => {
 }
 
 /**
- * 
- * @param {*} type register 
+ *
+ * @param {*} type register
  */
 export const passwordBaseRegister = async ({ email, password, fName, lName }) => {
 
   try {
     const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password)
     var user = userCredential.user;
+    var customer_id = "";
+    // Process Stripe, Get Customer ID first
+    try {
+      await axios.post('/api/stripe/createUserWithoutCard', {
+        email: email,
+        first_name: fName,
+        last_name: lName
+      })
+      .then((response) =>
+          customer_id = response.data.customer_details.id
+        )
+      }
+    catch(error){
+        console.log('%c ❌ Error on Getting Stripe Customer ID ', 'color:yellow;background:black;padding:5px;', error);
+    }
 
     await firebase
       .firestore()
@@ -94,6 +111,7 @@ export const passwordBaseRegister = async ({ email, password, fName, lName }) =>
         lastName: lName,
         email,
         user_type: "freemium",
+        customer_id: customer_id,
         time_stamp: firebase.firestore.Timestamp.now()
       })
 
@@ -111,10 +129,10 @@ export const passwordBaseRegister = async ({ email, password, fName, lName }) =>
 
 
 /**
- * 
- * @param {*} data 
+ *
+ * @param {*} data
  * @param {*} type newPasswordBased || ''
- * @returns 
+ * @returns
  */
 function handleSuccessAuthentication(data, type = '') {
 
