@@ -3,8 +3,7 @@ const stripe = require("stripe")("sk_test_51J64FNAEed2wp5pxXJE1b3lDV7L36pPtjVUwZ
 
 export default async function handler (req, res) {
   if (req.method === 'POST') {
-    const {card_number, card_exp_month, card_exp_year, card_cvc, customer_id ,paymentMethodType, amount} = req.body;
-    const amount = "";
+    const {card_number, card_exp_month, card_exp_year, card_cvc, customer_id ,paymentMethodType, user_type} = req.body;
 
     const paymentMethod = await stripe.paymentMethods.create({
       type: 'card',
@@ -16,10 +15,10 @@ export default async function handler (req, res) {
       },
     });
     try {
-      if (amount == 1000){
+      if (user_type == "family"){
         price = "price_1J64OtAEed2wp5pxeetSP29D";
       }
-      else if(amount == 2000){
+      else if(amount == "pediatric"){
         price = "price_1J64PkAEed2wp5pxzfrVvtPP";
       }
       const subscription = await stripe.subscriptions.create({
