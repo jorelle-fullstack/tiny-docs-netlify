@@ -58,44 +58,41 @@ export default async function handler (req, res) {
           cvc: card_cvc,
         },
       });
-
-      await stripe.customers.create({
+      
+      const customer = await stripe.customers.create({
         email: "sample@email.com",
         name: "Jorelle Labanza",
         phone: "0977711247",
         description: 'Tiny Docs Subscriber',
         payment_method: paymentMethod.id
-      }).then(async function(customer){
-
-        try {
-          const subscription = await stripe.subscriptions.create({
-            customer: customer.id,
-            items: [
-              {price: 'price_1J64PkAEed2wp5pxzfrVvtPP'},
-            ],
-            collection_method: "charge_automatically",
-            default_payment_method: paymentMethod.id
-          }).then(async function(){
-            try{
-              const payment = await stripe.paymentIntents.create({
-                amount: amount,
-                currency: "usd",
-                payment_method_types: [paymentMethodType],
-                confirmation_method: 'automatic',
-                confirm:'true',
-                payment_method: 'pm_card_visa',
-              });
-            
-              res.status(200).json({ status: payment.status })
-            }
-            catch(e){
-              res.status(400).json({ error: { message: e.message }})
-            }
-          });
-        }catch(e){
-          res.status(400).json({ error: { message: e.message }})
-        }
       });
+
+      try {
+        const subscription = await stripe.subscriptions.create({
+          customer: customer.id,
+          items: [
+            {price: 'price_1J64PkAEed2wp5pxzfrVvtPP'},
+          ],
+          collection_method: "charge_automatically",
+          default_payment_method: paymentMethod.id
+        })
+        
+      }catch(e){
+        res.status(400).json({ error: { message: e.message }})
+      }
+      try{
+        const payment = await stripe.paymentIntents.create({
+          amount: amount,
+          currency: "usd",
+          payment_method_types: [paymentMethodType],
+          confirmation_method: 'automatic',
+          confirm:'true',
+          payment_method: 'pm_card_visa',
+        });
+      }
+      catch(e){
+        res.status(400).json({ error: { message: e.message }})
+      }
       
   } else {
     
