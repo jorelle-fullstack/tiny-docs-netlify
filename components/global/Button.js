@@ -1,12 +1,13 @@
 
+import BeatLoader from "react-spinners/BeatLoader";
 
-const Button = ({ children, className, type = 'button', onClick = () => null }) => {
+const Button = ({ children, className, loading, type = 'button', onClick = () => null }) => {
   const handleclick = () => {
     onClick()
   }
   return (
     <button type={type} onClick={handleclick} className={`btn ${className}`}>
-      {children}
+      {loading ? <BeatLoader loading={true} color='white' /> : children}
     </button>
   )
 }
