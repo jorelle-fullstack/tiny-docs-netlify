@@ -1,5 +1,5 @@
-*, 
-*:before, 
+*,
+*:before,
 *:after {
   margin: 0;
   box-sizing: border-box;
@@ -55,14 +55,14 @@ textarea {
     @include appearance(none);
   }
 }
-.form-title{
+.form-title {
   margin-bottom: 50px;
   text-align: center;
-
 }
 
 body {
   overflow-x: hidden;
+  background-color: $secondary-brown;
 }
 
 .container {
@@ -138,4 +138,3 @@ body {
     margin-top: 5px;
   }
 }
-

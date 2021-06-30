@@ -53,6 +53,7 @@ export const login = async (type) => {
     }
   } catch (error) {
     console.log('%c ❌ Error on Auth process ', 'color:yellow;background:black;padding:5px;', error);
+    throw 'Auth failed'
   }
 }
 

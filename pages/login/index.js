@@ -13,6 +13,8 @@ const index = () => {
   const router = useRouter()
   const [submitting, setsubmitting] = useState(false)
 
+  const redirectLink = '/about-us'
+
   const {
     register,
     handleSubmit,
@@ -29,17 +31,23 @@ const index = () => {
     setsubmitting(false)
 
     if (!res.message) {
-      return router.push('/about-us')
+      return router.push(redirectLink)
     } else if (res.message.includes('password')) {
       setError('email', {
         type: 'manual',
         message: 'The Password or Email is invalid'
       })
     }
-
-
-
   };
+
+
+  const handle3rdPartyLogin = async (type) => {
+    try {
+      await login(type)
+      return router.push(redirectLink)
+    } catch (error) {
+    }
+  }
 
   return (
     <div className="page-login">
@@ -64,8 +72,8 @@ const index = () => {
           <p>- Or Login With - </p>
 
           <div className="external-login-wrapper">
-            <Button onClick={e => login('google')}><img src={googleImg.src} alt="" /></Button>
-            <Button onClick={e => login('facebook')}><img src={fbImg.src} alt="" /></Button>
+            <Button onClick={e => handle3rdPartyLogin('google')}><img src={googleImg.src} alt="" /></Button>
+            <Button onClick={e => handle3rdPartyLogin('facebook')}><img src={fbImg.src} alt="" /></Button>
           </div>
           <Link href='/register   ' passHref>
             <a className='member'>Not a Member? Sign Up Now!</a>
