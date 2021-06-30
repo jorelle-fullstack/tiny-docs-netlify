@@ -34,9 +34,8 @@ const Index = () => {
     <div className='container page-checkout'>
       <div className='steps'>
 
-        <Email stepSubmitCallback={stepSubmitCallback} />
-        <Payment stepSubmitCallback={stepSubmitCallback}/>
-
+        <Email stepSubmitCallback={stepSubmitCallback} step={step} />
+        <Payment stepSubmitCallback={stepSubmitCallback} step={step} />
         <Review />
 
       </div>
