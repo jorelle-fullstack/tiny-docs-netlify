@@ -32,7 +32,7 @@ const index = () => {
 
     if (!res.message) {
       return router.push(redirectLink)
-    } else if (res.message.includes('password')) {
+    } else if (res.message.includes('password') || res.message.includes('email')) {
       setError('email', {
         type: 'manual',
         message: 'The Password or Email is invalid'
@@ -56,7 +56,7 @@ const index = () => {
           <h1 className='title'>Login</h1>
           <form onSubmit={handleSubmit(onSubmit)} className='form'>
 
-            <Input showError={false} register={{ ...register("email", {}) }} errors={errors} type="email" placeholder="Enter Email" />
+            <Input showError={false} register={{ ...register("email", { required: true }) }} errors={errors} type="email" placeholder="Enter Email" />
 
             <Input showError={false} register={{ ...register("password", { required: true }) }} errors={errors} type="password" placeholder="Enter Password" />
 

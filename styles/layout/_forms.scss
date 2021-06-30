@@ -1,5 +1,6 @@
 .form {
-  input {
+  input,
+  select {
     display: block;
     width: 100%;
     padding: 20px 28px;
@@ -12,10 +13,29 @@
     background: white;
     border-radius: 100px;
   }
+
+  .input-inline-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    height: 51px;
+    padding: 0 74px;
+
+    border: none;
+    border-top: 1px solid #d8d8d8;
+    border-right: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+    border-radius: 50px;
+    background-color: #c4c4c4;
+  }
   .input-group {
     display: flex;
-    & :first-child {
+    & :not(:last-child) {
       margin-right: 10px;
+    }
+    > * {
+      flex-grow: 1;
     }
   }
   .input-wrapper {
