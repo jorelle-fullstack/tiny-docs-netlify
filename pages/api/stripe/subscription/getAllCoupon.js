@@ -5,5 +5,5 @@ export default async function handler (req, res) {
     const coupons = await stripe.coupons.list({
       
       });
-    res.status(200).json({ coupon_list: coupons});
+    res.status(200).json({ coupon_list: coupons.id});
 }
