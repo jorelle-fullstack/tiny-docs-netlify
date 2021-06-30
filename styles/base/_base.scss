@@ -55,14 +55,26 @@ textarea {
     @include appearance(none);
   }
 }
+// GLOBALS-------------------------------
 .form-title {
   margin-bottom: 50px;
   text-align: center;
 }
-
+.flex {
+  display: flex;
+}
+.mb-s{
+margin-bottom: 5px;
+}
+// GLOBALS-------------------------------
 body {
   overflow-x: hidden;
   background-color: $secondary-brown;
+}
+
+.sub-info {
+  margin: 10px 20px;
+  color: #676161;
 }
 
 .container {

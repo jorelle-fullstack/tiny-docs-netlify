@@ -23,10 +23,18 @@ const Index = () => {
 
   const stepSubmitCallback = (inputData) => {
     console.log('%c ⚠ inputData ', 'color:yellow;background:black;padding:5px;', inputData);
+    if (step === 3) {
+      console.log('%c ⚠ purchasing... ', 'color:yellow;background:black;padding:5px;',);
+      return
+    }
 
     setFormData(prevState => ({ ...prevState, ...inputData }))
     setStep(step + 1)
 
+  }
+
+  const editCallback = (editStep) => {
+    setStep(editStep)
   }
 
 
@@ -34,10 +42,9 @@ const Index = () => {
     <div className='container page-checkout'>
       <div className='steps'>
 
-        <Email stepSubmitCallback={stepSubmitCallback} />
-        <Payment stepSubmitCallback={stepSubmitCallback}/>
-
-        <Review />
+        <Email stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />
+        <Payment stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />
+        <Review stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />
 
       </div>
       <div className="side-bar">

@@ -31,15 +31,17 @@ export const login = async (type) => {
     var isNewUser = userCred.additionalUserInfo.isNewUser;
     var firstName, lastName, email = "";
 
+    console.log('%c ⚠ user Cred ', 'color:yellow;background:black;padding:5px;', userCred);
+
     if (isNewUser == true) {
       await firebase
         .firestore()
         .collection("users")
         .doc(userCred.user.uid)
         .set({
-          firstName: firstName ? userCred.additionalUserInfo.profile.given_name : userCred.additionalUserInfo.profile.first_name,
-          lastName: lastName ? userCred.additionalUserInfo.profile.family_name : userCred.additionalUserInfo.profile.last_name,
-          email: userCred.additionalUserInfo.profile.email,
+          firstName:  userCred?.additionalUserInfo?.profile?.given_name ,
+          lastName:  userCred?.additionalUserInfo?.profile?.family_name,
+          email: userCred?.additionalUserInfo?.profile?.email,
           user_type: "freemium",
           time_stamp: firebase.firestore.Timestamp.now()
         })
