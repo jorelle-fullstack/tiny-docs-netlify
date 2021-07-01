@@ -5,6 +5,7 @@ import Story from './Story'
 import Team from './Team'
 import Advisors from './Advisors'
 import Testimonials from './Testimonials'
+import BannerPricing from './BannerPricing'
 
 export {
   Button,
@@ -13,5 +14,6 @@ export {
   Story,
   Team,
   Advisors,
-  Testimonials
+  Testimonials,
+  BannerPricing
 }

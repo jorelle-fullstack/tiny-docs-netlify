@@ -48,37 +48,39 @@ const Testimonials = () => {
 
   return (
     <div className="section-testimonials">
-      <div className="testimony__wrapper">
-        <h1>What People are Saying</h1>
-        <Swiper
-          spaceBetween={50}
-          navigation
-          breakpoints={{
-            992: {
-              slidesPerView: 3,
-            },
-            768: {
-              slidesPerView: 1,
-            },
-          }}
-        >
-          {testimonialContent.map((testimony, i) => {
-            return (
-              <SwiperSlide key={i}>
-                <div className="testimony__holder">
-                  <Image src={Quote} alt="Quote" />
-                  <p className="testimony__statement">{testimony.statement}</p>
-                  <div className="testimony__info">
-                    <p className="testimony__name">{testimony.name}</p>
-                    <p className="testimony__description">
-                      {testimony.description}
-                    </p>
+      <div className="container">
+        <div className="testimony__wrapper">
+          <h1>What People are Saying</h1>
+          <Swiper
+            spaceBetween={50}
+            navigation
+            breakpoints={{
+              992: {
+                slidesPerView: 3,
+              },
+              768: {
+                slidesPerView: 1,
+              },
+            }}
+          >
+            {testimonialContent.map((testimony, i) => {
+              return (
+                <SwiperSlide key={i}>
+                  <div className="testimony__holder">
+                    <Image src={Quote} alt="Quote" />
+                    <p className="testimony__statement">{testimony.statement}</p>
+                    <div className="testimony__info">
+                      <p className="testimony__name">{testimony.name}</p>
+                      <p className="testimony__description">
+                        {testimony.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
       </div>
     </div>
   );
