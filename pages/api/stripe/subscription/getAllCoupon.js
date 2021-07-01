@@ -5,7 +5,7 @@ export default async function handler (req, res) {
       });
     var all_coupons = [];
     for(var i =0; i < Object.keys(coupons.data).length; i++){
-      
+
       all_coupons[i] = coupons.data[i]['id'];
 
     }
