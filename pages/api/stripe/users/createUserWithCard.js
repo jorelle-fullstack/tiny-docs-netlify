@@ -3,7 +3,19 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 export default async function handler (req, res) {
   if (req.method === 'POST') {
-    const {card_number, card_exp_month, card_exp_year, card_cvc, first_name, last_name, email} = req.body;
+    const {
+      card_number,
+      card_exp_month,
+      card_exp_year,
+      card_cvc,
+      first_name,
+      last_name,
+      email,
+      city,
+      country,
+      postal_code,
+      state,
+      phone_number} = req.body;
 
     const paymentMethod = await stripe.paymentMethods.create({
         type: 'card',
@@ -12,6 +24,17 @@ export default async function handler (req, res) {
           exp_month: card_exp_month,
           exp_year: card_exp_year,
           cvc: card_cvc,
+          billing_details:{
+            address:{
+              city: city,
+              country: country,
+              postal_code: postal_code,
+              state: state
+            },
+            email: email,
+            name: first_name + " " + last_name,
+            phone: phone_number
+          }
         },
       });
 
