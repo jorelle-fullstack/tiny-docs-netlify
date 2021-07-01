@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 
 
 
-
 const Index = () => {
 
   const {
@@ -41,7 +40,6 @@ const Index = () => {
   return (
     <div className='container page-checkout'>
       <div className='steps'>
-
         <Email stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />
         <Payment stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />
         <Review stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />

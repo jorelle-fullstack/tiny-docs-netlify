@@ -35,8 +35,30 @@
       color: black;
     }
   }
+
   .side-bar {
     flex-grow: 1;
+  }
+  .summary {
+    flex-grow: 1;
+
+    .row-first {
+      width: 100%;
+      max-width: 250px;
+    }
+
+    .form {
+      input {
+        padding: 9px 24px;
+      }
+      .input-inline-button {
+        height: 39px;
+        padding: 0 42px;
+      }
+    }
+    &__details {
+      padding-left: 20px;
+    }
   }
   .checkout-wrapper {
     position: relative;
