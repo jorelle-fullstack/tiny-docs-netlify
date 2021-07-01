@@ -1,0 +1,111 @@
+.page-checkout {
+  padding-top: 45px;
+  display: flex;
+
+  > div {
+  }
+  .wrapper {
+  }
+  .steps {
+    position: relative;
+    flex-basis: 60%;
+
+    &__form-wrapper {
+    }
+
+    &__info {
+      .edit {
+        position: absolute;
+        top: 26px;
+        right: 32px;
+      }
+
+      .row-first {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+    &--inactive {
+      margin-bottom: 0 !important;
+      color: #676161;
+    }
+
+    &--done {
+      margin-bottom: 30px !important;
+      color: black;
+    }
+  }
+  .side-bar {
+    flex-grow: 1;
+  }
+  .checkout-wrapper {
+    position: relative;
+    background-color: white;
+    padding: 35px 81px;
+    margin: 15px;
+    border-radius: 8px;
+
+    .step-title {
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 30px;
+      span {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .form {
+    input,
+    select {
+      border: 1px solid #d8d8d8;
+      font-size: 16px;
+      padding: 15px 24px;
+      margin-bottom: 12px;
+    }
+    .asterisk {
+      top: 12px;
+    }
+
+    .card-input {
+      overflow: unset;
+      padding: 0 0 0 20px;
+      border: 1px solid #d8d8d8;
+      border-radius: 50px;
+
+      label {
+        &:first-of-type {
+          flex: 1 0 0;
+          width: 100%;
+        }
+        flex-basis: 20%;
+      }
+      label:after {
+        display: none;
+      }
+      input {
+        border: none;
+        position: static;
+        margin-bottom: 0;
+        padding-right: 0;
+      }
+    }
+
+    &--error {
+      margin-top: -10px;
+      margin-bottom: 12px;
+    }
+  }
+
+  .btn {
+    font-size: 16px;
+    height: 51px;
+    margin: 20px 0;
+  }
+
+  @media screen and (min-width: 1200px) {
+    &.container {
+      width: 1255px;
+    }
+  }
+}
