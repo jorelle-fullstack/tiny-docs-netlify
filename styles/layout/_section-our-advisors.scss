@@ -35,7 +35,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 101px;
+    margin-top: 85px;
 
     &--col {
       display: flex;
@@ -49,7 +49,7 @@
 
       padding: 8px 15px;
 
-      margin-bottom: 93px;
+      margin-bottom: 78px;
 
       width: 345px;
 
@@ -72,6 +72,7 @@
         content: "";
         position: absolute;
         bottom: 100%;
+        z-index: -1;
 
         display: block;
         width: 10px;

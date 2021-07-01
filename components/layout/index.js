@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 const CoreLayout = ({ children }) => {
   const { asPath } = useRouter();
 
-  const noNavigationRoutes = ["/login", "/register", "/forgot-password", "/pricing"];
+  const noNavigationRoutes = ["/login", "/register", "/forgot-password", "/pricing", "/checkout"];
 
   return (
     <>

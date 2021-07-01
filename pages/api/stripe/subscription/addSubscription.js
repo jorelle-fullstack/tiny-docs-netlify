@@ -32,13 +32,13 @@ export default async function handler (req, res) {
       const subscription = await stripe.subscriptions.create({
         customer: customer_id,
         items: [
-          {price: price}, 
+          {price: price},
         ],
         collection_method: "charge_automatically",
         default_payment_method: paymentMethod.id,
         coupon: coupon
       })
-      
+
     }
     catch(e){
       res.status(400).json({ error: { message: e.message }})

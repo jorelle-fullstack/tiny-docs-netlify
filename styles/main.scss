@@ -21,7 +21,8 @@
   'layout/banner',
   'layout/section-our-story',
   'layout/section-our-team',
-  'layout/section-our-advisors';
+  'layout/section-our-advisors',
+  'layout/section-testimonials';
 
 // Components
 @import
@@ -32,4 +33,5 @@
   'pages/home',
   'pages/about',
   'pages/login-register',
-  'pages/pricing';
+  'pages/pricing',
+  'pages/checkout';

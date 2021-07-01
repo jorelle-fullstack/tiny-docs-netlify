@@ -1,3 +1,7 @@
+import firebase from 'firebase/app'
+import '../../../services/firebase'
+import 'firebase/firestore'
+
 const Stripe = require('stripe');
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
@@ -44,8 +48,12 @@ export default async function handler (req, res) {
         description: 'Tiny Docs Customer',
         payment_method: paymentMethod.id
       });
-
     res.status(200).json({customer_details: customer});
+    /* await firebase.firestore().collection('users').doc(userId).set({
+      subscription_id:
+    });
+ */
+
   }
   else {}
 }
