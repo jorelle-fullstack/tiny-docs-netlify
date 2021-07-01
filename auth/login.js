@@ -39,8 +39,8 @@ export const login = async (type) => {
         .collection("users")
         .doc(userCred.user.uid)
         .set({
-          firstName:  userCred?.additionalUserInfo?.profile?.given_name ,
-          lastName:  userCred?.additionalUserInfo?.profile?.family_name,
+          firstName: firstName ? userCred?.additionalUserInfo?.profile?.given_name : userCred?.additionalUserInfo?.profile?.first_name,
+          lastName: lastName ? userCred?.additionalUserInfo?.profile?.family_name : userCred?.additionalUserInfo?.profile?.last_name,
           email: userCred?.additionalUserInfo?.profile?.email,
           user_type: "freemium",
           time_stamp: firebase.firestore.Timestamp.now()
@@ -92,7 +92,7 @@ export const passwordBaseRegister = async ({ email, password, fName, lName }) =>
     var customer_id = "";
     // Process Stripe, Get Customer ID first
     try {
-      await axios.post('/api/stripe/createUserWithoutCard', {
+      await axios.post('/api/stripe/user/createUserWithoutCard', {
         email: email,
         first_name: fName,
         last_name: lName
@@ -104,6 +104,25 @@ export const passwordBaseRegister = async ({ email, password, fName, lName }) =>
     catch(error){
         console.log('%c ❌ Error on Getting Stripe Customer ID ', 'color:yellow;background:black;padding:5px;', error);
     }
+
+/*     try {
+      await axios.post('/api/stripe/user/createUserWithCard', {
+        card_number: card_number,
+        card_exp_month: card_exp_month,
+        card_exp_year: card_exp_year,
+        card_cvc: card_cvc,
+        email: email,
+        first_name: fName,
+        last_name: lName
+      })
+      .then((response) =>
+          customer_id = response.data.customer_details.id
+        )
+      }
+    catch(error){
+        console.log('%c ❌ Error on Getting Stripe Customer ID ', 'color:yellow;background:black;padding:5px;', error);
+    } */
+
 
     await firebase
       .firestore()

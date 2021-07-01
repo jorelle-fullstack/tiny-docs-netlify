@@ -1,5 +1,5 @@
 const Stripe = require('stripe');
-const stripe = require("stripe")("sk_test_51J64FNAEed2wp5pxXJE1b3lDV7L36pPtjVUwZwndQsbZFgLFekhF0YQF8pgf4UNQyIJPLNqgv54lhboVYImTJtbT00YvoXcMD1")
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 export default async function handler (req, res) {
 
@@ -20,7 +20,7 @@ export default async function handler (req, res) {
       // });
 
       // const charge = await stripe.charges.create({
-      //   amount: amount, 
+      //   amount: amount,
       //   currency: "usd",
       //   card: token,
       //   description: "payinguser@example.com"
@@ -38,7 +38,7 @@ export default async function handler (req, res) {
       //       confirm:'true',
       //       payment_method: 'pm_card_visa',
       //     });
-         
+
       //     res.status(200).json({ status: payment.status })
       //   }
       //   catch(e){
@@ -58,7 +58,7 @@ export default async function handler (req, res) {
           cvc: card_cvc,
         },
       });
-      
+
       const customer = await stripe.customers.create({
         email: "sample@email.com",
         name: "Jorelle Labanza",
@@ -76,7 +76,7 @@ export default async function handler (req, res) {
           collection_method: "charge_automatically",
           default_payment_method: paymentMethod.id
         })
-        
+
       }catch(e){
         res.status(400).json({ error: { message: e.message }})
       }
@@ -93,8 +93,8 @@ export default async function handler (req, res) {
       catch(e){
         res.status(400).json({ error: { message: e.message }})
       }
-      
+
   } else {
-    
+
   }
 }

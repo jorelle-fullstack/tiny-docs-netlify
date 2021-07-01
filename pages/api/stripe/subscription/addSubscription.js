@@ -1,5 +1,5 @@
 const Stripe = require('stripe');
-const stripe = require("stripe")("sk_test_51J64FNAEed2wp5pxXJE1b3lDV7L36pPtjVUwZwndQsbZFgLFekhF0YQF8pgf4UNQyIJPLNqgv54lhboVYImTJtbT00YvoXcMD1")
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 export default async function handler (req, res) {
   if (req.method === 'POST') {
@@ -32,13 +32,13 @@ export default async function handler (req, res) {
       const subscription = await stripe.subscriptions.create({
         customer: customer_id,
         items: [
-          {price: price}, 
+          {price: price},
         ],
         collection_method: "charge_automatically",
         default_payment_method: paymentMethod.id,
         coupon: coupon
       })
-      
+
     }
     catch(e){
       res.status(400).json({ error: { message: e.message }})
