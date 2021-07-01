@@ -12,4 +12,9 @@ const firebaseConfig = {
 	measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID
 }
 
-export default !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
+// if a Firebase instance doesn't exist, create one
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+export default firebase;

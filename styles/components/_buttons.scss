@@ -5,7 +5,8 @@
   justify-content: center;
   height: 63px;
 
-  font: 700 20px $font-lato;
+  font: 800 20px $font-lato;
+  letter-spacing: 2px;
   text-transform: uppercase;
 
   border-radius: 100px;
@@ -37,6 +38,12 @@
     background: $primary-yellow;
     color: $secondary-darker-blue;
   }
+
+  &--light-blue {
+    background: $light-blue;
+    color: $secondary-darker-blue;
+  }
+
 
   &--dark-blue {
     height: 83px;
