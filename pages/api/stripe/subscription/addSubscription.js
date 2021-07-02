@@ -3,7 +3,20 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 export default async function handler (req, res) {
   if (req.method === 'POST') {
-    const {card_number, card_exp_month, card_exp_year, card_cvc, customer_id ,paymentMethodType, user_type, coupon} = req.body;
+    const { 
+      card_number,
+      card_exp_month, 
+      card_exp_year, 
+      card_cvc, 
+      city, 
+      country, 
+      postal_code, 
+      state, 
+      customer_id,
+      paymentMethodType, 
+      user_type, 
+      coupon} = req.body;
+      
     let price = "";
     let amount = "";
     const paymentMethod = await stripe.paymentMethods.create({
@@ -13,6 +26,17 @@ export default async function handler (req, res) {
         exp_month: card_exp_month,
         exp_year: card_exp_year,
         cvc: card_cvc,
+        billing_details:{
+          address:{
+            city: city,
+            country: country,
+            postal_code: postal_code,
+            state: state
+          },
+          email: email,
+          name: first_name + " " + last_name,
+          phone: phone_number
+        }
       },
     });
     await stripe.paymentMethods.attach(
@@ -32,13 +56,13 @@ export default async function handler (req, res) {
       const subscription = await stripe.subscriptions.create({
         customer: customer_id,
         items: [
-          {price: price}, 
+          {price: price},
         ],
         collection_method: "charge_automatically",
         default_payment_method: paymentMethod.id,
         coupon: coupon
       })
-      
+
     }
     catch(e){
       res.status(400).json({ error: { message: e.message }})

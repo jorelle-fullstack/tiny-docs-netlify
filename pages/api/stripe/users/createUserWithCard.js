@@ -36,7 +36,7 @@ export default async function handler (req, res) {
               state: state
             },
             email: email,
-            name: first_name + " " + last_name, 
+            name: first_name + " " + last_name,
             phone: phone_number
           }
         },
