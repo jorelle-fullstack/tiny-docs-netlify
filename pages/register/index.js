@@ -15,6 +15,7 @@ const index = () => {
   const router = useRouter()
   const [submitting, setsubmitting] = useState(false)
   const { register, handleSubmit, watch, setError, formState: { errors } } = useForm();
+  const redirectLink = '/plans'
   const onSubmit = async (data) => {
     console.log(data)
     setsubmitting(true)
@@ -22,8 +23,9 @@ const index = () => {
     setsubmitting(false)
 
     if (!res.message) {
-      return router.push('/about-us')
+      return router.push('/plans')
     }
+
     if (res.message.includes('email')) {
       setError('email', {
         type: 'manual',
@@ -31,6 +33,16 @@ const index = () => {
       })
     }
   };
+
+
+  const handle3rdPartyRegister = async (type) => {
+    try {
+      await login(type)
+      return router.push(redirectLink)
+    } catch (error) {
+    }
+  }
+
   const watchPassword = watch("password");
   return (
     <div className='page-register'>
@@ -69,8 +81,8 @@ const index = () => {
           </form>
           <p>- Or Login With - </p>
           <div className="external-login-wrapper">
-            <Button onClick={e => login('google')}><img src={googleImg.src} alt="" /></Button>
-            <Button onClick={e => login('facebook')}><img src={fbImg.src} alt="" /></Button>
+            <Button onClick={e => handle3rdPartyRegister('google')}><img src={googleImg.src} alt="" /></Button>
+            <Button onClick={e => handle3rdPartyRegister('facebook')}><img src={fbImg.src} alt="" /></Button>
           </div>
           <Link href='/login' passHref>
             <a className='member'>Already a member? Login</a>

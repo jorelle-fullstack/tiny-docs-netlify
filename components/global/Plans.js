@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "../../components/global";
 import Check from "../../assets/images/check.svg";
 import Close from "../../assets/images/close.svg";
+import Link from 'next/link'
 
 const Plans = () => {
   const plans = [
@@ -11,6 +12,7 @@ const Plans = () => {
       category: "Free",
       title: "Free",
       description: "This plan is best for..",
+      link: '/register',
       inclusions: [
         {
           included: false,
@@ -39,6 +41,7 @@ const Plans = () => {
     },
     {
       category: "Individuals",
+      link: '/checkout?planType=individuals',
       title: "Individuals",
       description: "This plan is best for teachers and parents?",
       inclusions: [
@@ -69,6 +72,7 @@ const Plans = () => {
     },
     {
       category: "Providers",
+      link: '/checkout?planType=providers',
       title: "Providers",
       description: "This plan is best for doctors?",
       inclusions: [
@@ -144,15 +148,18 @@ const Plans = () => {
                     <p className="plan__price">
                       $<span>{plan.price}</span>/month
                     </p>
-                    <Button
-                      className={clsx({
-                        "btn--yellow": plan.category === "Free",
-                        "btn--red": plan.category === "Individuals",
-                        "btn--blue": plan.category === "Providers",
-                      })}
-                    >
-                      Buy Now
-                    </Button>
+                    <Link href={plan.link}>
+                      <a>
+                        <Button
+                          className={clsx({
+                            "btn--yellow": plan.category === "Free",
+                            "btn--red": plan.category === "Individuals",
+                            "btn--blue": plan.category === "Providers",
+                          })}
+                        >
+                          Buy Now
+                        </Button></a>
+                    </Link>
                   </div>
                 </div>
               );

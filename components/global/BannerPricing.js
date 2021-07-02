@@ -19,7 +19,7 @@ const bannerContent = [
     title: "Something Exciting",
     btnText: "Try it for free!",
     text: "Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur",
-    background: require("../../assets/images/banner-pricing.png").default,
+    background: require("../../assets/images/banner-pricing.png").default.src,
     category: "Videos",
     btnIcon: Videos
   },
@@ -27,7 +27,7 @@ const bannerContent = [
     title: "Something Exciting",
     btnText: "Try it for free!",
     text: "Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur",
-    background: require("../../assets/images/banner-pricing.png").default,
+    background: require("../../assets/images/banner-pricing.png").default.src,
     category: "Play",
     btnIcon: Play
   },
@@ -35,7 +35,7 @@ const bannerContent = [
     title: "Something Exciting",
     btnText: "Try it for free!",
     text: "Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur",
-    background: require("../../assets/images/banner-pricing.png").default,
+    background: require("../../assets/images/banner-pricing.png").default.src,
     category: "Blog",
     btnIcon: Blog
   },
@@ -43,13 +43,14 @@ const bannerContent = [
     title: "Something Exciting",
     btnText: "Try it for free!",
     text: "Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur",
-    background: require("../../assets/images/banner-pricing.png").default,
+    background: require("../../assets/images/banner-pricing.png").default.src,
     category: "Learn",
     btnIcon: Learn
   },
 ];
 
 const BannerPricing = ({ page }) => {
+  console.log('%c ⚠ bg ', 'color:yellow;background:black;padding:5px;', bannerContent[0].background);
   return (
     <div className={clsx("banner", { "banner--pricing": page === "Pricing" })}>
       <div className="container">
