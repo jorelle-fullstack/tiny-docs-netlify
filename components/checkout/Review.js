@@ -3,7 +3,7 @@ import Input from '../../components/form/Input'
 import { Button } from '../../components/global'
 import { useForm } from "react-hook-form";
 import clsx from 'clsx';
-
+import addSubscription from '../../pages/api/stripe/subscription/addSubscription'
 
 
 const Email = ({ step, stepSubmitCallback, formData, editCallback }) => {
@@ -16,6 +16,10 @@ const Email = ({ step, stepSubmitCallback, formData, editCallback }) => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    console.log(formData)
+    // Fires the formData variable as the subscription and adds it to the user's account.
+    addSubscription(formData)
+    console.lo
     stepSubmitCallback(data)
   };
 

@@ -1,15 +1,28 @@
 import React from "react";
 import clsx from "clsx";
 import Image from "next/image";
+import { useRouter } from 'next/router'
 import { Button } from "../../components/global";
 import Check from "../../assets/images/check.svg";
 import Close from "../../assets/images/close.svg";
 
 const Plans = () => {
+  const router = useRouter()
+
+  // Handles onClick event of pricing plan buttons.
+  function handlePlanOnClick (plan) {
+    const category = plan.category
+    if (category === 'Freemium') {
+      router.push('/')
+    } else {
+      router.push('/checkout')
+    }
+  }
+  
   const plans = [
     {
-      category: "Free",
-      title: "Free",
+      category: "Freemium",
+      title: "Freemium",
       description: "This plan is best for..",
       inclusions: [
         {
@@ -38,8 +51,8 @@ const Plans = () => {
       price: "0",
     },
     {
-      category: "Individuals",
-      title: "Individuals",
+      category: "Family",
+      title: "Family",
       description: "This plan is best for teachers and parents?",
       inclusions: [
         {
@@ -68,8 +81,8 @@ const Plans = () => {
       price: "?",
     },
     {
-      category: "Providers",
-      title: "Providers",
+      category: "Pediatric",
+      title: "Pediatric",
       description: "This plan is best for doctors?",
       inclusions: [
         {
@@ -98,7 +111,7 @@ const Plans = () => {
       price: "?",
     },
   ];
-
+  
   return (
     <div className="section-plans">
       <div className="container">
@@ -110,9 +123,9 @@ const Plans = () => {
                 <div
                   key={i}
                   className={clsx("plan__holder", {
-                    free: plan.category === "Free",
-                    individuals: plan.category === "Individuals",
-                    providers: plan.category === "Providers",
+                    free: plan.category === "Freemium",
+                    individuals: plan.category === "Family",
+                    providers: plan.category === "Pediatric",
                   })}
                 >
                   <div className="plan__title-holder">
@@ -144,14 +157,16 @@ const Plans = () => {
                     <p className="plan__price">
                       $<span>{plan.price}</span>/month
                     </p>
+                    {/* Button text changed to "Avail Now" for the FREE button since it made no sense to buy a free subscription. -Frolyn R */}
                     <Button
                       className={clsx({
-                        "btn--yellow": plan.category === "Free",
-                        "btn--red": plan.category === "Individuals",
-                        "btn--blue": plan.category === "Providers",
+                        "btn--yellow": plan.category === "Freemium",
+                        "btn--red": plan.category === "Family",
+                        "btn--blue": plan.category === "Pediatric",
                       })}
+                      onClick={(e) => handlePlanOnClick(plan)}
                     >
-                      Buy Now
+                    {plan.category !== 'Freemium' ? 'Buy Now' : 'Avail Now'}
                     </Button>
                   </div>
                 </div>

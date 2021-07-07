@@ -8,6 +8,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios'
 import clsx from 'clsx'
 
+// API
+import checkCouponValidation from '../../pages/api/stripe/subscription/checkCouponValidation'
 
 const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
 
@@ -33,15 +35,18 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    console.log(data)
     stepSubmitCallback({ ...data, ...cardDetails })
   };
 
   const discount = watch('discount')
 
-  const handleDiscount = () => {
-    setError('discount', {
+  const handlePromo = () => {
+    // Checks coupon validation.  Accepts coupon_id parameter.
+    checkCouponValidation()
+    setError('promo', {
       type: "manual",
-      message: 'Invalid discount code'
+      message: 'Invalid promo code'
     })
   }
   const formatCardPreview = (cardNumber) => {
@@ -99,8 +104,8 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
               />
               <p className='sub-info' >Transactions are secure and encrypted</p>
 
-              <Input register={{ ...register("discount", {}) }} errors={errors} type="text" placeholder="Discount Code"
-                render={() => <button type="button" className="input-inline-button" onClick={handleDiscount} >Apply</button>}
+              <Input register={{ ...register("promo", {}) }} errors={errors} type="text" placeholder="Promo Code"
+                render={() => <button type="button" className="input-inline-button" onClick={handlePromo} >Apply</button>}
               />
 
               <p className="title-2">

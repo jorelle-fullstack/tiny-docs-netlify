@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Head from 'next/head'
 import {
   Email, Payment, SideBar, Review
 } from '../../components/checkout'
@@ -40,6 +41,7 @@ const Index = () => {
 
   return (
     <div className='container page-checkout'>
+      <Head><title>Checkout</title></Head>
       <div className='steps'>
 
         <Email stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />

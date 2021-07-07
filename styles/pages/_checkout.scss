@@ -37,6 +37,14 @@
   }
   .side-bar {
     flex-grow: 1;
+    table { width: 100%; }
+    .remove-btn { color: red; font-size: 14px; }
+    .right { text-align: center; }
+    .discountField { max-height: 38px; }
+    .input-inline-button {
+      padding: 0 24px;
+      max-height: 38px;
+    }
   }
   .checkout-wrapper {
     position: relative;
@@ -66,7 +74,6 @@
     .asterisk {
       top: 12px;
     }
-
     .card-input {
       overflow: unset;
       padding: 0 0 0 20px;
