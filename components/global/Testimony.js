@@ -1,7 +1,7 @@
 // Components
 import clsx from 'clsx';
 import Image from 'next/image'
-import Quote from "../../assets/images/quote.png"
+import Quote from "../../assets/images/quote.svg"
 
 const Testimony = ({ index, name, desc, statement, infoColor }) => {
     return(

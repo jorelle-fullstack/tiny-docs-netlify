@@ -26,7 +26,9 @@
 
 // Components
 @import
-  'components/buttons';
+  'components/buttons',
+  'components/watch-entry',
+  'components/white-paper';
 
 // Page-specific styles
 @import
@@ -35,4 +37,5 @@
   'pages/login-register',
   'pages/pricing',
   'pages/checkout',
-  'pages/providers';
+  'pages/providers',
+  'pages/account';
