@@ -1,6 +1,16 @@
-$bgColor1: #003B76;
 
-.banner-section {
-    background-color: $bgColor1;
+.section-providers {
     height: 600px;
+    // background-image: url('../../assets/images/white-wave.webp');;
+    .container { padding: 0 4em; display: flex; flex-wrap: wrap; flex-direction: row; justify-content: space-evenly; }
+    .sub-section { width: 389px; max-height: 334px; text-align: center; }
+}
+.section-testimonials {
+    h1 { text-align: center; color: $secondary-darker-blue }
+    .t-container { display: flex; flex-wrap: wrap; flex-direction: row; justify-content: center; }
+    .swiper-slide { width: 390px; max-height: 415px; margin: 23px 11px; }
+    .testimony {
+        &__name { color: white }
+        &__description { color: white }
+    }
 }

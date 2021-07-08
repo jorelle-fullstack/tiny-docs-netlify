@@ -19,25 +19,39 @@
     }
   
   &__wrapper {
+    // height: 720px;
+    padding-top: 30px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
     &--left {
+      width: 50%;
+      margin-top: 90px;
+      padding-left: 4.15em;
+      // padding-right: 5em;
       h1 {
+        max-width: 75%;
         font-size: 64px;
         color: $white;
       }
-    
       p {
-        max-width: 80%;
-    
+        font-size: 20px;
+        font-weight: 700;
+        max-width: 65%;
         color: $white;
       }
 
       .btn {
         margin-top: 40px;
       }
+    }
+
+    &--right {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      .hero__image { width: 466px; }
     }
   }
 
@@ -47,6 +61,12 @@
       
       &:before {
         background-color: $secondary-pink;
+      }
+    }
+    &--providers {
+      background-image: url('../../assets/images/blue-wave.png');
+      &:before {
+        background-color: $secondary-darker-blue;
       }
     }
 
@@ -63,11 +83,9 @@
 
         background-color: $secondary-darker-blue;
       }
-
       .banner__wrapper {
         flex-direction: column;
       }
-
       h1 {
         position: relative;
         
@@ -265,7 +283,6 @@
 
     &__wrapper {
       flex-direction: column;
-
       &--left {
         position: relative;
         z-index: 2;

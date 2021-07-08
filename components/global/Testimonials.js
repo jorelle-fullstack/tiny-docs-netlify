@@ -64,7 +64,7 @@ const Testimonials = () => {
             }}
           >
             {testimonialContent.map((testimony, i) => {
-              return (
+                return (
                 <SwiperSlide key={i}>
                   <div className="testimony__holder">
                     <Image src={Quote} alt="Quote" />

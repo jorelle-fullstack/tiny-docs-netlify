@@ -43,8 +43,17 @@
     background: $light-blue;
     color: $secondary-darker-blue;
   }
-
-
+  // Generally used for page banners (e.g. "Learn More!" Buttons).
+  &--banner-yellow {
+    height: 83px;
+    width: 466px;
+    text-transform: uppercase;
+    color: $secondary-darker-blue;
+    
+    background: $primary-yellow;
+    border-radius: 21px;
+    box-shadow: 0px 4px 0px #b28b09;
+  }
   &--dark-blue {
     height: 83px;
 
@@ -53,6 +62,6 @@
 
     background: $secondary-darker-blue;
     border-radius: 21px;
-    box-shadow: 0px 4px 0px #001A33;
+    box-shadow: 0px 4px 0px #001a33;
   }
 }
