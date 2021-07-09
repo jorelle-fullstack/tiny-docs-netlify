@@ -89,7 +89,7 @@ const index = () => {
                 bannerImage={heroImage}
             />
             {/* Information */}
-            <div className='section-info'>
+            <div id="values" className='section-info'>
                 <div className='container'>
                     {
                         informationalContent.map((info, i) => {

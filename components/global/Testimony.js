@@ -10,8 +10,8 @@ const Testimony = ({ index, name, desc, statement, infoColor }) => {
                     <Image src={Quote} alt="Quote" />
                     <p className="testimony__statement">{statement}</p>
                     <div className="testimony__info">
-                      <p className={clsx({ "testimony__name dark": infoColor === 'dark blue', "testimony__name light": infoColor === 'green'})}>{name}</p>
-                      <p className="testimony__description">{desc}</p>
+                      <p className={clsx({ "testimony__name--dark": infoColor === 'dark blue', "testimony__name light": infoColor === 'green'})}>{name}</p>
+                      <p className="testimony__description--dark">{desc}</p>
                     </div>
                   </div>
             </div>

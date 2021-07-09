@@ -12,11 +12,57 @@
     h1 { text-align: center; color: $secondary-darker-blue }
     .t-container { display: flex; flex-wrap: wrap; flex-direction: row; justify-content: center; }
     .swiper-slide { width: 390px; max-height: 415px; margin: 23px 11px; }
+
     .testimony {
-        &__name { color: white }
-        &__description { color: white }
-    }
+        &__wrapper {
+          // width: 1370px;
+          h1 {
+            margin-bottom: 60px;
+    
+            color: $secondary-darker-blue;
+            text-align: center;
+          }
+        }
+    
+        &__holder {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: space-between;
+          height: 100%;
+        }
+    
+        &__statement {
+          margin-bottom: 40px;
+        }
+    
+        &__name {
+          font-size: 24px;
+          font-weight: 700;
+          &--light { color: $secondary-darker-blue }
+          &--dark { color: white }
+        }
+        &__description {
+            font-size: 18px;
+          &--light { color: $secondary-darker-blue }
+          &--dark { color: white }
+        }
+      }
 }
 .section-white_paper {
     .container { display: flex; justify-content: center; }
+}
+
+@include respond-to('md-down') {
+    .section-info {
+        .container { padding: 0 18px; }
+        .sub-section {
+            padding: 18px;
+            h2 { font-size: 18px; max-width: 100%; }
+        }
+    }
+    .section-testimonials {
+        h1 { font-size: 36px; }
+        .swiper-slide { width: 100%; }
+    }
 }
