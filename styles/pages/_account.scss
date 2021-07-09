@@ -1,17 +1,56 @@
 
 .page-account {
-    margin: 71px;
+    margin: 27px 0;
     .container {
         padding: 0 70px;
-        h1 { margin-bottom: 80px; color: $secondary-darker-blue; }
-        .watch-history-section {
-            padding: 10px 0;
-            &__wrapper {
-                flex-direction: column;
-                &__left { width: 50%; }
+        .categories {
+            &__wrapper { display: flex; flex-direction: column; }
+
+            display: flex; flex-direction: row; width: 466px; align-self: flex-end; margin-right: 35px;
+            .cat-btn {
+                &__videos { margin-right: 10px; }
+                &__play { margin: 0 11px; }
+                &__blog { margin: 0 10px; }
+                &__learn { margin-left: 11px; }
             }
-            // .swiper-container { display: flex; flex-wrap: wrap; flex-direction: row; }
-            h3 { margin-left: 2px; margin-bottom: 6px; }
+        }
+        h1 { margin-top: 5px; letter-spacing: -0.35px; color: $secondary-darker-blue; }
+        .main-section {
+            display: flex; flex-direction: row; justify-content: space-between;
+            .watch-history-section {
+                margin-top: 75px; padding: 10px 0; width: 67%;
+                .title { display: flex; flex-direction: row; justify-content: space-between; }
+                &__wrapper {
+                    flex-direction: column;
+                    &__left { width: 50%; }
+                }
+                // .swiper-container { display: flex; flex-wrap: wrap; flex-direction: row; }
+                h3 { margin-left: 2px; margin-bottom: 6px; }
+            }
+            .account-sidebar {
+                max-width: 248px; align-items: center; display: flex; flex-direction: column; margin-right: 23px;
+                h3 { text-align: center; margin-bottom: 14px; color: $secondary-darker-blue; }
+                .avatar { display: flex; margin: 12px 0; justify-content: center; }
+                .info { width: 224px; }
+                p { line-height: 33px; margin-bottom: 24px; }
+                .edit { height: 50px; }
+                .spacer { height: 78px; }
+                .divider { border: 1px solid #676161; margin-top: 14px; margin-bottom: 5px; max-width: 219px; }
+                .watch-records {
+                    width: 100%;
+                    .row { height: 36px; }
+                    .left { text-align: start; }
+                    .right { text-align: end; }
+                }
+                .btn { align-self: center; letter-spacing: -0.5px; }
+                .subscription-plans {
+                    text-align: start;
+                    .plan {
+                        .title { margin-top: 33px; margin-bottom: 10px; }
+                        .desc { margin-top: 8px; margin-bottom: 32px; line-height: 44px; }
+                    }
+                }
+            }
         }
     }
 }
