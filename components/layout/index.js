@@ -4,14 +4,17 @@ import { useRouter } from "next/router";
 
 const CoreLayout = ({ children }) => {
   const { asPath } = useRouter();
+  console.log(asPath)
 
-  const noNavigationRoutes = ["/login", "/register", "/forgot-password", "/pricing", "/checkout"];
+  const removedParams = asPath.split('?')[0]
+
+  const noNavigationRoutes = ["/login", "/register", "/forgot-password", "/pricing", "/checkout", "/plans"];
 
   return (
     <>
-      {!noNavigationRoutes.includes(asPath) && <Header />}
+      {!noNavigationRoutes.includes(removedParams) && <Header />}
       {children}
-      {!noNavigationRoutes.includes(asPath) && <Footer />}
+      {!noNavigationRoutes.includes(removedParams) && <Footer />}
     </>
   );
 };

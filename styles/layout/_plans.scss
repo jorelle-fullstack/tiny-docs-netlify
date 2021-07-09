@@ -5,44 +5,44 @@
     &__wrapper {
       display: flex;
       flex-direction: column;
-  
+
       h1 {
         text-align: center;
       }
     }
-  
+
     &__content {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       margin-top: 50px;
     }
-  
+
     &__holder {
       width: 345px;
-  
+
       text-align: center;
-  
+
       background-color: $white;
       border-radius: 21px;
-  
+
       ul {
         padding: 0;
         margin: 30px auto 0;
-  
+
         list-style: none;
-  
+
         li {
           display: flex;
           align-items: center;
           margin-bottom: 5px;
-  
+
           font-size: 16px;
-  
+
           &.not-included {
-            opacity: .6;
+            opacity: 0.6;
           }
-  
+
           span {
             display: flex;
             align-items: center;
@@ -51,30 +51,30 @@
           }
         }
       }
-  
+
       .btn {
         height: 44px;
       }
-  
+
       &.free {
         .plan__title-holder {
           background-color: $primary-yellow;
         }
       }
-  
+
       &.individuals {
         .plan__title-holder {
           background-color: $primary-pink;
         }
       }
-  
+
       &.providers {
         .plan__title-holder {
           background-color: $primary-blue;
         }
       }
-    }  
-  
+    }
+
     &__content-holder {
       display: flex;
       flex-direction: column;
@@ -82,23 +82,28 @@
       align-items: center;
       padding: 30px;
       min-height: 472px;
+
+      a {
+        display: block;
+        width: 100%;
+      }
     }
-  
+
     &__title-holder {
       padding: 24px;
-  
+
       border-top-left-radius: 21px;
       border-top-right-radius: 21px;
-  
+
       h2 {
         color: $secondary-darker-blue;
       }
     }
-  
+
     &__price {
       font-weight: 500;
       text-align: center;
-  
+
       span {
         font-family: $font-roboto;
         font-size: 64px;
@@ -108,7 +113,7 @@
   }
 }
 
-@include respond-to (lg) {
+@include respond-to(lg) {
   .section-plans {
     .plan {
       &__holder {
@@ -118,39 +123,39 @@
   }
 }
 
-@include respond-to (md-down) {
+@include respond-to(md-down) {
   .section-plans {
     .plan {
       &__wrapper {
         padding-top: 30px;
-  
+
         h1 {
           font-size: 32px;
         }
       }
-  
+
       &__content {
         flex-direction: column;
         margin-top: 30px;
       }
-  
+
       &__holder {
         margin: 0 auto 20px;
         width: 80%;
-  
+
         ul {
           margin-top: 0;
         }
       }
-  
+
       &__title-holder {
         padding: 15px;
-  
+
         h2 {
           font-size: 25px;
         }
       }
-  
+
       &__price {
         span {
           font-size: 54px;
@@ -160,7 +165,7 @@
   }
 }
 
-@include respond-to (xs) {
+@include respond-to(xs) {
   .section-plans {
     .plan {
       &__holder {

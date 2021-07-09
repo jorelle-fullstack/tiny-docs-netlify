@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { Button } from "../../components/global";
 import Check from "../../assets/images/check.svg";
 import Close from "../../assets/images/close.svg";
+import Link from 'next/link'
 
 const Plans = () => {
   const router = useRouter()
@@ -24,6 +25,7 @@ const Plans = () => {
       category: "Freemium",
       title: "Freemium",
       description: "This plan is best for..",
+      link: '/register',
       inclusions: [
         {
           included: false,
@@ -51,8 +53,9 @@ const Plans = () => {
       price: "0",
     },
     {
-      category: "Family",
-      title: "Family",
+      category: "Individuals",
+      link: '/checkout?planType=individuals',
+      title: "Individuals",
       description: "This plan is best for teachers and parents?",
       inclusions: [
         {
@@ -81,8 +84,9 @@ const Plans = () => {
       price: "?",
     },
     {
-      category: "Pediatric",
-      title: "Pediatric",
+      category: "Providers",
+      link: '/checkout?planType=providers',
+      title: "Providers",
       description: "This plan is best for doctors?",
       inclusions: [
         {
@@ -124,8 +128,8 @@ const Plans = () => {
                   key={i}
                   className={clsx("plan__holder", {
                     free: plan.category === "Freemium",
-                    individuals: plan.category === "Family",
-                    providers: plan.category === "Pediatric",
+                    individuals: plan.category === "Individuals",
+                    providers: plan.category === "Providers",
                   })}
                 >
                   <div className="plan__title-holder">
@@ -157,17 +161,18 @@ const Plans = () => {
                     <p className="plan__price">
                       $<span>{plan.price}</span>/month
                     </p>
-                    {/* Button text changed to "Avail Now" for the FREE button since it made no sense to buy a free subscription. -Frolyn R */}
-                    <Button
-                      className={clsx({
-                        "btn--yellow": plan.category === "Freemium",
-                        "btn--red": plan.category === "Family",
-                        "btn--blue": plan.category === "Pediatric",
-                      })}
-                      onClick={(e) => handlePlanOnClick(plan)}
-                    >
-                    {plan.category !== 'Freemium' ? 'Buy Now' : 'Avail Now'}
-                    </Button>
+                    <Link href={plan.link}>
+                      <a>
+                        <Button
+                          className={clsx({
+                            "btn--yellow": plan.category === "Freemium",
+                            "btn--red": plan.category === "Individuals",
+                            "btn--blue": plan.category === "Providers",
+                          })}
+                        >
+                          {plan.category !== 'Freemium' ? 'Buy Now' : 'Avail Now'}
+                        </Button></a>
+                    </Link>
                   </div>
                 </div>
               );
