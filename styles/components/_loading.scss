@@ -1,0 +1,8 @@
+.page-loading {
+    display: flex; z-index: 90; flex-direction: column; position: fixed; align-items: center; justify-content: center; width: 100%; height: 100%; background-color: $secondary-brown;
+    .loading-bar {
+        border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 1209px; height: 40px; background-color: white; overflow: hidden;
+        .label { z-index: 100; position: absolute; }
+        .progress { z-index: 80; position: relative; align-self: start; border-radius: 30px; height: 100%; width: 50%; background-color: $primary-blue; }
+    }
+}

@@ -2,7 +2,7 @@
 import WatchEntry from '../../components/account/WatchEntry'
 import { Swiper, SwiperSlide } from "swiper/react"
 import Image from 'next/image'
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper"
+// import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper"
 import Button from '../../components/global/Button'
 // Assets
 import photoPlaceholder from '../../assets/images/account-photo-placeholder.svg'
