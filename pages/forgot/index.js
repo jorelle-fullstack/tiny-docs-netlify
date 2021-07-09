@@ -32,11 +32,9 @@ const index = () => {
       <div className="content-wrapper">
         <h1 className='form-title'>Forgot Password?</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="form">
-
           <Input register={{ ...register("email", { required: true }) }} errors={errors} type="text" placeholder="Enter Email " />
           <Button loading={submitting} type='submit' className='btn--blue'>reset password</Button>
         </form>
-
         <Link href='/register' passHref>
           <a className='link'>Not a Member? Sign Up Now!</a>
         </Link>

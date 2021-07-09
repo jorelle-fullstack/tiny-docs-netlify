@@ -1,13 +1,18 @@
-import { Button } from "../../components/global";
+// Dependencies
 import { useForm } from "react-hook-form";
-import Link from 'next/link'
 import { login, passwordBasedLogin } from '../../auth'
+import { useState } from "react";
+import { useRouter } from 'next/router'
+
+// Components
+import { Button } from "../../components/global"
 import Input from '../../components/form/Input'
+import Link from 'next/link'
+
+// Assets
 import loginBg from '../../assets/images/login.svg'
 import googleImg from '../../assets/images/google.svg'
 import fbImg from '../../assets/images/facebook.svg'
-import { useState } from "react";
-import { useRouter } from 'next/router'
 
 const index = () => {
   const router = useRouter()
@@ -63,26 +68,24 @@ const index = () => {
             {errors.email && <span className="form--error">{errors.email.message} </span>}
 
             <Link href='/forgot' passHref>
-              <a className='forgot'>Forgot Password</a>
+              <a className='forgot text-disabled'>Forgot Password?</a>
             </Link>
 
-            <Button loading={submitting} type='submit' className='btn--blue'>Login</Button>
+            <Button loading={submitting} type='submit' className='btn__login btn--blue'>Login</Button>
           </form>
 
           <p>- Or Login With - </p>
 
           <div className="external-login-wrapper">
-            <Button onClick={e => handle3rdPartyLogin('google')}><img src={googleImg.src} alt="" /></Button>
-            <Button onClick={e => handle3rdPartyLogin('facebook')}><img src={fbImg.src} alt="" /></Button>
+            <Button class='social' onClick={e => handle3rdPartyLogin('google')}><img className='icon__google' src={googleImg.src} alt="" /></Button>
+            <Button class='social' onClick={e => handle3rdPartyLogin('facebook')}><img className='icon__facebook' src={fbImg.src} alt="" /></Button>
           </div>
           <Link href='/register   ' passHref>
             <a className='member'>Not a Member? Sign Up Now!</a>
           </Link>
         </div>
       </div>
-      <div className="second-wrapper" style={{ backgroundImage: `url(${loginBg.src})` }}>
-
-      </div>
+      <div className="second-wrapper" style={{ backgroundImage: `url(${loginBg.src})` }} />
 
     </div>
   );

@@ -56,14 +56,14 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
   const DoneStepJSX = () => <div className="steps__info">
     <div className="flex mb-s">
       <span className='row-first'> Card</span>
-      <span>{formatCardPreview(formData.cardNumber)} {' Expiry '} {formData.expiry} </span>
+      <span>{formatCardPreview(formData.cardNumber)}, {' Expiry '} {formData.expiry} </span>
     </div>
     <div className="flex mb-s">
       <span className='row-first'> Your Name</span>
       <span>{formData.fName} {' '} {formData.lName}</span>
     </div>
     <div className="flex mb-s">
-      <span className='row-first'> Phone number</span>
+      <span className='row-first'> Phone Number</span>
       <span>{formData.phone}</span>
     </div>
     <div className="flex mb-s">
@@ -71,8 +71,8 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
       <span>{formData.address1}</span>
     </div>
     <div className="flex mb-s">
-      <span className='row-first'> City, State ZIP Code</span>
-      <span>{formData.city} {' '} {formData.state}  {' '}{formData.zipCode} </span>
+      <span className='row-first'> City, State, ZIP Code</span>
+      <span>{formData.city}, {' '} {formData.state},  {' '}{formData.zipCode} </span>
     </div>
     <span onClick={e => editCallback(2)} className="edit">Edit</span>
   </div>
@@ -104,7 +104,7 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
               />
               <p className='sub-info' >Transactions are secure and encrypted</p>
 
-              <Input register={{ ...register("promo", {}) }} errors={errors} type="text" placeholder="Promo Code"
+              <Input className='promo-field' register={{ ...register("promo", {}) }} errors={errors} type="text" placeholder="Promo Code"
                 render={() => <button type="button" className="input-inline-button" onClick={handlePromo} >Apply</button>}
               />
 
@@ -112,11 +112,9 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
                 Billing Address
               </p>
 
-              <div className="input-group">
-                <Input register={{ ...register("fName", { required: true }) }} errors={errors} type="text" placeholder="First Name"
-                />
-                <Input register={{ ...register("lName", { required: true }) }} errors={errors} type="text" placeholder="Last Name"
-                />
+              <div className="input-group name-group">
+                <Input register={{ ...register("fName", { required: true }) }} errors={errors} type="text" placeholder="First Name" />
+                <Input register={{ ...register("lName", { required: true }) }} errors={errors} type="text" placeholder="Last Name" />
               </div>
               <Input register={{ ...register("address1", {}) }} errors={errors} type="text" placeholder="Address 1" />
               <Input register={{ ...register("address2", {}) }} errors={errors} type="text" placeholder="Address 2" />
@@ -124,7 +122,7 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
                 options={countryOptions}
                 register={{ ...register("country", {}) }} errors={errors} type="text" placeholder="Address 2"
               />
-              <div className="input-group">
+              <div className="input-group address-group">
                 <Input register={{ ...register("zipCode", { required: true }) }} errors={errors} type="text" placeholder="Zip Code" />
                 <Input register={{ ...register("city", { required: true }) }} errors={errors} type="text" placeholder="City " />
                 <Select

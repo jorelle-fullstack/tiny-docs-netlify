@@ -60,7 +60,6 @@
     background-color: white;
   }
 }
-
 .page-forgot,
 .page-reset-confirmation {
   display: flex;
@@ -103,7 +102,7 @@
 
   p{
     margin-bottom: 70px;
-    text-align: center;    
+    text-align: center;
   }
   .check{
     width: 100px;
@@ -113,6 +112,27 @@
     
     background-color: white;
     border-radius: 50%;
-
   }
 }
+
+// Responsive View
+@include respond-to('sm-down') {
+  .title, .form-title { font-size: 30px; }
+  .content-holder { padding: 24px 16px; }
+  input { height: 48px; font-size: 88%; margin-bottom: 15px; }
+  .form { 
+    .forgot { margin-top: 10px !important; margin-bottom: 0; font-size: 13px; }
+    input { height: 48px; font-size: 88%; margin-bottom: 15px; }
+    .btn { height: 48px; font-size: 18px; }
+}
+  .btn {
+    height: 48px; font-size: 18px;
+    &__login { margin-top: 39px; margin-bottom: 37px; }
+    .icon {
+      &__google { width: 36px; }
+      &__facebook { width: 18px; }
+    }
+  }
+  
+}
+@include respond-to('md-down') { .second-wrapper { display: none; } }

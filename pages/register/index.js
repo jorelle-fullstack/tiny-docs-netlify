@@ -81,8 +81,8 @@ const index = () => {
           </form>
           <p>- Or Login With - </p>
           <div className="external-login-wrapper">
-            <Button onClick={e => handle3rdPartyRegister('google')}><img src={googleImg.src} alt="" /></Button>
-            <Button onClick={e => handle3rdPartyRegister('facebook')}><img src={fbImg.src} alt="" /></Button>
+            <Button onClick={e => handle3rdPartyRegister('google')}><img className='icon__google' src={googleImg.src} alt="" /></Button>
+            <Button onClick={e => handle3rdPartyRegister('facebook')}><img className='icon__facebook' src={fbImg.src} alt="" /></Button>
           </div>
           <Link href='/login' passHref>
             <a className='member'>Already a member? Login</a>
