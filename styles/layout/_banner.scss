@@ -69,6 +69,13 @@
         background-color: $secondary-darker-blue;
       }
     }
+    &--parents {
+      padding-bottom: 12px;
+      background-image: url('../../assets/images/blue-wave.png');
+      &:before {
+        background-color: $secondary-darker-blue;
+      }
+    }
 
     &--pricing {
       padding: 40px 0 300px;

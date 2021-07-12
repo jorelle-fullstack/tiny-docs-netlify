@@ -22,6 +22,7 @@
   'layout/section-our-story',
   'layout/section-our-team',
   'layout/section-our-advisors',
+  'layout/featured-parents',
   'layout/section-testimonials';
 
 // Components
@@ -29,6 +30,7 @@
   'components/buttons',
   'components/watch-entry',
   'components/testimony',
+  'components/resource',
   'components/white-paper';
 
 // Page-specific styles
@@ -38,5 +40,6 @@
   'pages/login-register',
   'pages/pricing',
   'pages/checkout',
+  'pages/parents',
   'pages/providers',
   'pages/account';

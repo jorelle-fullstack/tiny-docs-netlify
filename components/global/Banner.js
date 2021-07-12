@@ -1,13 +1,13 @@
 import clsx from "clsx";
 import Image from "next/image";
-
 import { Button } from "../../components/global";
 
 const Banner = ({ title, description, btnColor, bannerImage, page }) => {
   return (
     <div className={clsx("banner", {
       "banner--about-us": page === "About Us",
-      "banner--providers": page === "Providers"
+      "banner--providers": page === "Providers",
+      "banner--parents": page === "Parents"
       })}>
       <div className="container">
         <div className="banner__wrapper">
