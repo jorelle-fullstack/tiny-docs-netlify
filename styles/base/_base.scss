@@ -104,6 +104,25 @@ body {
   }
 }
 
+// Knob Global
+.knob {
+  width: 61px;
+  height: 61px;
+  background-color: $primary-pink;
+  border-radius: 50%;
+  display: flex;
+  box-shadow: 0 8px #c30025;
+  .handle {
+    align-self: center;
+    width: 30px;
+    border: none;
+    border-bottom: 4px solid white;
+    position: absolute;
+  // TODO: Handles rotation of knob, preferably for use when scrolling.
+    transform: rotate(0deg);
+  }
+}
+
 .toggle-menu {
   position: relative;
   top: 0;

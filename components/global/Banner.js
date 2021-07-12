@@ -21,10 +21,7 @@ const Banner = ({ title, description, btnColor, bannerImage, page }) => {
                 "btn--blue": btnColor === "blue",
                 "btn--dark-blue": btnColor === "dark blue",
                 "btn--banner-yellow": btnColor === "banner yellow"
-              })}
-            >
-              Learn More!
-            </Button>
+              })}>Learn More!</Button>
           </div>
           <div className="banner__wrapper--right">
             <Image src={bannerImage} width={466} height={487} className="hero__image" alt="Hero Banner Image" />

@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import clsx from 'clsx'
 
-const Resource = ({title, desc, thumbnail, buttonType, buttonIcon}) => {
+const Resource = ({title, desc, thumbnail, buttonType, buttonIcon, route                                                                                                                   }) => {
     return (
         <div className='resource-wrapper'>
             <Image className='thumbnail' height={159} src={thumbnail} />

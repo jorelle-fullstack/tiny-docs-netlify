@@ -1,0 +1,34 @@
+.video-wrapper {
+    overflow: hidden;
+    margin: 16.5px 11px;
+    background-color: $secondary-darker-blue;
+    max-width: 324px;
+    max-height: 282px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px #505050;
+    .thumbnail {
+        position: relative;
+        width: 100%;
+        height: 207px;
+    }
+    .info {
+        padding: 14px 16px;
+        .title {
+            display: flex;
+            flex-direction: row;
+            .video-btn {
+                margin-left: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 47px;
+                height: 28px;
+                border: none;
+                border-radius: 120px;
+                &--play { background-color: $secondary-pink; }
+                &--whiteboard { background-color: $primary-yellow; }
+            }
+        }
+    }
+}
