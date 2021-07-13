@@ -106,20 +106,37 @@ body {
 
 // Knob Global
 .knob {
+  position: relative;
   width: 61px;
   height: 61px;
-  background-color: $primary-pink;
   border-radius: 50%;
-  display: flex;
-  box-shadow: 0 8px #c30025;
-  .handle {
-    align-self: center;
-    width: 30px;
-    border: none;
-    border-bottom: 4px solid white;
+  background-color: $primary-pink;
+  margin: 16.5px 0;
+  .body {
+    width: inherit;
+    height: inherit;
     position: absolute;
-  // TODO: Handles rotation of knob, preferably for use when scrolling.
-    transform: rotate(0deg);
+    z-index: 5;
+    display: flex;
+    transition-duration: 1.5s;
+    // Code below is for testing purposes only.  The rotation of the knob is handled in the component's styling.
+    // transform: rotate(90deg);
+    .handle {
+      align-self: center;
+      width: 30px;
+      border: none;
+      border-bottom: 4px solid white;
+      position: relative;
+    }
+  }
+  &-shadow {
+    position: absolute;
+    z-index: -5;
+    width: inherit;
+    height: inherit;
+    background-color: #c30025;
+    bottom: -8px;
+    border-radius: inherit;
   }
 }
 

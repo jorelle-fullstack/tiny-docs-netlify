@@ -130,4 +130,17 @@
       box-shadow: 0px 15px 0px #c4c4c4;
     }
   }
+
+  // Back To Top Button
+  &--back-to-top {
+    background: none;
+      width: 133px;
+      height: 132px;
+    img {
+      max-width: 133px;
+      max-height: 132px;
+      width: inherit;
+      height: inherit;
+    }
+  }
 }
