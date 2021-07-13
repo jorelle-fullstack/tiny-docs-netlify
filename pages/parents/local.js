@@ -5,22 +5,22 @@ import thumbnail3 from '../../assets/images/resource-thumbnail-sample-3.png'
 
 const pageButtons = [
     {
-        className: 'cat-btn__videos btn--red-small',
+        className: '--red',
         label: 'Videos',
         route: ''
     },
     {
-        className: 'cat-btn__play btn--light-blue-small',
+        className: '--light-blue',
         label: 'Play',
         route: ''
     },
     {
-        className: 'cat-btn__blog btn--yellow-small',
+        className: '--yellow',
         label: 'Blog',
         route: ''
     },
     {
-        className: 'cat-btn__learn btn--blue-small',
+        className: '--blue',
         label: 'Learn',
         route: ''
     },
@@ -43,52 +43,81 @@ const categories = [
         route: ''
     }
 ]
-const allResources = [
+const featuredResources = [
     {
+        type: 'Video',
         thumbnail: thumbnail1,
         title: 'Meet Tiny Docs',
-        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
+        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
     },
     {
+        type: 'Video',
         thumbnail: thumbnail2,
         title: 'Billie vs. Worry Monster',
-        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
+        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
     },
     {
+        type: 'Video',
         thumbnail: thumbnail3,
         title: 'Billie Goes Back to School',
-        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
-    },
-    {
-        thumbnail: thumbnail1,
-        title: 'Meet Tiny Docs',
-        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
-    },
-    {
-        thumbnail: thumbnail2,
-        title: 'Billie vs. Worry Monster',
-        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
-    },
-    {
-        thumbnail: thumbnail3,
-        title: 'Billie Goes Back to School',
-        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
-    },
-    {
-        thumbnail: thumbnail1,
-        title: 'Meet Tiny Docs',
-        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
-    },
-    {
-        thumbnail: thumbnail2,
-        title: 'Billie vs. Worry Monster',
-        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
-    },
-    {
-        thumbnail: thumbnail3,
-        title: 'Billie Goes Back to School',
-        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
+        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
     }
 ]
+const allResources = [
+    {
+        type: 'Blog',
+        thumbnail: thumbnail1,
+        title: 'Meet Tiny Docs',
+        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
+    },
+    {
+        type: 'Podcast',
+        thumbnail: thumbnail2,
+        title: 'Billie vs. Worry Monster',
+        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
+    },
+    {
+        type: 'Activity',
+        thumbnail: thumbnail3,
+        title: 'Billie Goes Back to School',
+        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
+    },
+    {
+        type: 'Blog',
+        thumbnail: thumbnail1,
+        title: 'Meet Tiny Docs',
+        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
+    },
+    {
+        type: 'Podcast',
+        thumbnail: thumbnail2,
+        title: 'Billie vs. Worry Monster',
+        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
+    },
+    {
+        type: 'Activity',
+        thumbnail: thumbnail3,
+        title: 'Billie Goes Back to School',
+        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
+    },
+    {
+        type: 'Blog',
+        thumbnail: thumbnail1,
+        title: 'Meet Tiny Docs',
+        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
+    },
+    {
+        type: 'Podcast',
+        thumbnail: thumbnail2,
+        title: 'Billie vs. Worry Monster',
+        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
+    },
+    {
+        type: 'Activity',
+        thumbnail: thumbnail3,
+        title: 'Billie Goes Back to School',
+        desc: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur'
+    },
+]
 
-export { pageButtons, categories, allResources }
+export { pageButtons, categories, featuredResources, allResources }

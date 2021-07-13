@@ -13,7 +13,7 @@ import whiteboardIcon from '../../assets/images/whiteboard-icon.svg'
 import profileIcon from '../../assets/images/profile-icon.svg'
 
 // Localizations
-import { pageButtons, categories, allResources } from './local.js'
+import { pageButtons, categories, featuredResources, allResources } from './local.js'
 const index = () => {
     const account = {
         account_id: null,
@@ -51,11 +51,11 @@ const index = () => {
               />
       </form>
             </div>
-        {/* Categories */}
+        {/* Categories Nav Buttons */}
         <div className='nav-menu__wrapper--right'>
         <div className='categories'>
                     {pageButtons.map((button, i) => {
-                        return <Button key={i} className={'cat-btn ' + button.className}>{button.label}</Button>
+                        return <Button key={i} className={'small category-nav-btn' + button.className}>{button.label}</Button>
                     })}
                 </div>
         </div>
@@ -75,7 +75,7 @@ const index = () => {
         <div className='featured'>
             <div className='container'>
                 <h1>Featured!</h1>
-                <Featured />
+                <Featured resources={featuredResources} />
             </div>
         </div>
         <div className='categories-bar'>
@@ -87,8 +87,8 @@ const index = () => {
         </div>
         <div className='resources'>
             <div className='container'>
-                {allResources.map((resource) => {
-                return <Resource buttonIcon={whiteboardIcon} buttonType='Whiteboard' thumbnail={resource.thumbnail} title={resource.title} desc={resource.desc} />
+                {allResources.map((resource, i) => {
+                return <Resource index={i} buttonIcon={whiteboardIcon} type={resource.type} thumbnail={resource.thumbnail} title={resource.title} desc={resource.desc} />
                 })}
             </div>
         </div>

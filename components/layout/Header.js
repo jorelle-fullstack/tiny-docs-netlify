@@ -17,19 +17,19 @@ const Header = () => {
       <div className="container">
         <div className="header__wrapper">
           <Link href="/">
-            <a className="menu__list--link">
+            <a id="logo" className="menu__list--link">
               <Image src={Logo} className="header__logo" alt="TinyDocs Logo" />
             </a>
           </Link>
           <div className={clsx("menu__wrapper", { menu__open: isOpen })}>
             <ul className="menu__list">
               <li className="menu__list--item">
-                <Link href="/">
+                <Link href="/parents">
                   <a className="menu__list--link">Parents</a>
                 </Link>
               </li>
               <li className="menu__list--item">
-                <Link href="/">
+                <Link href="/providers">
                   <a className="menu__list--link">Providers</a>
                 </Link>
               </li>
@@ -39,12 +39,12 @@ const Header = () => {
                 </Link>
               </li>
               <li className="menu__list--item">
-                <Link href="/">
+                <Link href="/about-us">
                   <a className="menu__list--link">About Us</a>
                 </Link>
               </li>
               <li className="menu__list--item">
-                <Link href="/">
+                <Link href="/log-in">
                   <a className="menu__list--link">Log In</a>
                 </Link>
               </li>

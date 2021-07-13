@@ -1,4 +1,28 @@
 
+.banner {
+  &__wrapper {
+    &--left {
+      margin-top: 118px;
+      margin-left: 18px;
+      h1 { margin-bottom: 12px; }
+      p { max-width: 67%; }
+    }
+    &--right {
+      margin-top: 25px;
+      margin-right: 30px;
+    }
+    @include respond-to(md-down) {
+      &--left {
+        margin-top: 10px;
+        margin-left: 0;
+        p { max-width: 100%; }
+      }
+      &--right {
+        margin-right: 0;
+      }
+    }
+  }
+}
 .section-info {
     min-height: 600px; padding: 8em 0; background-color: white;
     // background-image: url('../../assets/images/white-wave.webp');;
@@ -15,10 +39,8 @@
 
     .testimony {
         &__wrapper {
-          // width: 1370px;
           h1 {
             margin-bottom: 60px;
-    
             color: $secondary-darker-blue;
             text-align: center;
           }

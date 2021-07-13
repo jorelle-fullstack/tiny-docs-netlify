@@ -34,11 +34,6 @@
     color: $secondary-darker-blue;
   }
   
-  &--red-small { letter-spacing: 0; font-size: 18px; font-weight: 700; height: 40px; width: 101px; background: $primary-pink; color: white; border-radius: 7px; box-shadow: 0px 4px 0px #a50000; }
-  &--light-blue-small { letter-spacing: 0; font-size: 18px; font-weight: 700; height: 40px; width: 101px; background: $light-blue; color: white; border-radius: 7px; box-shadow: 0px 4px 0px #015595; }
-  &--yellow-small { letter-spacing: 0; font-size: 18px; font-weight: 700; height: 40px; width: 101px; background: $primary-yellow; color: $secondary-darker-blue; border-radius: 7px; box-shadow: 0px 4px 0px #b28b09; }
-  &--blue-small { letter-spacing: 0; font-size: 18px; font-weight: 700; height: 40px; width: 101px; background: $primary-blue; color: white; border-radius: 7px; box-shadow: 0px 4px 0px #356a5F; }
-
   &--yellow {
     background: $primary-yellow;
     color: $secondary-darker-blue;
@@ -130,7 +125,6 @@
       box-shadow: 0px 15px 0px #c4c4c4;
     }
   }
-
   // Back To Top Button
   &--back-to-top {
     background: none;
@@ -143,4 +137,79 @@
       height: inherit;
     }
   }
+}
+
+.category-nav-btn {
+  &--red{
+    color: white;
+    background: $primary-pink;
+    box-shadow: 0px 4px 0px #a50000;
+  }
+  &--light-blue{
+    color: white;
+    background: $light-blue;
+    box-shadow: 0px 4px 0px #015595;
+  }
+  &--yellow{
+    background: $primary-yellow;
+    color: $secondary-darker-blue;
+    box-shadow: 0px 4px 0px #b28b09;
+  }
+  &--blue{
+    color: white;
+    background: $primary-blue;
+    box-shadow: 0px 4px 0px #356a5F;
+  }
+  &:active { transform: translate(0, 4px) }
+}
+
+// For small version of a button.
+.small {
+  margin: 0 10.5px;
+  letter-spacing: 0; 
+  font-size: 18px; 
+  font-weight: 700; 
+  height: 40px; 
+  width: 101px; 
+  border-radius: 7px;
+}
+
+.category-btn {
+  margin: 0 13px;
+  max-width: 267px; 
+  max-height: 61px;
+  transition-duration: 0.2s;
+  &:hover {
+    background-color: $primary-blue;
+    box-shadow: 0 4px $shadow-primary-blue;
+    transform: scale(1.05);
+  }
+  &:active {
+    background-color: $primary-blue;
+    transform: scale(0.95);
+    box-shadow: none;
+  }
+}
+
+.resource-btn {
+  margin-left: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 47px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  transition-duration: 0.2s;
+  &--video { background-color: $secondary-pink; }
+  &--blog { background-color: $primary-yellow; }
+  &--podcast { background-color: $light-blue }
+  &--activity { background-color: $primary-blue; }
+  img {
+    height: inherit;
+    padding: 3px;
+  }
+  // Rollovers
+  &:hover { transform: scale(1.08) }
+  &:active { transform: scale(0.9) }
 }
