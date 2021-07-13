@@ -1,4 +1,4 @@
-/*
+
 .testimony {
     &__wrapper {
       // width: 1370px;
@@ -10,34 +10,40 @@
       }
     }
 
-    &__holder {
+    .holder {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: space-between;
       height: 100%;
-    }
-
-    &__statement {
-      margin-bottom: 40px;
-    }
-
-    &__name {
-      font-size: 24px;
-      font-weight: 700;
-      &--light { color: $secondary-darker-blue }
-      &--dark { color: white }
-    }
-    &__description {
-      &--light { color: $secondary-darker-blue }
-      &--dark { color: white }
+      .statement {  margin-bottom: 40px; }
+      .info {
+        .name {
+          font-size: 20px;
+          font-weight: 700;
+          &--light { color: $secondary-darker-blue }
+          &--dark { color: white }
+        }
+        .description {
+          &--light { color: $secondary-darker-blue }
+          &--dark { color: white }
+        }
+      }
+      @include respond-to(md-down) {
+        .statement { font-size: 13px; }
+        .info {
+          .name {
+            font-size: 14px;
+            font-weight: 700;
+            &--light { color: $secondary-darker-blue }
+            &--dark { color: white }
+          }
+          .description {
+            font-size: 12px;
+            &--light { color: $secondary-darker-blue }
+            &--dark { color: white }
+          }
+        }
+      }
     }
   }
-  */
-@include respond-to(md-down) {
-    .testimony {
-        &__statement { font-size: 13px; }
-        &__name { color: white; font-size: 14px !important; font-weight: 700; }
-        &__description { color: white; font-size: 11px !important; }
-    }
-}
