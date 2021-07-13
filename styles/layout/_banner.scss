@@ -280,25 +280,18 @@
     &:before {
       height: 86%;
     }
-
+    .btn { width: 100%; }
     &__wrapper {
-      flex-direction: column;
+      flex-direction: column-reverse;
       &--left {
         position: relative;
         z-index: 2;
-
-        h1 {
-          font-size: 48px;
-        }
-
-        p {
-          max-width: 100%;
-        }
-
-        .btn {
-          height: 63px;
-        }
+        width: 100%; padding-left: 0; margin-top: 15px; padding: 0 18px;
+        h1 { text-align: center; font-size: 32px; max-width: 100%; }
+        p { text-align: center; font-size: 14px; margin-top: 8px; max-width: 100%; }
+        .btn { height: 63px; }
       }
+      &--right { width: 100%; padding: 24px; }
     }
   }
 }
