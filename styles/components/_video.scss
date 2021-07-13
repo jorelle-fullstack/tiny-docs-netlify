@@ -1,0 +1,37 @@
+.video-wrapper {
+    overflow: hidden;
+    margin: 23px 11px;
+    background-color: $secondary-darker-blue;
+    width: 324px;
+    height: 258px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px #505050;
+    transition-duration: 0.5s;
+    :hover { box-shadow: 0; }
+    .thumbnail {
+        position: relative;
+        object-fit: cover;
+        width: 100%;
+        max-height: 206px;
+    }
+    .info {
+        padding: 14px 16px;
+        .title {
+            display: flex;
+            flex-direction: row;
+            .video-btn {
+                margin-left: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 47px;
+                height: 28px;
+                border: none;
+                border-radius: 120px;
+                &--play { background-color: $secondary-pink; }
+                &--whiteboard { background-color: $primary-yellow; }
+            }
+        }
+    }
+}

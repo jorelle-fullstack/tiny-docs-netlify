@@ -28,7 +28,7 @@
     //   box-shadow: 0 9px #356A5F;
     // }
   }
-
+  
   &--red {
     background: $primary-pink;
     color: $secondary-darker-blue;
@@ -59,6 +59,17 @@
     border-radius: 21px;
     box-shadow: 0px 4px 0px #b28b09;
   }
+  &--white-shadow {
+    height: 83px;
+    width: 466px;
+    text-transform: uppercase;
+    color: $secondary-darker-blue;
+    
+    background: white;
+    border-radius: 15px;
+    letter-spacing: 0;
+    box-shadow: 0px 4px 0px #c4c4c4;
+  }
   &--dark-blue {
     height: 83px;
 
@@ -70,4 +81,66 @@
     box-shadow: 0px 4px 0px #001a33;
   }
   &--banner-disabled { height: 83px; width: 466px; border-radius: 21px; text-transform: uppercase; background: #d8d8d8; color: #003B7656; }
+  
+  // Icon Button Styles
+  img {
+    max-width: 66px;
+    max-height: 66px;
+    margin-right: 18px;
+  }
+  &--icon {
+    &-pink-shadow {
+      text-transform: uppercase;
+      color: white;
+      background: $primary-pink;
+      border-radius: 15px;
+      letter-spacing: 0;
+      box-shadow: 0px 15px 0px #a50000;
+    }
+    &-light-blue-shadow {
+      text-transform: uppercase;
+      color: white;
+      background: $light-blue;
+      border-radius: 15px;
+      letter-spacing: 0;
+      box-shadow: 0px 15px 0px #015595;
+    }
+    &-yellow-shadow {
+      text-transform: uppercase;
+      color: $secondary-darker-blue;
+      background: $primary-yellow;
+      border-radius: 15px;
+      letter-spacing: 0;
+      box-shadow: 0px 15px 0px #B28B09;
+    }
+    &-blue-shadow {
+      text-transform: uppercase;
+      color: white;
+      background: $primary-blue;
+      border-radius: 15px;
+      letter-spacing: 0;
+      box-shadow: 0px 15px 0px #356A5F;
+    }
+    &-white-shadow {
+      text-transform: uppercase;
+      color: $secondary-darker-blue;
+      background: white;
+      border-radius: 15px;
+      letter-spacing: 0;
+      box-shadow: 0px 15px 0px #c4c4c4;
+    }
+  }
+
+  // Back To Top Button
+  &--back-to-top {
+    background: none;
+      width: 133px;
+      height: 132px;
+    img {
+      max-width: 133px;
+      max-height: 132px;
+      width: inherit;
+      height: inherit;
+    }
+  }
 }

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4e4e4e;
+      }
+
+      .cls-2 {
+        fill: #3d8ef8;
+      }
+
+      .cls-3 {
+        fill: #f9f250;
+        fill-rule: evenodd;
+        filter: url(#filter);
+      }
+    </style>
+    <filter id="filter" x="46" y="30.344" width="47.063" height="60.656" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dy="7" in="SourceAlpha"/>
+      <feGaussianBlur result="blur"/>
+      <feFlood result="flood" flood-color="#c7be33"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="videos-nav-icon">
+    <rect id="base" class="cls-1" y="14" width="128" height="102"/>
+    <rect id="inner" class="cls-2" x="8" y="20" width="113" height="82"/>
+    <path id="play" class="cls-3" d="M93,56a5.991,5.991,0,0,1-3.127,6.258c-11.593,6-29.276,15.166-38.24,19.81C48.166,83.864,48,83,48,83s-2-.3-2-3.946v-42.9C46,31.226,47,31,47,31s1.518-1.709,5.471.339c9.24,4.787,26.285,13.759,37.582,19.469A5.052,5.052,0,0,1,93,56Z"/>
+  </g>
+</svg>

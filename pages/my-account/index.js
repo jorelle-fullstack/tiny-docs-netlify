@@ -78,9 +78,9 @@ const index = () => {
             <h1>My Account</h1>
             <div className='main-section'>
             <div className='watch-history-section'>
-                <div class='title'>
+                <div className='title'>
                 <h3>Watch History</h3>
-                <p class='text-disabled'>See All</p>
+                <p className='text-disabled'>See All</p>
                 </div>
                     <Swiper
                         spaceBetween={20}
@@ -114,21 +114,21 @@ const index = () => {
                 {/* Watch Records */}
                 <table className='watch-records'>
                     <tbody className='text-disabled'>
-                        <tr class='row'>
+                        <tr className='row'>
                             <td className='left'>Saved</td>
                             <td className='right'>12</td>
                         </tr>
-                        <tr class='row'>
+                        <tr className='row'>
                             <td className='left'>Likes</td>
                             <td className='right'>30</td>
                         </tr>
-                        <tr class='row'>
+                        <tr className='row'>
                             <td className='left'>Videos Viewed</td>
                             <td className='right'>57</td>
                         </tr>
                     </tbody>
                 </table>
-                <div class='spacer' />
+                <div className='spacer' />
                 {/* My Subscription Plans */}
                 <h3>My Plans</h3>
                 <div className='subscription-plans'>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #cecdcd;
+        filter: url(#filter);
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #181818;
+      }
+
+      .cls-3 {
+        fill: #56d333;
+      }
+
+      .cls-4 {
+        fill: #da1f89;
+      }
+
+      .cls-5 {
+        fill: #388cf8;
+      }
+    </style>
+    <filter id="filter" x="148" y="26" width="127.969" height="81" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dy="8" in="SourceAlpha"/>
+      <feGaussianBlur result="blur"/>
+      <feFlood result="flood" flood-color="#7c7c7c"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="play-nav-icon">
+    <path id="Color_Fill_1" data-name="Color Fill 1" class="cls-1" d="M189.024,26h48.083s28.31,2.063,33.547,31.4,8.266,38.706,1.118,40.372c-14.455,3.37-19.393-19.1-32.428-24.672-10.414-4.453-18.775-4.486-26.837-4.486s-19.038-.584-27.956,4.486c-10.027,5.7-16.383,27.615-31.309,25.794-7.6-.928-5.953-26.638-1.119-41.494C161.81,27.638,189.024,26,189.024,26Z" transform="translate(-148)"/>
+    <path id="dpad" class="cls-2" d="M177.842,39.458h5.591V58.522h-5.591V39.458Zm-6.709,6.729h19.01v5.607h-19.01V46.186Z" transform="translate(-148)"/>
+    <circle id="btn_green_1" class="cls-3" cx="58.234" cy="47.859" r="3.922"/>
+    <circle id="btn_green_2" class="cls-3" cx="70.531" cy="47.859" r="3.906"/>
+    <circle id="btn_red" class="cls-4" cx="97.5" cy="55.719" r="5.031"/>
+    <circle id="btn_blue" class="cls-5" cx="104.203" cy="43.391" r="5.047"/>
+  </g>
+</svg>

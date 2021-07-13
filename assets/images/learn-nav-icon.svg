@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f7848b;
+        stroke: #fd5d68;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-width: 2px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #f8d953;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #c0923c;
+      }
+
+      .cls-3 {
+        fill: #dcbb35;
+      }
+
+      .cls-4 {
+        fill: #e4e0a6;
+      }
+    </style>
+  </defs>
+  <g id="learn-nav-icon">
+    <path class="cls-1" d="M444.011,59.8L465.6,18.993l20.283,10.859-21.59,40.806Z" transform="translate(-444)"/>
+    <path class="cls-2" d="M473.583,50.185l11.293-21.344,77.269,41.368L550.852,91.553Z" transform="translate(-444)"/>
+    <path id="Rectangle_4_copy" data-name="Rectangle 4 copy" class="cls-3" d="M463.286,69.647L474.579,48.3,551.848,89.67l-11.293,21.345Z" transform="translate(-444)"/>
+    <path class="cls-4" d="M562.364,69.794l6.372,21-7.4,13.841-20.784,6.383Z" transform="translate(-444)"/>
+    <path class="cls-5" d="M561.273,104.652l7-13.231,3.737,9.333-0.958,1.812Z" transform="translate(-444)"/>
+  </g>
+</svg>

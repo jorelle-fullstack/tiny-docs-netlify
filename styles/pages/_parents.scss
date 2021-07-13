@@ -1,0 +1,112 @@
+.page-parents {
+    .banner {
+    .container { padding: 0; }
+        &__wrapper {
+            &--left {
+                width: 60%;
+                margin-top: 0;
+                padding-left: 100px;
+                align-self: start;
+                h1 {
+                    width: 100%;
+                    max-width: 100%;
+                    margin-top: 41px;
+                }
+            }
+            &--right {
+                width: 40%;
+                padding-right: 60px;
+            }
+        }
+    }
+    .featured {
+        .container {
+            padding: 0 125px;
+            h1 {
+                color: $secondary-darker-blue;
+                margin-top: 3px;
+                margin-left: 30px;
+                letter-spacing: -1px;
+            }
+        }
+    }
+    .nav-menu {
+       width: 100%;
+       padding-top: 58px;
+        &__wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            &--left {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .profile-icon { margin-right: 24px; }
+                input {
+                    margin-left: 22px;
+                    margin-top: 9px;
+                    margin-bottom: 8px;
+                    width: 635px;
+                    max-width: 635px;
+                    max-height: 55px; }
+                .input-inline-button {
+                    border: none;
+                    padding: 8px;
+                    padding-top: 12px;
+                    padding-right: 12px;
+                    max-height: inherit;
+                    height: 55px;
+                    background-color: $primary-blue;
+                    width: 100%;
+                    max-width: 65px;
+                    border-top-left-radius: 0; 
+                    border-bottom-left-radius: 0;
+                }
+            }
+            &--right {
+                z-index: 2; 
+                align-items: center;
+                margin-right: 19px;
+                .categories {
+                    display: flex; 
+                    flex-direction: row; 
+                    width: 466px; 
+                    align-self: center; 
+                    margin-right: 35px;
+                    &__wrapper { 
+                        display: flex; 
+                        flex-direction: column;
+                    }
+                    .cat-btn {
+                        &__videos { margin-right: 10px; }
+                        &__play { margin: 0 11px; }
+                        &__blog { margin: 0 10px; }
+                        &__learn { margin-left: 11px; }
+                    }
+                }
+            }
+        }
+    }
+    .categories-bar {
+        .category-btn {
+            margin: 0 13px;
+            max-width: 267px; 
+            max-height: 61px;
+        }
+        .container {
+            padding: 45px 83px;
+            display: flex;
+            flex-direction: row;
+        }
+    }
+    .resources {
+        .container {
+            padding: 20px 143px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+    }
+}
