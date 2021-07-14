@@ -21,7 +21,10 @@
     }
     .featured {
         .container {
-            padding: 0 125px;
+            .wrapper {
+                display: flex;
+                justify-content: center;
+            }
             h1 {
                 color: $secondary-darker-blue;
                 margin-top: 3px;

@@ -7,13 +7,14 @@ import Input from '../../components/form/Input'
 import { useForm } from "react-hook-form"
 import Featured from '../../components/parents/Featured'
 import Resource from '../../components/parents/Resource'
+import CategoryTabs from '../../components/global/CategoryTabsSmall'
 // Assets
 import searchIcon from '../../assets/images/search-icon.svg'
 import whiteboardIcon from '../../assets/images/whiteboard-icon.svg'
 import profileIcon from '../../assets/images/profile-icon.svg'
 
 // Localizations
-import { pageButtons, categories, featuredResources, allResources } from './local.js'
+import { categories, featuredResources, allResources } from './local.js'
 const index = () => {
     const account = {
         account_id: null,
@@ -52,13 +53,7 @@ const index = () => {
       </form>
             </div>
         {/* Categories Nav Buttons */}
-        <div className='nav-menu__wrapper--right'>
-        <div className='categories'>
-                    {pageButtons.map((button, i) => {
-                        return <Button key={i} className={'small category-nav-btn' + button.className}>{button.label}</Button>
-                    })}
-                </div>
-        </div>
+        <div className='nav-menu__wrapper--right'><CategoryTabs /></div>
         </div>
         </div>
         <div className="banner__wrapper">
@@ -75,7 +70,9 @@ const index = () => {
         <div className='featured'>
             <div className='container'>
                 <h1>Featured!</h1>
+                <div className='wrapper'>
                 <Featured resources={featuredResources} />
+                </div>
             </div>
         </div>
         <div className='categories-bar'>

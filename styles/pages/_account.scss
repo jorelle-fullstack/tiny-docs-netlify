@@ -3,22 +3,28 @@
     margin: 27px 0;
     .container {
         padding: 0 70px;
-        .categories {
-            &__wrapper { display: flex; flex-direction: column; }
-
-            display: flex; flex-direction: row; width: 466px; align-self: flex-end; margin-right: 35px;
-            .cat-btn {
-                &__videos { margin-right: 10px; }
-                &__play { margin: 0 11px; }
-                &__blog { margin: 0 10px; }
-                &__learn { margin-left: 11px; }
+        .top-section {
+            display: flex;
+            flex-direction: column;
+            .categories {
+                display: flex;
+                flex-direction: row;
+                width: 466px;
+                align-self: flex-end;
+                margin-right: 35px;
             }
         }
-        h1 { margin-top: 5px; letter-spacing: -0.35px; color: $secondary-darker-blue; }
+        
+        h1 {
+            margin-top: 5px;
+            margin-left: 18px;
+            letter-spacing: -0.35px;
+            color: $secondary-darker-blue;
+        }
         .main-section {
             display: flex; flex-direction: row; justify-content: space-between;
-            .watch-history-section {
-                margin-top: 75px; padding: 10px 0; width: 67%;
+            .videos-section {
+                padding: 10px 0; width: 67%;
                 .title { display: flex; flex-direction: row; justify-content: space-between; }
                 &__wrapper {
                     flex-direction: column;

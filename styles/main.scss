@@ -23,6 +23,7 @@
   'layout/section-our-team',
   'layout/section-our-advisors',
   'layout/featured-parents',
+  'layout/category-tabs',
   'layout/section-testimonials';
 
 // Components
@@ -33,6 +34,7 @@
   'components/resource',
   'components/video',
   'components/loading',
+  'components/video-slider',
   'components/white-paper';
 
 // Page-specific styles
@@ -46,4 +48,5 @@
   'pages/parents',
   'pages/providers',
   'pages/videos',
-  'pages/account';
+  'pages/account',
+  'pages/account-watch-records';

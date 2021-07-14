@@ -90,7 +90,7 @@
       background: $primary-pink;
       border-radius: 15px;
       letter-spacing: 0;
-      box-shadow: 0px 15px 0px #a50000;
+      box-shadow: 0px 15px 0px $shadow-primary-pink;
     }
     &-light-blue-shadow {
       text-transform: uppercase;
@@ -98,7 +98,7 @@
       background: $light-blue;
       border-radius: 15px;
       letter-spacing: 0;
-      box-shadow: 0px 15px 0px #015595;
+      box-shadow: 0px 15px 0px $shadow-light-blue;
     }
     &-yellow-shadow {
       text-transform: uppercase;
@@ -106,7 +106,7 @@
       background: $primary-yellow;
       border-radius: 15px;
       letter-spacing: 0;
-      box-shadow: 0px 15px 0px #B28B09;
+      box-shadow: 0px 15px 0px $shadow-primary-yellow;
     }
     &-blue-shadow {
       text-transform: uppercase;
@@ -114,7 +114,7 @@
       background: $primary-blue;
       border-radius: 15px;
       letter-spacing: 0;
-      box-shadow: 0px 15px 0px #356A5F;
+      box-shadow: 0px 15px 0px $shadow-primary-blue;
     }
     &-white-shadow {
       text-transform: uppercase;
@@ -122,7 +122,7 @@
       background: white;
       border-radius: 15px;
       letter-spacing: 0;
-      box-shadow: 0px 15px 0px #c4c4c4;
+      box-shadow: 0px 15px 0px $shadow-white;
     }
   }
   // Back To Top Button
@@ -143,22 +143,22 @@
   &--red{
     color: white;
     background: $primary-pink;
-    box-shadow: 0px 4px 0px #a50000;
+    box-shadow: 0px 4px 0px $shadow-primary-pink;
   }
   &--light-blue{
     color: white;
     background: $light-blue;
-    box-shadow: 0px 4px 0px #015595;
+    box-shadow: 0px 4px 0px $shadow-light-blue;
   }
   &--yellow{
     background: $primary-yellow;
     color: $secondary-darker-blue;
-    box-shadow: 0px 4px 0px #b28b09;
+    box-shadow: 0px 4px 0px $shadow-primary-yellow;
   }
   &--blue{
     color: white;
     background: $primary-blue;
-    box-shadow: 0px 4px 0px #356a5F;
+    box-shadow: 0px 4px 0px $shadow-primary-blue;
   }
   &:active { transform: translate(0, 4px) }
 }

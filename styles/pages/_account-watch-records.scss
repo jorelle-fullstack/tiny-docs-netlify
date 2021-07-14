@@ -1,0 +1,45 @@
+.records-section {
+    margin: 27px 0;
+    .top-section {
+        display: flex;
+        flex-direction: column;
+        h1 {
+            color: $secondary-darker-blue;
+            margin-bottom: 30px;
+        }
+        .categories {
+            display: flex;
+            flex-direction: row;
+            width: 466px;
+            align-self: flex-end;
+            margin-right: 35px;
+        }
+    }
+    .search-section {
+        max-width: 50%;
+        form {
+            input {
+                max-height: 55px;
+                max-width: 635px;
+            }
+            .input-inline-button {
+                background-color: $primary-blue;
+                padding: 0 18px;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                height: 100%;
+            }
+        }
+    }
+    .videos {
+        margin: 30px 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .history-entry { margin: 50px 30.5px; }
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+    }
+}
