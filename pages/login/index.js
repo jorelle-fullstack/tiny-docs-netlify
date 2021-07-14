@@ -3,12 +3,13 @@ import { useForm } from "react-hook-form";
 import { login, passwordBasedLogin } from '../../auth'
 import { useState } from "react";
 import { useRouter } from 'next/router'
+import ReactCSSTransitionGroup from 'react-transition-group'
 
 // Components
 import { Button } from "../../components/global"
 import Input from '../../components/form/Input'
 import Link from 'next/link'
-
+import Head from 'next/head'
 // Assets
 import loginBg from '../../assets/images/login.svg'
 import googleImg from '../../assets/images/google.svg'
@@ -56,6 +57,7 @@ const index = () => {
 
   return (
     <div className="page-login">
+      <Head><title>Login to your Tiny Docs Account</title></Head>
       <div className="first-wrapper">
         <div className="content-holder">
           <h1 className='title'>Login</h1>
@@ -85,8 +87,15 @@ const index = () => {
           </Link>
         </div>
       </div>
-      <div className="second-wrapper" style={{ backgroundImage: `url(${loginBg.src})` }} />
-
+      <div key='login-img' className="second-wrapper" style={{ backgroundImage: `url(${loginBg.src})` }} />
+    {/* 
+      <ReactCSSTransitionGroup
+      transitionName='login-image'
+      transitionAppear={true}
+      transitionEnter={true}
+      >
+      </ReactCSSTransitionGroup>
+    */}
     </div>
   );
 };

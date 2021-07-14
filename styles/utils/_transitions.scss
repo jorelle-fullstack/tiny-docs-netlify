@@ -1,0 +1,7 @@
+.login-image-enter {
+    transform: scale (0.0);
+}
+
+.login-image-enter.login-image-enter-active {
+    transform: scale (1.0);
+}

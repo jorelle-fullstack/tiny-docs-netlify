@@ -11,7 +11,7 @@ export default class Knob extends React.Component {
     }
     render () {
         return (
-            <div class='knob'>
+            <div className='knob'>
                     <div id="knob-body" className='body' style={{transform: `rotate(${this.props.scrollPos + this.randomDeg}deg)`}}>
                         <hr className='handle' />
                     </div>
