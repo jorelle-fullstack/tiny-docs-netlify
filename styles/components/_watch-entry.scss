@@ -1,6 +1,11 @@
 .history-entry {
     transition-duration: 0.25s;
-    .thumbnail { border-radius: 10px; }
+    .thumbnail {
+        border-radius: 10px;
+        height: 139px;
+        object-fit: cover;
+        width: 243px;
+    }
     h4 {
         font-size: 16px;
         margin-top: 18px;
@@ -8,4 +13,9 @@
         color: $secondary-darker-blue;
     }
     &:active { transform: scale(0.95) }
+    @include respond-to(md-down) {
+        width: 100%;
+        margin: 12px 0;
+        .thumbnail { width: 100%; height: auto; }
+    }
 }

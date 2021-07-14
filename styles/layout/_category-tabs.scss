@@ -4,4 +4,12 @@
     width: 466px;
     align-self: flex-end;
     margin-right: 35px;
+    @include respond-to(md-down) {
+        margin-right: 0;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 100%;
+        .btn { margin: 12px 8px; }
+    }
 }

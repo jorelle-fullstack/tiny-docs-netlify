@@ -85,7 +85,7 @@ const index = () => {
         <div className='resources'>
             <div className='container'>
                 {allResources.map((resource, i) => {
-                return <Resource index={i} buttonIcon={whiteboardIcon} type={resource.type} thumbnail={resource.thumbnail} title={resource.title} desc={resource.desc} />
+                return <Resource index={i} type={resource.type} thumbnail={resource.thumbnail} title={resource.title} desc={resource.desc} />
                 })}
             </div>
         </div>

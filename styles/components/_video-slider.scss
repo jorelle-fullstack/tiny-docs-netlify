@@ -6,6 +6,11 @@
       &:active { transform: scale(0.9) }
     }
     margin: 80px 0;
+
+    @include respond-to(md-down) {
+      h3 { font-size: 80%; }
+      a { font-size: 50%; }
+    }
     .swiper-container {
         .swiper-button-prev,
       .swiper-button-next {
@@ -23,6 +28,10 @@
           background-size: contain;
           background-repeat: no-repeat;
           background-position: center;
+        }
+        @include respond-to(md-down) {
+          width: 48px;
+          height: 48px;
         }
       }
         .swiper-button-next {

@@ -44,7 +44,7 @@ const Header = () => {
                 </Link>
               </li>
               <li className="menu__list--item">
-                <Link href="/log-in">
+                <Link href="/login">
                   <a className="menu__list--link">Log In</a>
                 </Link>
               </li>
