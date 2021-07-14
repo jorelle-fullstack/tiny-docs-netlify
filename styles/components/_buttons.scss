@@ -83,48 +83,7 @@
     max-height: 66px;
     margin-right: 18px;
   }
-  &--icon {
-    &-pink-shadow {
-      text-transform: uppercase;
-      color: white;
-      background: $primary-pink;
-      border-radius: 15px;
-      letter-spacing: 0;
-      box-shadow: 0px 15px 0px $shadow-primary-pink;
-    }
-    &-light-blue-shadow {
-      text-transform: uppercase;
-      color: white;
-      background: $light-blue;
-      border-radius: 15px;
-      letter-spacing: 0;
-      box-shadow: 0px 15px 0px $shadow-light-blue;
-    }
-    &-yellow-shadow {
-      text-transform: uppercase;
-      color: $secondary-darker-blue;
-      background: $primary-yellow;
-      border-radius: 15px;
-      letter-spacing: 0;
-      box-shadow: 0px 15px 0px $shadow-primary-yellow;
-    }
-    &-blue-shadow {
-      text-transform: uppercase;
-      color: white;
-      background: $primary-blue;
-      border-radius: 15px;
-      letter-spacing: 0;
-      box-shadow: 0px 15px 0px $shadow-primary-blue;
-    }
-    &-white-shadow {
-      text-transform: uppercase;
-      color: $secondary-darker-blue;
-      background: white;
-      border-radius: 15px;
-      letter-spacing: 0;
-      box-shadow: 0px 15px 0px $shadow-white;
-    }
-  }
+
   // Back To Top Button
   &--back-to-top {
     background: none;
@@ -135,6 +94,18 @@
       max-height: 132px;
       width: inherit;
       height: inherit;
+    }
+  }
+}
+// Icon Button
+.icon {
+  border-radius: 15px;
+  &.category-btn {
+    &:hover { transform: scale(1.0) }
+    &:active, :focus {
+      background-color: $primary-blue;
+      transform: translate(0, 4px);
+      box-shadow: none !important;
     }
   }
 }
@@ -212,4 +183,41 @@
   // Rollovers
   &:hover { transform: scale(1.08) }
   &:active { transform: scale(0.9) }
+}
+
+// Shadowed Buttons
+.pink-shadow {
+  text-transform: uppercase;
+  color: white;
+  background: $primary-pink;
+  letter-spacing: 0;
+  box-shadow: 0px 15px 0px $shadow-primary-pink;
+}
+.light-blue-shadow {
+  text-transform: uppercase;
+  color: white;
+  background: $light-blue;
+  letter-spacing: 0;
+  box-shadow: 0px 15px 0px $shadow-light-blue;
+}
+.yellow-shadow {
+  text-transform: uppercase;
+  color: $secondary-darker-blue;
+  background: $primary-yellow;
+  letter-spacing: 0;
+  box-shadow: 0px 15px 0px $shadow-primary-yellow;
+}
+.blue-shadow {
+  text-transform: uppercase;
+  color: white;
+  background: $primary-blue;
+  letter-spacing: 0;
+  box-shadow: 0px 15px 0px $shadow-primary-blue;
+}
+.white-shadow {
+  text-transform: uppercase;
+  color: $secondary-darker-blue;
+  background: white;
+  letter-spacing: 0;
+  box-shadow: 0px 15px 0px $shadow-white;
 }

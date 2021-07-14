@@ -17,25 +17,25 @@ import thumbnail3 from '../../assets/images/resource-thumbnail-sample-3.png'
 
 const pageButtons = [
     {
-        className: '--icon-pink-shadow',
+        className: 'pink-shadow',
         label: 'Videos',
         icon: videosIcon.src,
         route: ''
     },
     {
-        className: '--icon-light-blue-shadow',
+        className: 'light-blue-shadow',
         label: 'Play',
         icon: playIcon.src,
         route: ''
     },
     {
-        className: '--icon-yellow-shadow',
+        className: 'yellow-shadow',
         label: 'Blog',
         icon: blogIcon.src,
         route: ''
     },
     {
-        className: '--icon-blue-shadow',
+        className: 'blue-shadow',
         label: 'Learn',
         icon: learnIcon.src,
         route: ''
@@ -44,25 +44,25 @@ const pageButtons = [
 
 const categoryButtons = [
     {
-        className: '--icon-white-shadow',
+        className: 'white-shadow',
         label: 'Category 1',
         icon: hospitalIcon.src,
         route: ''
     },
     {
-        className: '--icon-white-shadow',
+        className: 'white-shadow',
         label: 'Category 2',
         icon: maskIcon.src,
         route: ''
     },
     {
-        className: '--icon-white-shadow',
+        className: 'white-shadow',
         label: 'Category 3',
         icon: brainIcon.src,
         route: ''
     },
     {
-        className: '--icon-white-shadow',
+        className: 'white-shadow',
         label: 'Category 4',
         icon: barbelIcon.src,
         route: ''

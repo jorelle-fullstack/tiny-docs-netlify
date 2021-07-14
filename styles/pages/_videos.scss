@@ -192,6 +192,23 @@
                     flex-wrap: wrap;
                     justify-content: center;
                     margin-right: 115px;
+                    width: 100%;
+                    .swiper-container {
+                        width: 100%;
+                        .swiper-wrapper {
+                            width: 100%;
+                            .swiper-slide {
+                                width: 100% !important;
+                                display: flex;
+                                flex-wrap: wrap;
+                                justify-content: center;
+                            }
+                        }
+                        .swiper-button-prev,
+                        .swiper-button-next {
+                        display: none;
+                        }
+                    }
                 }
             }
             @include respond-to(md-down) {

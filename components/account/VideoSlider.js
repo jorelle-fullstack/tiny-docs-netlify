@@ -7,7 +7,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 const VideoSlider = ({title, videos, type}) => {
     return (
-        <div class='video-slider-wrapper'>
+        <div className='video-slider-wrapper'>
             <div className='title'>
                 <h3>{title}</h3>
                 <Link href={{

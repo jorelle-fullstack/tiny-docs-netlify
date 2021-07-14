@@ -10,6 +10,8 @@ import IconButton from '../../components/global/IconButton'
 import Video from '../../components/global/Video'
 import Knob from '../../components/global/Knob'
 import BackToTopButton from "../../components/global/BackToTopButton"
+import { Swiper, SwiperSlide } from "swiper/react"
+
 // Assets
 import tom from '../../assets/images/tom-clean.svg'
 import tim from '../../assets/images/tim.png'
@@ -19,9 +21,16 @@ import searchIcon from '../../assets/images/search-icon.svg'
 
 // Localizations
 import { pageButtons, categoryButtons, allVideos } from './local'
+
 const Videos = () => {
     const account = {
         profileIcon: profileIcon
+    }
+    // Category swiper instance.
+    const [swiper, setSwiper] = useState(null);
+    const slideTo = (index) => {
+        if (swiper) 
+        swiper.slideTo(index)
     }
 
     // Gets current scrollbar position for knob components.
@@ -34,13 +43,14 @@ const Videos = () => {
         window.addEventListener('scroll', handleScroll)
         return () => { window.removeEventListener('scroll', handleScroll) }
     }, []);
-    
+    // For search bar.
     const handleSearch = () => {
         setError('search', {
           type: "manual",
           message: 'Search field is empty.'
         })
       }
+    // Also for search bar.
     const {
         register,
         handleSubmit,
@@ -48,6 +58,12 @@ const Videos = () => {
         setError,
         formState: { errors },
       } = useForm();
+
+    // Handle category swiping.
+    const handleCategorySwiper = (index) => {
+        console.log(index)
+        slideTo(index)
+    }
     return (
         <div className='page-videos'>
             <img className='tam' src={tam.src} />
@@ -59,13 +75,13 @@ const Videos = () => {
                     <img className='profile-icon' src={account.profileIcon.src} />
                     <form className='form' >
       <Input className="search-field" register={{ ...register("search", {}) }} errors={errors} type="text" placeholder="Search"
-                render={() => <button type="button" className="btn input-inline-button" onClick={handleSearch} ><Image width={26} height={26} src={searchIcon} /></button>}
+                render={() => <button type="button" className="btn input-inline-button" onClick={(e) => handleSearch} ><Image width={26} height={26} src={searchIcon} /></button>}
               />
       </form>
                     </div>
                     <div className='page-buttons'>
                         {pageButtons.map((button, i) => {
-                            return <IconButton className={button.className} key={i} icon={button.icon} >{button.label}</IconButton>
+                            return <IconButton className={'category-nav-btn ' + button.className} key={i} icon={button.icon} >{button.label}</IconButton>
                         })}
                     </div>
                 </div>
@@ -74,7 +90,7 @@ const Videos = () => {
             <img className='tom' width={364} height={357} src={tom.src} />
                 <div className='container'>
                 {categoryButtons.map((button, i) => {
-                            return <IconButton className={button.className} key={i} icon={button.icon} >{button.label}</IconButton>
+                            return <IconButton className={'category-btn ' + button.className} key={i} icon={button.icon} onClick={(e) => handleCategorySwiper(i)} >{button.label}</IconButton>
                         })}
                 </div>
             </div>
@@ -88,11 +104,32 @@ const Videos = () => {
                         <Knob scrollPos={scrollY} />
                         <Knob scrollPos={scrollY} />
                     </div>
-                        {/* Videos */}
+                        {/* Video Collection Swiper by Category */}
                     <div className='video-collection'>
+                    <Swiper id='video-swiper'
+                        onSwiper={setSwiper}
+                        spaceBetween={22}
+                        navigation
+                        breakpoints={{
+                        992: {
+                            slidesPerView: 1,
+                        },
+                        768: {
+                            slidesPerView: 1,
+                        },
+                        }}
+                    >
+                        <SwiperSlide>
                         {allVideos.map((video, i) => {
                             return <Video key={i} thumbnail={video.thumbnail} title={video.title} />
                         })}
+                        </SwiperSlide>
+                        <SwiperSlide>
+                        {allVideos.map((video, i) => {
+                            return <Video key={i} thumbnail={video.thumbnail} title={video.title} />
+                        })}
+                        </SwiperSlide>
+                    </Swiper>
                     </div>
                     </div>
                 </div>
