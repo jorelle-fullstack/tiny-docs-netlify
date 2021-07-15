@@ -286,6 +286,7 @@
 
     &:before {
       height: 86%;
+      z-index: 0;
     }
     .btn { width: 100%; }
     &__wrapper {

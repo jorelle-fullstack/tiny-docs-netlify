@@ -25,7 +25,7 @@ const tabs = [
 ]
 const CategoryTabsSmall = () => {
     return (
-        <div className='category-tabs'>
+        <div className='category-tabs-small'>
             {tabs.map((tab, i) => {
                 return <Button key={i} className={'small category-nav-btn' + tab.className}>{tab.label}</Button>
             })}

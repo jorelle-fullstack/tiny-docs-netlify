@@ -102,7 +102,7 @@
   border-radius: 15px;
   &.category-btn {
     &:hover { transform: scale(1.0) }
-    &:active, :focus {
+    &:active, &:focus {
       background-color: $primary-blue;
       transform: translate(0, 4px);
       box-shadow: none !important;
@@ -157,7 +157,7 @@
   }
   &:active {
     background-color: $primary-blue;
-    transform: scale(0.95);
+    transform: translate(0,4px);
     box-shadow: none;
   }
 }
@@ -220,4 +220,63 @@
   background: white;
   letter-spacing: 0;
   box-shadow: 0px 15px 0px $shadow-white;
+}
+
+.fab {
+  width: 90px;
+  height: 90px;
+  padding: 20px;
+  border-radius: 50%;
+  background-color: $secondary-darker-blue;
+  img { width: 100%; margin-right: 0; }
+}
+
+// Video component buttons
+.smile-btn {
+  display: flex;
+  flex-direction: row;
+  background-color: $light-blue;
+  padding: 10px;
+  border-radius: 150px;
+  max-width: 134px;
+  max-height: 58px;
+  justify-content: space-between;
+  &:hover {
+    .smile { transform: scale(1.1); }
+  }
+  &:active {
+    h3 { color: $light-blue; }
+    background-color: white;
+    transform: scale(0.95);
+  }
+  h3 {
+    font-size: 30px;
+    width: 70%;
+    justify-items: center;
+    text-align: center;
+    color: white;
+  }
+  .smile {
+    margin-right: 0;
+    width: 42px;
+    transition-duration: 0.2s;
+  }
+}
+
+.save-video-btn {
+  background: none;
+  max-width: 134px;
+  max-height: 58px;
+  h3 { color: white; }
+  &:active {
+    transform: scale(0.9)
+
+  }
+  img { margin-right: 8px; }
+}
+
+.dots-btn {
+  background: none;
+  width: 30px;
+  height: 30px;
 }

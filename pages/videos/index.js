@@ -1,7 +1,6 @@
 // Dependencies
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from 'react'
-
 // Components
 import Input from '../../components/form/Input'
 import Image from 'next/image'
@@ -26,6 +25,7 @@ const Videos = () => {
     const account = {
         profileIcon: profileIcon
     }
+    let categoryIndex = '';
     // Category swiper instance.
     const [swiper, setSwiper] = useState(null);
     const slideTo = (index) => {
@@ -62,6 +62,8 @@ const Videos = () => {
     // Handle category swiping.
     const handleCategorySwiper = (index) => {
         console.log(index)
+        categoryIndex = index
+        const button = document.getElementsByClassName('category-btn-'+index)
         slideTo(index)
     }
     return (
@@ -90,7 +92,7 @@ const Videos = () => {
             <img className='tom' width={364} height={357} src={tom.src} />
                 <div className='container'>
                 {categoryButtons.map((button, i) => {
-                            return <IconButton className={'category-btn ' + button.className} key={i} icon={button.icon} onClick={(e) => handleCategorySwiper(i)} >{button.label}</IconButton>
+                            return <IconButton className={'category-btn category-btn-'+ i + ' ' + button.className} key={i} icon={button.icon} onClick={(e) => handleCategorySwiper(i)} >{button.label}</IconButton>
                         })}
                 </div>
             </div>
@@ -121,12 +123,12 @@ const Videos = () => {
                     >
                         <SwiperSlide>
                         {allVideos.map((video, i) => {
-                            return <Video key={i} thumbnail={video.thumbnail} title={video.title} />
+                            return <Video key={i} route={'/videos/vid'} thumbnail={video.thumbnail} title={video.title} duration={video.duration} />
                         })}
                         </SwiperSlide>
                         <SwiperSlide>
                         {allVideos.map((video, i) => {
-                            return <Video key={i} thumbnail={video.thumbnail} title={video.title} />
+                            return <Video key={i} route={'/videos/vid'} thumbnail={video.thumbnail} title={video.title} duration={video.duration} />
                         })}
                         </SwiperSlide>
                     </Swiper>

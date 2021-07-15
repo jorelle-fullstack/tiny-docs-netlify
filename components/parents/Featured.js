@@ -13,7 +13,7 @@ const Featured = ({resources}) => {
     return (
         <div className='featured-wrapper'>
             <Swiper
-            spaceBetween={11}
+            spaceBetween={22}
             navigation
             breakpoints={{
               992: {

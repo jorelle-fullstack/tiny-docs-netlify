@@ -1,16 +1,25 @@
+// Components
+import Link from 'next/link'
 import Image from 'next/image'
-const Video = ({title, thumbnail, route}) => {
+const Video = ({title, thumbnail, duration, route}) => {
     return (
-        <div className='video-wrapper'>
-            <Image className='thumbnail' height={206} src={thumbnail} >
-
-            </Image>
+        <Link href={{
+            pathname: '/videos/[vid]',
+            // Put video ID under "vid".
+            query: {vid: 'test'}
+        }}>
+            <div className='video-wrapper'>
+            <div class='thumbnail'>
+                <div className='length'><p>{duration}</p></div>
+                <Image height={206} src={thumbnail} />
+            </div>
             <div className='info'>
                 <div className='title'>
                     <h4>{title}</h4>
                 </div>
             </div>
         </div>
+        </Link>
     )
 }
 

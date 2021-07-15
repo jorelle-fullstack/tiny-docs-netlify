@@ -1,0 +1,25 @@
+.video-entry-wrapper {
+    overflow: hidden;
+    margin: 12px 11px;
+    background-color: $secondary-darker-blue;
+    max-width: 247px;
+    max-height: 170px;
+    color: white;
+    border-radius: 10px;
+    transition-duration: 0.3s;
+    .thumbnail {
+        position: relative;
+        img {
+            object-fit: cover;
+            width: 100%;
+            max-height: 206px;
+        }
+    }
+    .title {
+        padding: 8px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

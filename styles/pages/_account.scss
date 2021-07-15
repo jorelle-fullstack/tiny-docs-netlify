@@ -21,9 +21,6 @@
             letter-spacing: -0.35px;
             color: $secondary-darker-blue;
         }
-        @include respond-to(sm-down) {
-            h1 { font-size: 40px; }
-        }
         @include respond-to(md-down) {
             padding:0 36px;
             h1 { margin-left: 0; text-align: center; }

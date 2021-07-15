@@ -60,6 +60,20 @@
                     .search-field { margin-left: 0; width: 100%; }
                 }
             }
+            .page-buttons {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 15px;
+                margin-right: 3px;
+                button {
+                    margin: 0 10px;
+                    width: 224px;
+                    height: 83px;
+                    font-size: 30px;
+                    font-weight: 700;
+                }
+            }
             @include respond-to(md-down) {
                 .top-section {
                     flex-direction: column;
@@ -83,23 +97,8 @@
                         }
                     }
                 }
-            }
-            .page-buttons {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                margin-top: 15px;
-                margin-right: 3px;
-                button {
-                    margin: 0 10px;
-                    width: 224px;
-                    height: 83px;
-                    font-size: 30px;
-                    font-weight: 700;
-                }
-            }
-            @include respond-to(md-down) {
                 .page-buttons {
+                    position: relative;
                     flex-wrap: wrap;
                     button {
                         margin: 11px 10px;
@@ -110,7 +109,7 @@
                         max-height: 128px;
                         font-size: 16px;
                         font-weight: 600;
-                        box-shadow: 0 3px 0;
+                        box-shadow: 0 3px;
                         img {
                             margin-right: 0;
                             margin-bottom: 3px;

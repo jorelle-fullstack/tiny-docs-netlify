@@ -132,4 +132,6 @@ const allVideos = [
     }
 ]
 
-export { pageButtons, categoryButtons, allVideos }
+const chips = ['Character Animation', 'Meerkats', 'Character Introduction', 'Patches', 'Tiny Docs', 'Scrubs']
+
+export { pageButtons, categoryButtons, allVideos, chips }

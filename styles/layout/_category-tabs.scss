@@ -1,4 +1,4 @@
-.category-tabs {
+.category-tabs-small {
     display: flex;
     flex-direction: row;
     width: 466px;
@@ -13,3 +13,41 @@
         .btn { margin: 12px 8px; }
     }
 }
+
+.category-tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 24px 0;
+    margin-right: 3px;
+    button {
+        margin: 0 10px;
+        width: 224px;
+        height: 83px;
+        font-size: 30px;
+        font-weight: 700;
+    }
+    @include respond-to(md-down) {
+        position: relative;
+        flex-wrap: wrap;
+            button {
+                margin: 11px 10px;
+                flex-direction: column;
+                width: 98px;
+                height: 98px;
+                max-width: 128px;
+                max-height: 128px;
+                font-size: 16px;
+                font-weight: 600;
+                box-shadow: 0 3px;
+                img {
+                    margin-right: 0;
+                    margin-bottom: 3px;
+                    width: 42px;
+                    height: 42px;
+                    justify-self: center;
+                }
+            }
+    }
+}
+
