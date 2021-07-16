@@ -58,7 +58,7 @@ const VideoPlayer = () => {
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue </p>
                         </div>
                         <SaveButton saved={false} />
-                        <SmileButton count={0} />
+                        <SmileButton count={4} />
                     </div>
                 </div>
 
