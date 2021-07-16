@@ -264,8 +264,8 @@
   .particles {
     position: absolute;
     pointer-events: none;
-    height: 480px;
-    width: 100px;
+    height: 42px;
+    width: 42px;
   }
 }
 
@@ -289,17 +289,21 @@
 
 .smile-particle {
   position: absolute;
-  animation: float 1s reverse forwards;
+  animation: float 1s;
 }
 
 @keyframes float {
-  from {
+  0% {
+    opacity: 1;
+    left: 0%;
+    bottom: 0%;
+  }
+  50% {
+    left: percentage(random(500)/100);
+  }
+  100% {
     opacity: 0;
     left: 50%;
-    top: 50;
-  }
-  to {
-    transform: translate(0, 100px);
-    opacity: 1;
+    bottom: 600%;
   }
 }

@@ -19,8 +19,10 @@ export default class SmileButton extends React.Component {
     const showParticles = () => {
       const particles = 12;
       const elements = []
-      const particleArea = <div id='particles' className='particles' ref={this.tempParticles}></div>
-      ReactDOM.render(particleArea, document.getElementById('smile-btn'))
+      
+      // Renders the particles tag where the floating smile icons will appear.
+      // const particleArea = <div id='particles' className='particles' ref={this.tempParticles}></div>
+      // ReactDOM.render(particleArea, document.getElementById('smile-btn'))
       for (var i = 0; i < particles; i++) {
         const size = Math.floor(Math.random() * 50 + 5)
         const particle = <img key={i} className={`smile-particle particle-${i}`} src={smileIcon.src}
@@ -32,17 +34,15 @@ export default class SmileButton extends React.Component {
         console.log(i)
         elements.push(particle)
         if (i == 0) { // no need to add the listener on all generated elements
-          particle.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
-            this.tempParticles.remove(); // remove this explosion container when animation ended
-          });
+          // this.tempParticles.remove();
         }
-        // explosion.append(elm);
-
       }
-      setTimeout(() => {
       ReactDOM.render(elements, document.getElementById('particles'))
-      }, 200);
 
+      // FOR DEBUGGING ONLY
+      setTimeout(() => {
+        ReactDOM.render(null, document.getElementById('particles'))
+      }, 1000);
     }
    
     const handleClick = (e) => {
@@ -52,7 +52,10 @@ export default class SmileButton extends React.Component {
     return (
         <button id='smile-btn' className='btn smile-btn' onClick={handleClick}>
             <h3>{this.props.count}</h3>
+            <div className=''>
+              <div id='particles' className='particles'></div>
             <img className='smile' src={smileIcon.src} />
+            </div>
         </button>
     )
   }
