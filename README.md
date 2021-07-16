@@ -1,34 +1,105 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tiny Docs Project Documentation (Frontend)
+The project was developed using the [Next.js](https://nextjs.org/docs) framework.
 
-## Getting Started
-
-First, run the development server:
+## Setup
+After cloning the project, run the following command to start the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to begin browsing the project.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Project Structure
+### Image Assets
+All images are stored in the ```assets\images``` directory, which are composed of the following file types:
+```
+- .png
+- .svg
+- .webp
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Components
+The directory names in the components directory correspond to their respective page names in the pages directory.  Component scripts inside those directories are generally used for their respective pages.  The only exceptions are the following below:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+#### Form
+Contains the ```Input(text field)``` and ```Select(dropdown)``` components. Mainly used for form creation.
 
-## Learn More
+#### Global
+The following are global components located in ```components\global``` directory:
 
-To learn more about Next.js, take a look at the following resources:
+```
+Advisors.js - Unknown
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+BackToTopButton.js - Lets the user scroll back to the top of the page on button click.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Banner.js - Used on pages that have a similar banner layout, which is composed of a hero image, button, wave background, hero title, and hero text.
 
-## Deploy on Vercel
+BannerPricing.js - Used specifically for the Marketing page (pricing), contains a wave background, swiper and buttons for the Play, Videos, Blog, and Learn buttons.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Button.js - The standard primary button component.  Also used as the foundation for other button variants with different styling.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+CategoryTabs.js/CategoryTabsSmall.js - The button group that include Videos, Play, Learn, and Blog button.  The small version is used in the parents landing page while the normal version is used for the kids videos and other kids pages.  The difference is that the normal version is bigger and has their respective icons.
+
+Fab.js - A button component that only displays an icon.
+
+index.js - Used for component management and allows for a more consolidated method of importing global components.
+
+Knob.js - An animated knob that relies on the scroll bar's current position to spin around.  Initially, it renders with a randomized rotation value.
+
+Loading.js - The loading overlay that can also function as a page, if needed.
+
+Plans.js - Displays the pricing plans.  Mainly shown after sign up and in the pricing page.
+
+Story.js - The "Our Story" component displayed in the "About Us" page. 
+
+Team.js - Shows a list of team members of Tiny Docs (name and position), along with their photo and a link to their Twitter account.
+
+Testimonials.js - Shows a swiper section of testimonials.
+
+Testimony.js - The individual component that displays a testimony.
+
+Video.js - A video entry that displays the name, thumbnail, and video length.  Redirects to video player page on click.
+
+Wave.js - A component that displays a waved edge background as an SVG path.  Used for sections where the design includes waved edges (e.g. banners).
+```
+
+#### Layout
+Contains the Header, Footer, and Index file that the website uses to display both components.
+
+### Pages
+All pages are organized into their own respective directories and their base code is stored in the  ```index.js``` script.  Additionally, the directory also contains the ```api``` folder where the backend is being called from.
+
+### Public
+Contains the favicon.ico file.
+
+### Services
+Contains the ```firebase.js``` script that handles Firebase APIs.
+
+### Styles
+All styles are consolidated into this directory and are split into their respective sub-directories.  [Sass](https://sass-lang.com/) is used to handle the styling.
+
+```
+main.scss - Handles the importing of all Sass scripts.  All Sass scripts in each sub-directory are listed here for them to be used in the project.
+
+Base - Contains the base, fonts, and typography Sass scripts.
+
+Components - Styles of components found mainly in the components root directory.
+
+Layout - Includes the styles of the header, footer, forms, banner, and other components commonly referred to as layouts (section prefixes are refer to components located in the Components root directory).
+
+Pages - Includes styles exclusively for specific pages.  Styles for overriding individual components' default styles may be included in some scripts.
+
+Utils - Core styles, variables, functions, transitions, and mixins are located in this directory.
+```
+
+## APIs
+As mentioned earlier above, the ```API``` directory is located in the ```pages``` root directory.  The sub-directories are as follows:
+
+```
+Firebase - This directory contains APIs that handle the website's authentication process (Firebase Authentication).
+
+Locations - Contains APIs to get the updated countries and states.
+
+Stripe - Contains APIs that utilize Stripe.  The "subscription" sub-directory contains the APIs that handle the checkout form and coupon validation.  The "users" sub-directory contains APIs that handles user information (CRUD).
+```
