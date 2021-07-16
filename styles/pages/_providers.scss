@@ -23,8 +23,9 @@
     }
   }
 }
+.wave { max-height: 240px; }
 .section-info {
-    min-height: 600px; padding: 8em 0; background-color: white;
+    min-height: 600px; background-color: white;
     // background-image: url('../../assets/images/white-wave.webp');;
     .container { padding: 0 4em; display: flex; flex-wrap: wrap; flex-direction: row; justify-content: space-evenly; }
     .sub-section {
@@ -76,6 +77,7 @@
 }
 
 @include respond-to('md-down') {
+  .wave { height: 40px; }
     .section-info {
         .container { padding: 0 18px; }
         .sub-section {
@@ -84,7 +86,9 @@
         }
     }
     .section-testimonials {
-        h1 { font-size: 36px; }
         .swiper-slide { width: 100%; }
+        .testimony__wrapper {
+          h1 { margin-bottom: 18px; }
+        }
     }
 }

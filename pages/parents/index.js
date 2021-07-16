@@ -38,7 +38,8 @@ const index = () => {
         <Head><title>Parents</title></Head>
         {/* Banner */}
             <div className='banner banner--parents'>
-      <div className="container">
+              <div className='body'>
+              <div className="container">
           {/* Top Navigation Menu */}
           <div className='nav-menu'>
         <div className='nav-menu__wrapper'>
@@ -65,6 +66,8 @@ const index = () => {
           </div>
         </div>
       </div>
+              </div>
+      <div className='wave'></div>
     </div>
         {/* Featured*/}
         <div className='featured'>

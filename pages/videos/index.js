@@ -71,7 +71,8 @@ const Videos = () => {
             <img className='tam' src={tam.src} />
             <img className='tim' src={tim.src} />
         <Head><title>Videos</title></Head>
-            <div className='banner'>
+            <div className='banner banner--kids-videos'>
+                <div className='body'>
                 <div className='container'>
                     <div className='top-section'>
                     <img className='profile-icon' src={account.profileIcon.src} />
@@ -87,6 +88,8 @@ const Videos = () => {
                         })}
                     </div>
                 </div>
+                </div>
+                <div class='wave'></div>
             </div>
             <div className='category-buttons'>
             <img className='tom' width={364} height={357} src={tom.src} />

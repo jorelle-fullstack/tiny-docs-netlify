@@ -26,6 +26,14 @@
                 &--right { padding: 0; }
             }
         }
+        &--parents {
+            background-color: $secondary-brown;
+            .wave {
+                height: 188px;
+                // Medium sized waves.
+                background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1920 188" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="rgba(0, 59, 118, 1)" d="M 0 40 C 130.5 40 130.5 105 261 105 L 261 105 L 261 0 L 0 0 Z" stroke-width="0"></path> <path fill="rgba(0, 59, 118, 1)" d="M 260 105 C 367.5 105 367.5 46 475 46 L 475 46 L 475 0 L 260 0 Z" stroke-width="0"></path> <path fill="rgba(0, 59, 118, 1)" d="M 474 46 C 597 46 597 113 720 113 L 720 113 L 720 0 L 474 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 719 113 C 835 113 835 47 951 47 L 951 47 L 951 0 L 719 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 950 47 C 1072 47 1072 108 1194 108 L 1194 108 L 1194 0 L 950 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 1193 108 C 1306 108 1306 49 1419 49 L 1419 49 L 1419 0 L 1193 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 1418 49 C 1544.5 49 1544.5 105 1671 105 L 1671 105 L 1671 0 L 1418 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 1670 105 C 1795 105 1795 42 1920 42 L 1920 42 L 1920 0 L 1670 0 Z" stroke-width="0"></path></svg>');
+            }
+        }
     }
     .featured {
         .container {

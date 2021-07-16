@@ -2,7 +2,17 @@
 .wp {
     position: relative;
     .wp-container {
-        overflow:hidden; width: 1197px; height: 591px; border-radius: 21px; background-color: $primary-blue; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px #356a5f; margin-bottom: 10%; position: relative;
+        overflow: hidden;
+        max-width: 1197px;
+        height: 591px;
+        border-radius: 21px;
+        background-color: $primary-blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 20px #356a5f;
+        margin-bottom: 10%;
+        position: relative;
         // The white area of the white paper.
         .body {
             background-color: white; color: $secondary-darker-blue; border-radius: 21px; width: 1115px; height: 505px; padding: 56px 80px; box-shadow: 0 4px #00000025 inset; display: flex; flex-direction: column; align-items: center; justify-content: center;

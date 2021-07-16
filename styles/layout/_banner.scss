@@ -8,6 +8,21 @@
   background-repeat: no-repeat;
   background-position: center bottom;
 
+  // SVG wave bottom attachment.  Generated using https://www.svgwaves.io/
+  .wave {
+    display: block;
+    position: relative;
+    top: -2px;
+    height: 360px;
+    // Default wave color:  white.
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1920 211" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="rgba(255, 255, 255, 1)" d="M 0 0 C 92.4 0 138.6 107 231 107 L 231 107 L 231 0 L 0 0 Z" stroke-width="0"></path> <path fill="rgba(255, 255, 255, 1)" d="M 230 107 C 325.2 107 372.8 9 468 9 L 468 9 L 468 0 L 230 0 Z" stroke-width="0"></path> <path fill="rgba(255, 255, 255, 1)" d="M 467 9 C 559 9 605 105 697 105 L 697 105 L 697 0 L 467 0 Z" stroke-width="0"></path><path fill="rgba(255, 255, 255, 1)" d="M 696 105 C 785.6 105 830.4 12 920 12 L 920 12 L 920 0 L 696 0 Z" stroke-width="0"></path><path fill="rgba(255, 255, 255, 1)" d="M 919 12 C 1024.2 12 1076.8 107 1182 107 L 1182 107 L 1182 0 L 919 0 Z" stroke-width="0"></path><path fill="rgba(255, 255, 255, 1)" d="M 1181 107 C 1279 107 1328 22 1426 22 L 1426 22 L 1426 0 L 1181 0 Z" stroke-width="0"></path><path fill="rgba(255, 255, 255, 1)" d="M 1425 22 C 1531.4 22 1584.6 107 1691 107 L 1691 107 L 1691 0 L 1425 0 Z" stroke-width="0"></path><path fill="rgba(255, 255, 255, 1)" d="M 1690 107 C 1782 107 1828 23 1920 23 L 1920 23 L 1920 0 L 1690 0 Z" stroke-width="0"></path></svg>');
+    background-size: cover;
+    background-repeat: no-repeat;
+   }
+
+   // Contains SVG wave for responsiveness.
+   @media (max-width:1919px) { .wave { background-size: contain; } }
+   
     &:before {
       content: '';
       position: absolute;
@@ -57,24 +72,32 @@
 
   &.banner {
     &--about-us {
-      background-image: url('../../assets/images/pink-wave.png');
+      .body { background-color: $secondary-pink; }
+      .wave { background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1920 188" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="rgba(241, 79, 110, 1)" d="M 0 40 C 119.5 40 119.5 134 239 134 L 239 134 L 239 0 L 0 0 Z" stroke-width="0"></path> <path fill="rgba(241, 79, 110, 1)" d="M 238 134 C 358 134 358 39 478 39 L 478 39 L 478 0 L 238 0 Z" stroke-width="0"></path> <path fill="rgba(241, 79, 110, 1)" d="M 477 39 C 599 39 599 134 721 134 L 721 134 L 721 0 L 477 0 Z" stroke-width="0"></path><path fill="rgba(241, 79, 110, 1)" d="M 720 134 C 835.5 134 835.5 47 951 47 L 951 47 L 951 0 L 720 0 Z" stroke-width="0"></path><path fill="rgba(241, 79, 110, 1)" d="M 950 47 C 1077.5 47 1077.5 135 1205 135 L 1205 135 L 1205 0 L 950 0 Z" stroke-width="0"></path><path fill="rgba(241, 79, 110, 1)" d="M 1204 135 C 1311.5 135 1311.5 49 1419 49 L 1419 49 L 1419 0 L 1204 0 Z" stroke-width="0"></path><path fill="rgba(241, 79, 110, 1)" d="M 1418 49 C 1551.5 49 1551.5 135 1685 135 L 1685 135 L 1685 0 L 1418 0 Z" stroke-width="0"></path><path fill="rgba(241, 79, 110, 1)" d="M 1684 135 C 1802 135 1802 42 1920 42 L 1920 42 L 1920 0 L 1684 0 Z" stroke-width="0"></path></svg>'); }
       
-      &:before {
-        background-color: $secondary-pink;
-      }
+      &:before { background-color: $secondary-pink; }
     }
     &--providers {
-      background-image: url('../../assets/images/blue-wave.png');
-      &:before {
-        background-color: $secondary-darker-blue;
+      .body { background-color: $secondary-darker-blue; }
+      .wave { background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1920 211" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="rgba(0, 59, 118, 1)" d="M 0 0 C 92.4 0 138.6 107 231 107 L 231 107 L 231 0 L 0 0 Z" stroke-width="0"></path> <path fill="rgba(0, 59, 118, 1)" d="M 230 107 C 325.2 107 372.8 9 468 9 L 468 9 L 468 0 L 230 0 Z" stroke-width="0"></path> <path fill="rgba(0, 59, 118, 1)" d="M 467 9 C 559 9 605 105 697 105 L 697 105 L 697 0 L 467 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 696 105 C 785.6 105 830.4 12 920 12 L 920 12 L 920 0 L 696 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 919 12 C 1024.2 12 1076.8 107 1182 107 L 1182 107 L 1182 0 L 919 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 1181 107 C 1279 107 1328 22 1426 22 L 1426 22 L 1426 0 L 1181 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 1425 22 C 1531.4 22 1584.6 107 1691 107 L 1691 107 L 1691 0 L 1425 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 1690 107 C 1782 107 1828 23 1920 23 L 1920 23 L 1920 0 L 1690 0 Z" stroke-width="0"></path></svg>'); }
+      &:before { background-color: $secondary-darker-blue; }
+    }
+    &--kids-videos {
+      .body {
+        background-color: $secondary-yellow;
+        padding-bottom: 20px;
       }
+      .wave {
+        background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1920 188" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="rgba(252, 234, 139, 1)" d="M 0 40 C 130.5 40 130.5 105 261 105 L 261 105 L 261 0 L 0 0 Z" stroke-width="0"></path> <path fill="rgba(252, 234, 139, 1)" d="M 260 105 C 367.5 105 367.5 46 475 46 L 475 46 L 475 0 L 260 0 Z" stroke-width="0"></path> <path fill="rgba(252, 234, 139, 1)" d="M 474 46 C 597 46 597 113 720 113 L 720 113 L 720 0 L 474 0 Z" stroke-width="0"></path><path fill="rgba(252, 234, 139, 1)" d="M 719 113 C 835 113 835 47 951 47 L 951 47 L 951 0 L 719 0 Z" stroke-width="0"></path><path fill="rgba(252, 234, 139, 1)" d="M 950 47 C 1072 47 1072 108 1194 108 L 1194 108 L 1194 0 L 950 0 Z" stroke-width="0"></path><path fill="rgba(252, 234, 139, 1)" d="M 1193 108 C 1306 108 1306 49 1419 49 L 1419 49 L 1419 0 L 1193 0 Z" stroke-width="0"></path><path fill="rgba(252, 234, 139, 1)" d="M 1418 49 C 1544.5 49 1544.5 105 1671 105 L 1671 105 L 1671 0 L 1418 0 Z" stroke-width="0"></path><path fill="rgba(252, 234, 139, 1)" d="M 1670 105 C 1795 105 1795 42 1920 42 L 1920 42 L 1920 0 L 1670 0 Z" stroke-width="0"></path></svg>');
+        background-color: $secondary-brown;
+      }
+      &:before { background-color: $secondary-yellow; }
     }
     &--parents {
       padding-bottom: 12px;
-      background-image: url('../../assets/images/blue-wave.png');
-      &:before {
-        background-color: $secondary-darker-blue;
-      }
+      .body { background-color: $secondary-darker-blue; }
+      .wave { background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1920 211" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="rgba(0, 59, 118, 1)" d="M 0 0 C 92.4 0 138.6 107 231 107 L 231 107 L 231 0 L 0 0 Z" stroke-width="0"></path> <path fill="rgba(0, 59, 118, 1)" d="M 230 107 C 325.2 107 372.8 9 468 9 L 468 9 L 468 0 L 230 0 Z" stroke-width="0"></path> <path fill="rgba(0, 59, 118, 1)" d="M 467 9 C 559 9 605 105 697 105 L 697 105 L 697 0 L 467 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 696 105 C 785.6 105 830.4 12 920 12 L 920 12 L 920 0 L 696 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 919 12 C 1024.2 12 1076.8 107 1182 107 L 1182 107 L 1182 0 L 919 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 1181 107 C 1279 107 1328 22 1426 22 L 1426 22 L 1426 0 L 1181 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 1425 22 C 1531.4 22 1584.6 107 1691 107 L 1691 107 L 1691 0 L 1425 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 1690 107 C 1782 107 1828 23 1920 23 L 1920 23 L 1920 0 L 1690 0 Z" stroke-width="0"></path></svg>'); }
+      &:before { background-color: $secondary-darker-blue; }
     }
 
     &--pricing {
@@ -280,14 +303,13 @@
 
 @include respond-to(md-down) {
   .banner {
-    padding: 40px 0 70px;
-
     background-size: contain;
-
     &:before {
-      height: 86%;
+      height: 20%;
       z-index: 0;
     }
+    .wave { height: 80px; }
+    .body { padding-bottom: 25px; }
     .btn { width: 100%; }
     &__wrapper {
       flex-direction: column-reverse;
