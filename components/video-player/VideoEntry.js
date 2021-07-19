@@ -16,7 +16,7 @@ const VideoEntry = ({thumbnail, title, route}) => {
             <div className='video-entry-wrapper'>
             <Image height={133} src={thumbnail} />
             <div className='title'>
-            <h5>{title}</h5>
+            <h4>{title}</h4>
             <button className='btn dots-btn'><Image src={dotsIcon} /></button>
             </div>
         </div>

@@ -12,6 +12,7 @@
     border: none;
     background: white;
     border-radius: 100px;
+    &:disabled { background-color: #eee; }
   }
 
   .input-inline-button {
@@ -57,4 +58,5 @@
 
     color: red;
   }
+  
 }

@@ -1,7 +1,7 @@
 
-const Chip = ({label}) => {
+const Chip = ({label, index}) => {
     return(
-        <div className='chip'>
+        <div key={index} className='chip'>
             <p>{label}</p>
         </div>
     )

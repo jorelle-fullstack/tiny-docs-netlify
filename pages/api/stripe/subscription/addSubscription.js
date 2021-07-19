@@ -14,7 +14,10 @@ export default async function handler (req, res) {
       state, 
       customer_id,
       paymentMethodType, 
-      user_type, 
+      user_type,
+      email,
+      phone_number,
+      name,
       coupon} = req.body;
       
     let price = "";
@@ -34,7 +37,7 @@ export default async function handler (req, res) {
             state: state
           },
           email: email,
-          name: first_name + " " + last_name,
+          name: name,
           phone: phone_number
         }
       },

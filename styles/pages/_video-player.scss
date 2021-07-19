@@ -54,20 +54,31 @@
             background-color: $secondary-darker-blue;
             min-height: 180px;
             padding: 20px;
-            .chips {
-                width: 100%;
+            .left {
                 display: flex;
-                justify-content: flex-start;
-                flex-wrap: wrap;
-            }
-            .wrapper {
-                max-width: 55%;
-                margin-left: 15px;
-                h2 {
-                    margin-bottom: 5px;
-                    color: white;
+                flex-direction: column;
+                .chips {
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-start;
+                    flex-wrap: wrap;
                 }
-                p { color: white; }
+                .wrapper {
+                    max-width: 55%;
+                    margin-left: 15px;
+                    h2 {
+                        margin-bottom: 5px;
+                        color: white;
+                    }
+                    p { color: white; }
+                }
+            }
+            .right {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: center;
+                .smile-btn { margin-left: 24px; }
             }
         }
         .playlist {
@@ -90,6 +101,52 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+            }
+        }
+    }
+    @include respond-to(md-down) {
+        .top-section {
+            height: 80px;
+            padding: 10px 8px;
+            .search, .back {
+                width: 36px;
+                height: 36px;
+                padding: 8px;
+            }
+            .form {
+                padding: 0 12px;
+                display: flex;
+                justify-content: center;
+                .input-wrapper {
+                    height: 100%;
+                    max-width: 360px;
+                    .search-field {
+                        padding: 0 12px;
+                        height: 36px;
+                    }
+                }
+            }
+        }
+        .main {
+            flex-direction: column;
+            .video-player {
+                .player { padding: 0; }
+            }
+            .playlist {
+                max-width: 100%;
+            }
+            .info {
+                justify-content: space-evenly;
+                .left {
+                    .chips { margin: 12px 0; }
+                    .wrapper {
+                        margin-left: 0;
+                        margin-bottom: 24px;
+                        width: 100%;
+                        max-width: 100%;
+                    }
+                }
+                .right { justify-content: flex-end; }
             }
         }
     }

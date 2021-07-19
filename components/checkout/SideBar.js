@@ -1,27 +1,59 @@
+// Dependencies
 import React from 'react'
+import { useForm } from "react-hook-form"
+import { useState } from 'react'
+import { faPray } from '@fortawesome/free-solid-svg-icons'
 import currencyFormater from '../../tools/currencyFormater'
+import clsx from 'clsx'
+import axios from 'axios'
+
+// Components
+import { Button } from '../../components/global'
 import Input from '../../components/form/Input'
-import { useForm } from "react-hook-form";
-import { faPray } from '@fortawesome/free-solid-svg-icons';
 
 const staticSumary = {
   provider: 0,
 
 }
 
-function handleDiscount() {
-
-}
-
 const SideBar = () => {
-
+  // State variables
+  const [discountLoading, setDiscountLoading] = useState(false)
+  const [discountValid, setDiscountValidity] = useState(false)
   const {
     register,
     handleSubmit,
     watch,
     setError,
+    clearErrors,
     formState: { errors },
   } = useForm();
+
+  const discount = watch('discount')
+
+  const handleDiscount = () => {
+    // Checks coupon validation.  Accepts coupon_id parameter.
+    if (discount) {
+      setDiscountLoading(true)
+      axios.post('http://localhost:3000/api/stripe/subscription/checkCouponValidation', {
+          coupon_id: discount
+        }).then((res) => {
+          console.log(res)
+          clearErrors()
+          setDiscountValidity(true)
+        })
+        .catch((error) => {
+          console.error(error)
+          setDiscountValidity(false)
+          setError('discount', { type: "manual", message: 'Invalid discount code' })
+        })
+        .finally(() => { setDiscountLoading(false) })
+    }
+  }
+  const onSubmit = async (data) => {
+    console.log(data)
+    stepSubmitCallback({ ...data, ...cardDetails })
+  }
 
   return (
     <div className='checkout-wrapper summary'>
@@ -35,9 +67,12 @@ const SideBar = () => {
           <span>{currencyFormater({ exact: true, amount: staticSumary.provider })}</span>
         </div>
 
-        <form className='form'>
-          <Input register={{ ...register("discount", {}) }} errors={errors} type="text" placeholder="Discount Code"
-            render={() => <button type="button" className="input-inline-button" onClick={handleDiscount} >Apply</button>}
+        <form onSubmit={handleSubmit(onSubmit)} className='form'>
+          <Input register={{ ...register("discount", {}) }} disabled={discountValid} errors={errors} type="text" placeholder="Discount Code"
+            render={() => <Button id='discount-btn' type="button" className={clsx('input-inline-button', {
+              'discount-valid': discountValid,
+              null: !discountValid
+            })} loading={discountLoading} onClick={handleDiscount} >{discountValid ? 'Verified' : 'Apply'}</Button>}
           />
         </form>
 

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { login, passwordBasedLogin } from '../../auth'
 import { useState } from "react";
 import { useRouter } from 'next/router'
-import ReactCSSTransitionGroup from 'react-transition-group'
+import { CSSTransition } from 'react-transition-group'
 
 // Components
 import { Button } from "../../components/global"
@@ -34,6 +34,7 @@ const index = () => {
     console.log(data)
     setsubmitting(true)
     const res = await passwordBasedLogin(data)
+    console.log(res)
     setsubmitting(false)
 
     if (!res.message) {
@@ -52,9 +53,9 @@ const index = () => {
       await login(type)
       return router.push(redirectLink)
     } catch (error) {
+      console.error(error)
     }
   }
-
   return (
     <div className="page-login">
       <Head><title>Login to your Tiny Docs Account</title></Head>
@@ -88,14 +89,6 @@ const index = () => {
         </div>
       </div>
       <div key='login-img' className="second-wrapper" style={{ backgroundImage: `url(${loginBg.src})` }} />
-    {/* 
-      <ReactCSSTransitionGroup
-      transitionName='login-image'
-      transitionAppear={true}
-      transitionEnter={true}
-      >
-      </ReactCSSTransitionGroup>
-    */}
     </div>
   );
 };

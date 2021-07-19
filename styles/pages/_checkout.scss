@@ -63,8 +63,20 @@
     padding: 35px 81px;
     margin: 15px;
     border-radius: 8px;
-    .input-inline-button { padding: 0 43.5px; font-size: 18px; font-weight: 500; color: white; max-height: 43px; }
-    .promo-field { max-height: 43px; }
+    .input-inline-button {
+      margin: 0;
+      padding: 0 20px;
+      font-size: 18px;
+      font-weight: 500;
+      color: white;
+      max-height: 43px;
+      width: 130px;
+      letter-spacing: 0;
+      font-size: 18px;
+      text-transform: capitalize;
+    }
+    .discount-valid { background-color: green; }
+    .discount-field { max-height: 43px; }
     .step-title {
       text-transform: uppercase;
       font-weight: 800;
@@ -141,7 +153,7 @@
         }
       }
     
-    .input-inline-button { height: 43px; padding: 0 28px; }
+    .input-inline-button { max-width: 40px; height: 43px; padding: 0 28px; }
     .card-input {
       height: 48px;
       .credit-card-input { padding: 0; }

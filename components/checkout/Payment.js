@@ -1,18 +1,24 @@
 
-import Input from '../../components/form/Input'
-import Select from '../../components/form/Select'
-import { Button } from '../../components/global'
-import { useForm } from "react-hook-form";
-import CreditCardInput from 'react-credit-card-input';
-import { useState, useEffect } from 'react';
+// Dependencies
+import { useState, useEffect } from 'react'
+import { useForm } from "react-hook-form"
 import axios from 'axios'
 import clsx from 'clsx'
 
-// API
-import checkCouponValidation from '../../pages/api/stripe/subscription/checkCouponValidation'
+// Components
+import Input from '../../components/form/Input'
+import Select from '../../components/form/Select'
+import { Button } from '../../components/global'
+import CreditCardInput from 'react-credit-card-input'
+
+// Assets
+import checkIcon from '../../assets/images/check.svg'
 
 const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
 
+  // State variables
+  const [discountLoading, setDiscountLoading] = useState(false)
+  const [discountValid, setDiscountValidity] = useState(false)
   const [cardDetails, setcardDetails] = useState({
     cardNumber: '',
     expiry: '',
@@ -31,6 +37,7 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
     handleSubmit,
     watch,
     setError,
+    clearErrors,
     formState: { errors },
   } = useForm();
 
@@ -40,19 +47,31 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
   };
 
   const discount = watch('discount')
-
-  const handlePromo = () => {
+  const handleDiscount = () => {
     // Checks coupon validation.  Accepts coupon_id parameter.
-    checkCouponValidation()
-    setError('promo', {
-      type: "manual",
-      message: 'Invalid promo code'
-    })
+    if (discount) {
+      setDiscountLoading(true)
+      axios.post('http://localhost:3000/api/stripe/subscription/checkCouponValidation', {
+          coupon_id: discount
+        }).then((res) => {
+          console.log(res)
+          clearErrors()
+          setDiscountValidity(true)
+        })
+        .catch((error) => {
+          console.error(error)
+          setDiscountValidity(false)
+          setError('discount', { type: "manual", message: 'Invalid discount code' })
+        })
+        .finally(() => { setDiscountLoading(false) })
+    }
   }
+  // Formats the credit/debit card for preview.
   const formatCardPreview = (cardNumber) => {
     return `XXXX-${cardNumber.substr(cardNumber.length - 4)}`
   }
 
+  // Component to display payment information when this step has been completed.
   const DoneStepJSX = () => <div className="steps__info">
     <div className="flex mb-s">
       <span className='row-first'> Card</span>
@@ -104,8 +123,11 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
               />
               <p className='sub-info' >Transactions are secure and encrypted</p>
 
-              <Input className='promo-field' register={{ ...register("promo", {}) }} errors={errors} type="text" placeholder="Promo Code"
-                render={() => <button type="button" className="input-inline-button" onClick={handlePromo} >Apply</button>}
+              <Input className='discount-field' disabled={discountValid} register={{ ...register("discount", {}) }} errors={errors} type="text" placeholder="Discount Code"
+                render={() => <Button id="discount-btn" className={clsx('input-inline-button', {
+                  'discount-valid': discountValid,
+                  null: !discountValid
+                })} loading={discountLoading} onClick={handleDiscount} >{discountValid ? 'Verified' : 'Apply' }</Button>}
               />
 
               <p className="title-2">

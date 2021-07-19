@@ -1,12 +1,16 @@
+// Dependencies
 import { useState } from 'react'
+import { useForm } from "react-hook-form"
+import ReactDOM from 'react-dom'
+import axios from 'axios'
+// Components
 import Head from 'next/head'
 import {
   Email, Payment, SideBar, Review
 } from '../../components/checkout'
-import { useForm } from "react-hook-form";
 
-
-
+// APIs
+import { addSubscription } from '../api'
 const Index = () => {
 
   const {
@@ -25,12 +29,40 @@ const Index = () => {
     console.log('%c ⚠ inputData ', 'color:yellow;background:black;padding:5px;', inputData);
     if (step === 3) {
       console.log('%c ⚠ purchasing... ', 'color:yellow;background:black;padding:5px;',);
-      return
-    }
+      const payload = {
+        card_number: inputData.cardNumber,
+        card_exp_month: inputData.expiry.substring(0,2), 
+        card_exp_year: inputData.expiry.substring(5,2),
+        card_cvc:inputData.cvc, 
+        city: inputData.city, 
+        country: inputData.country, 
+        postal_code: inputData.zipCode, 
+        state: inputData.state, 
+        paymentMethodType: '', 
+        user_type: '', 
+        coupon: inputData.coupon,
+        // Firebase Auth
+        email: localStorage.user.email,
+        phone_number: localStorage.user.phoneNumber,
+        name: localStorage.user.displayName,
+        customer_id: ''
+      }
+
+      // Add subscription to account.  Variable "customer_id" is used as reference.
+      axios.post(addSubscription, payload).then((res) => {
+          console.log(res)
+          clearErrors()
+        })
+        .catch((error) => {
+          console.error(error)
+          setError('discount', { type: "manual", message: 'Invalid discount code' })
+        })
+      console.log('%c ⚠ Compiling payload... ', 'color:yellow;background:black;padding:5px;',);
+      return null
+    } 
 
     setFormData(prevState => ({ ...prevState, ...inputData }))
     setStep(step + 1)
-
   }
 
   const editCallback = (editStep) => {
@@ -45,7 +77,6 @@ const Index = () => {
         <Email stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />
         <Payment stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />
         <Review stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />
-
       </div>
       <div className="side-bar">
         <SideBar />
