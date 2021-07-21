@@ -1,10 +1,10 @@
 
 
-const Input = ({ register, errors, disabled = false, placeholder, defaultValue, type, showError = true, render, ...rest }) => {
+const Input = ({ className, register, errors, disabled = false, placeholder, defaultValue, type, showError = true, render, ...rest }) => {
   const { name } = register
   return (
     <div className='input-wrapper'>
-      <input defaultValue={defaultValue} disabled={disabled} placeholder={placeholder} {...register} type={type} {...rest} />
+      <input className={className} defaultValue={defaultValue} disabled={disabled} placeholder={placeholder} {...register} type={type} {...rest} />
 
       {render && render()}
 

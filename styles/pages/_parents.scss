@@ -2,20 +2,25 @@
     .banner {
     .container { padding: 0; }
         &__wrapper {
-            &--left {
-                width: 60%;
-                margin-top: 0;
-                padding-left: 100px;
+            padding-top: 6px;
+            justify-content: space-between;
+            h1 {
+                z-index: 3;
+                font-size: 64px;
+                color: white;
+                left: 114px;
+                top: 64px;
+                position: relative;
                 align-self: start;
-                h1 {
-                    width: 100%;
-                    max-width: 100%;
-                    margin-top: 41px;
-                }
+                max-width: 60%;
             }
-            &--right {
-                width: 40%;
-                padding-right: 60px;
+            .hero-image {
+                z-index: 2;
+                position: relative;
+                right: 75px;
+                top: 15px;
+                width: 424px;
+                height: 404px;
             }
             @include respond-to(md-down) {
                 padding-top: 0;
@@ -24,14 +29,35 @@
                     width: 100%;
                 }
                 &--right { padding: 0; }
+                .hero-image {
+                    width: 220px;
+                    height: auto;
+                    right: 0;
+                    top: 0;
+                }
+                h1 {
+                    left: 0;
+                    top: 0;
+                    text-align: center;
+                    max-width: 100%;
+                    font-size: 36px;
+                }
             }
         }
         &--parents {
             background-color: $secondary-brown;
-            .wave {
+        }
+        .wave {
                 height: 188px;
                 // Medium sized waves.
                 background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1920 188" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="rgba(0, 59, 118, 1)" d="M 0 40 C 130.5 40 130.5 105 261 105 L 261 105 L 261 0 L 0 0 Z" stroke-width="0"></path> <path fill="rgba(0, 59, 118, 1)" d="M 260 105 C 367.5 105 367.5 46 475 46 L 475 46 L 475 0 L 260 0 Z" stroke-width="0"></path> <path fill="rgba(0, 59, 118, 1)" d="M 474 46 C 597 46 597 113 720 113 L 720 113 L 720 0 L 474 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 719 113 C 835 113 835 47 951 47 L 951 47 L 951 0 L 719 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 950 47 C 1072 47 1072 108 1194 108 L 1194 108 L 1194 0 L 950 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 1193 108 C 1306 108 1306 49 1419 49 L 1419 49 L 1419 0 L 1193 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 1418 49 C 1544.5 49 1544.5 105 1671 105 L 1671 105 L 1671 0 L 1418 0 Z" stroke-width="0"></path><path fill="rgba(0, 59, 118, 1)" d="M 1670 105 C 1795 105 1795 42 1920 42 L 1920 42 L 1920 0 L 1670 0 Z" stroke-width="0"></path></svg>');
+            }
+        .body { max-height: 350px; }
+        @include respond-to(md-down) {
+            .body { max-height: 100%; }
+            .wave {
+                background-size: cover;
+                height: 50px;
             }
         }
     }
@@ -40,19 +66,26 @@
             .wrapper {
                 display: flex;
                 justify-content: center;
+                flex-direction: column;
             }
             h1 {
+                padding-left: 157px;
                 color: $secondary-darker-blue;
-                margin-top: 3px;
-                margin-left: 30px;
+                margin-top: 5px;
                 letter-spacing: -1px;
+                @include respond-to(md-down) {
+                    padding-left: 0;
+                    text-align: center;
+            }
             }
         }
-        @include respond-to(md-down) { margin-top: 24px; }
+        @include respond-to(md-down) {
+            margin-top: 24px;
+        }
     }
     .nav-menu {
        width: 100%;
-       padding-top: 58px;
+       padding-top: 36px;
         &__wrapper {
             display: flex;
             flex-direction: row;
@@ -62,6 +95,7 @@
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+                margin-left: 18px;
                 input {
                     margin-left: 22px;
                     margin-top: 9px;
@@ -85,6 +119,7 @@
                     width: 100%;
                     flex-direction: column;
                     padding: 0 18px;
+                    margin-left: 0;
                     .form {
                         width: 100%;
                         margin: 24px 0;
@@ -99,12 +134,9 @@
                 z-index: 2; 
                 align-items: center;
                 margin-right: 19px;
-                .categories {
-                    display: flex; 
-                    flex-direction: row; 
-                    width: 466px; 
-                    align-self: center; 
-                    margin-right: 35px;
+                margin: 6px 0;
+                .category-tabs-small {
+                    margin-right: 10px;
                     &__wrapper { 
                         display: flex; 
                         flex-direction: column;
@@ -114,7 +146,6 @@
             @include respond-to(md-down) {
                 flex-direction: column;
                 &--right {
-                    margin: 36px 0;
                     .category-tabs {
                         .btn { width: 148px; }
                     }
@@ -127,10 +158,10 @@
             padding: 45px 83px;
             display: flex;
             flex-direction: row;
+            justify-content: center;
             @include respond-to(md-down) {
                 padding: 0;
                 flex-wrap: wrap;
-                justify-content: center;
                 .category-btn {
                     width: 150px;
                     margin: 8px 12px;
@@ -139,11 +170,13 @@
         }
     }
     .resources {
+        display: flex;
+        justify-content: center;
         .container {
             padding: 20px 143px;
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
+            justify-content: center;
             flex-wrap: wrap;
         }
         @include respond-to(md-down) {

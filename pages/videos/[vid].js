@@ -1,5 +1,6 @@
 // Dependencies
 import { useForm } from "react-hook-form"
+import { CSSTransition } from 'react-transition-group'
 
 // Components
 import Head from 'next/head'

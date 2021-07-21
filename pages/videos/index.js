@@ -1,6 +1,8 @@
 // Dependencies
 import { useForm } from "react-hook-form"
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { CSSTransition } from "react-transition-group"
+
 // Components
 import Input from '../../components/form/Input'
 import Image from 'next/image'
@@ -32,10 +34,16 @@ const Videos = () => {
         if (swiper) 
         swiper.slideTo(index)
     }
-
+    // Animation References
+    const [transitionIn, setTransitionIn] = useState(false)
+    const {
+        profileIconRef,
+        searchBarRef
+    } = React.useRef(null)
     // Gets current scrollbar position for knob components.
     const [scrollY, setScrollY] = useState(0)
     useEffect(() => {
+        setTransitionIn(true)
         const handleScroll = () => {
             setScrollY(window.scrollY)
         }
@@ -75,12 +83,18 @@ const Videos = () => {
                 <div className='body'>
                 <div className='container'>
                     <div className='top-section'>
-                    <img className='profile-icon' src={account.profileIcon.src} />
+                        <CSSTransition in={transitionIn} nodeRef={profileIconRef} timeout={500} classNames='pop'>
+                        <div className='profile-icon' nodeRef={profileIconRef}>
+                        <Image width={93} height={93} src={account.profileIcon.src} />
+                        </div>
+                        </CSSTransition>
+                        <CSSTransition in={transitionIn} nodeRef={profileIconRef} timeout={500} classNames='fade-slide-right'>
                     <form className='form' >
       <Input className="search-field" register={{ ...register("search", {}) }} errors={errors} type="text" placeholder="Search"
                 render={() => <button type="button" className="btn input-inline-button" onClick={(e) => handleSearch} ><Image width={26} height={26} src={searchIcon} /></button>}
               />
       </form>
+      </CSSTransition>
                     </div>
                     <div className='page-buttons'>
                         {pageButtons.map((button, i) => {
@@ -89,7 +103,7 @@ const Videos = () => {
                     </div>
                 </div>
                 </div>
-                <div class='wave'></div>
+                <div className='wave'></div>
             </div>
             <div className='category-buttons'>
             <img className='tom' width={364} height={357} src={tom.src} />

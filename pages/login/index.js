@@ -28,9 +28,7 @@ const index = () => {
     heroImageRef,
     googleBtnRef,
     facebookBtnRef,
-    emailRef,
-    passwordRef,
-    forgotRef
+    formRef
   } = React.useRef(null)
 
   const redirectLink = '/about-us'
@@ -79,25 +77,17 @@ const index = () => {
       <Head><title>Login to your Tiny Docs Account</title></Head>
       <div className="first-wrapper">
         <div className="content-holder">
-        <CSSTransition classNames='pop' nodeRef={emailRef} in={inProp} timeout={500}>
           <h1 className='title'>Login</h1>
-          </CSSTransition>
           {/* Login Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className='form'>
-            <CSSTransition classNames='pop' nodeRef={emailRef} in={inProp} timeout={500}>
-            <Input ref={emailRef} showError={false} register={{ ...register("email", { required: true }) }} errors={errors} type="email" placeholder="Enter Email" />
-            </CSSTransition>
-            <CSSTransition classNames='pop' nodeRef={passwordRef} in={inProp} timeout={500}>
-            <Input ref={passwordRef} showError={false} register={{ ...register("password", { required: true }) }} errors={errors} type="password" placeholder="Enter Password" />
-            </CSSTransition>
+          <CSSTransition classNames='fade-slide-right' nodeRef={formRef} in={inProp} timeout={500}>
+          <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className='form'>
+            <Input showError={false} register={{ ...register("email", { required: true }) }} errors={errors} type="email" placeholder="Enter Email" />
+            <Input showError={false} register={{ ...register("password", { required: true }) }} errors={errors} type="password" placeholder="Enter Password" />
             {errors.email && <span className="form--error">{errors.email.message} </span>}
-            <CSSTransition classNames='fade-slide-right' nodeRef={forgotRef} in={inProp} timeout={500}>
-            <Link href='/forgot' ref={forgotRef}>
-              <a className='forgot text-disabled'>Forgot Password?</a>
-            </Link>
-            </CSSTransition>
+            <Link href='/forgot'><a className='forgot text-disabled'>Forgot Password?</a></Link>
             <Button loading={submitting} type='submit' className='btn__login btn--blue'>Login</Button>
           </form>
+          </CSSTransition>
           <p>- Or Login With - </p>
           <div className="external-login-wrapper">
             <CSSTransition nodeRef={googleBtnRef} in={inProp} classNames='pop' timeout={500}>

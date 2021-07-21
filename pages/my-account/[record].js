@@ -8,6 +8,7 @@ import Input from '../../components/form/Input'
 import Image from 'next/image'
 import CategoryTabs from '../../components/global/CategoryTabsSmall'
 import WatchEntry from '../../components/account/WatchEntry'
+import Search from '../../components/form/Search'
 
 // Assets
 import searchIcon from '../../assets/images/search-icon.svg'
@@ -54,11 +55,7 @@ const WatchRecords = () => {
               </div>
               {/* Search Bar */}
                 <div class='search-section'>
-                <form className='form' >
-                  <Input className="searchField" register={{ ...register("search", {}) }} errors={errors} type="text" placeholder="Search"
-                              render={() => <button type="button" className="input-inline-button" onClick={handleSearch} ><Image width={26} height={26} src={searchIcon} /></button>}
-                          />
-                  </form>
+                  <Search register={{ ...register("search", {}) }} errors={errors} placeholder='Search'/>
                 </div>
               {/* Video Collection */}
               <div class='videos'>

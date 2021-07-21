@@ -4,8 +4,13 @@
     width: 100%;
     height: 100%;
     padding: 0 125px;
-    margin-bottom: 68px;
+    margin-bottom: 65px;
     margin-top: 9px;
+
+    @include respond-to(md-down) {
+      padding: 0;
+      
+    }
     .swiper-container {
         border-radius: 15px;
         background-color: $secondary-pink;
@@ -29,14 +34,14 @@
         }
       }
         .swiper-button-next {
-            right: -40px;
+            right: 0;
             &:after {
               background-image: url("../../assets/images/arrow-right.svg");
             }
           }
         
           .swiper-button-prev {
-            left: -40px;
+            left: 0;
             &:after {
               background-image: url("../../assets/images/arrow-left.svg");
             }

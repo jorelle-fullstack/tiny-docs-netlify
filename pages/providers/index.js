@@ -1,5 +1,6 @@
 // Dependencies
 import { useRouter } from 'next/router'
+
 // Assets
 import heroImage from '../../assets/images/providers-page-avatar.webp'
 
@@ -10,6 +11,7 @@ import Testimony from '../../components/global/Testimony'
 import Image from 'next/image'
 import WhitePaper from '../../components/providers/WhitePaper'
 import Wave from '../../components/global/Wave'
+
 // Localizations
 import { testimonialContent, informationalContent } from './local'
 
