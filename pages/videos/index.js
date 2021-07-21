@@ -22,6 +22,7 @@ import searchIcon from '../../assets/images/search-icon.svg'
 
 // Localizations
 import { pageButtons, categoryButtons, allVideos } from './local'
+import CategoryTabs from "../../components/global/CategoryTabs"
 
 const Videos = () => {
     const account = {
@@ -96,11 +97,7 @@ const Videos = () => {
       </form>
       </CSSTransition>
                     </div>
-                    <div className='page-buttons'>
-                        {pageButtons.map((button, i) => {
-                            return <IconButton className={'category-nav-btn ' + button.className} key={i} icon={button.icon} >{button.label}</IconButton>
-                        })}
-                    </div>
+                    <CategoryTabs />
                 </div>
                 </div>
                 <div className='wave'></div>

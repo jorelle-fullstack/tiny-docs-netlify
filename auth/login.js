@@ -4,6 +4,7 @@ import '../services/firebase'
 import "firebase/firestore"
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import { Cookie, withCookie } from 'next-cookie'
 
 /**
  * 3rd party Login

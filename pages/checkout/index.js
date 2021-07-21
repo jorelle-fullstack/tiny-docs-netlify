@@ -1,5 +1,5 @@
 // Dependencies
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form"
 import ReactDOM from 'react-dom'
 import axios from 'axios'
@@ -11,6 +11,7 @@ import {
 
 // APIs
 import { addSubscription } from '../api'
+
 const Index = () => {
 
   const {
@@ -20,7 +21,6 @@ const Index = () => {
     setError,
     formState: { errors },
   } = useForm();
-
 
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState('')
@@ -84,5 +84,6 @@ const Index = () => {
     </div>
   )
 }
+
 
 export default Index

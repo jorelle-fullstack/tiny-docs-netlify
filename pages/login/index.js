@@ -34,7 +34,9 @@ const index = () => {
   const redirectLink = '/about-us'
 
   // Triggers animation on page load.
-  useEffect(() => { setInProp(true) })
+  useEffect(() => {
+    setInProp(true)
+  })
 
   const {
     register,
@@ -69,7 +71,7 @@ const index = () => {
       return router.push(redirectLink)
     } catch (error) {
       console.error(error)
-    }
+    } 
   }
 
   return (
@@ -79,7 +81,7 @@ const index = () => {
         <div className="content-holder">
           <h1 className='title'>Login</h1>
           {/* Login Form */}
-          <CSSTransition classNames='fade-slide-right' nodeRef={formRef} in={inProp} timeout={500}>
+          <CSSTransition classNames='fade-slide-left' nodeRef={formRef} in={inProp} appear={true} timeout={500}>
           <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className='form'>
             <Input showError={false} register={{ ...register("email", { required: true }) }} errors={errors} type="email" placeholder="Enter Email" />
             <Input showError={false} register={{ ...register("password", { required: true }) }} errors={errors} type="password" placeholder="Enter Password" />
@@ -90,7 +92,7 @@ const index = () => {
           </CSSTransition>
           <p>- Or Login With - </p>
           <div className="external-login-wrapper">
-            <CSSTransition nodeRef={googleBtnRef} in={inProp} classNames='pop' timeout={500}>
+            <CSSTransition nodeRef={googleBtnRef} in={inProp} classNames='pop' timeout={300}>
             <div className='social-btn' ref={googleBtnRef} >
             <Button className='social' onClick={e => handle3rdPartyLogin('google')}><img className='icon__google' src={googleImg.src} alt="" /></Button>
             </div>
@@ -107,7 +109,7 @@ const index = () => {
         </div>
       </div>
       <div className="second-wrapper">
-        <CSSTransition nodeRef={heroImageRef} in={inProp} appear={inProp} timeout={500} classNames='login-image'>
+        <CSSTransition nodeRef={heroImageRef} in={inProp} timeout={1000} classNames='login-image'>
           <img ref={heroImageRef} src={teamShot.src} />
         </CSSTransition>
       </div>

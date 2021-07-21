@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 import { login, passwordBaseRegister } from '../../auth'
 import React, { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 // Components
 import { Button } from '../../components/global'
@@ -18,9 +19,15 @@ import fbImg from '../../assets/images/facebook.svg'
 
 const index = () => {
   const router = useRouter()
-  const nodeRef = React.useRef(null)
+  const {
+    formRef,
+    googleBtnRef,
+    facebookBtnRef,
+    heroImageRef
+  } = React.createRef(null)
+
   // State variables
-  const [inProp, setInProp] = useState(false);
+  const [inTransition, setInTransition] = useState(false);
   const [submitting, setsubmitting] = useState(false)
 
   // React Forms
@@ -28,15 +35,13 @@ const index = () => {
   const redirectLink = '/plans'
 
   // Triggers animation on page load.
-  useEffect(() => { setInProp(true) })
+  useEffect(() => { setInTransition(true) })
 
   // Methods
   const onSubmit = async (data) => {
-    console.log(data)
     setsubmitting(true)
     const res = await passwordBaseRegister(data)
     setsubmitting(false)
-
     if (!res.message) {
       return router.push('/plans')
     }
@@ -61,9 +66,11 @@ const index = () => {
   const watchPassword = watch("password");
   return (
     <div className='page-register'>
+      <Head><title>Register your Account</title></Head>
       <div className="first-wrapper">
         <div className="content-holder">
           <h1 className='title'>Sign up</h1>
+          <CSSTransition nodeRef={formRef} in={inTransition} classNames='fade-slide-left' timeout={500}>
           <form onSubmit={handleSubmit(onSubmit)} className='form'>
             <div className="input-group">
               <Input register={{ ...register("fName", { required: true }) }} errors={errors} type="text" placeholder="First Name" />
@@ -94,10 +101,19 @@ const index = () => {
             />
             <Button loading={submitting} type='submit' className='btn--red'>Sign Up</Button>
           </form>
+          </CSSTransition>
           <p>- Or Login With - </p>
           <div className="external-login-wrapper">
-            <Button onClick={e => handle3rdPartyRegister('google')}><img className='icon__google' src={googleImg.src} alt="" /></Button>
-            <Button onClick={e => handle3rdPartyRegister('facebook')}><img className='icon__facebook' src={fbImg.src} alt="" /></Button>
+          <CSSTransition nodeRef={googleBtnRef} appear={true} in={inTransition} classNames='pop' timeout={300}>
+            <div className='social-btn'>
+            <Button ref={googleBtnRef} onClick={e => handle3rdPartyRegister('google')}><img className='icon__google' src={googleImg.src} alt="" /></Button>
+            </div>
+          </CSSTransition> 
+          <CSSTransition nodeRef={facebookBtnRef} appear={true} in={inTransition} classNames='pop' timeout={300}>
+            <div className='social-btn'>
+            <Button ref={facebookBtnRef} onClick={e => handle3rdPartyRegister('facebook')}><img className='icon__facebook' src={fbImg.src} alt="" /></Button>
+            </div>
+          </CSSTransition>
           </div>
           <Link href='/login' passHref>
             <a className='member'>Already a member? Login</a>
@@ -105,8 +121,8 @@ const index = () => {
         </div>
       </div>
       <div className="second-wrapper">
-      <CSSTransition nodeRef={nodeRef} in={inProp} appear={inProp} timeout={500} classNames='login-image'>
-          <img ref={nodeRef} src={registerBg.src} />
+      <CSSTransition nodeRef={heroImageRef} in={inTransition} appear={true} timeout={500} classNames='login-image'>
+          <img ref={heroImageRef} src={registerBg.src} />
         </CSSTransition>
       </div>
     </div>

@@ -12,8 +12,7 @@ import learnIcon from '../../assets/images/learn-nav-icon.svg'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 const CategoryTabs = () => {
-    const [inProp, setInProp] = useState(false)
-    const [tabs, setTabs] = useState([
+    const tabs = [
         {
             className: 'pink-shadow',
             label: 'Videos',
@@ -38,34 +37,20 @@ const CategoryTabs = () => {
             icon: learnIcon.src,
             route: ''
         },
-    ])
-    useEffect(() => { setInProp(true) })
+    ]
     return(
         <div className='category-tabs'>
-            <TransitionGroup>
+            <TransitionGroup component={null}>
                 {tabs.map((button, i) => {
+                    let timeout = parseInt(`${i}00`)
+                    timeout = timeout + 400
                     const ref = React.createRef(null)
-                    return <CSSTransition nodeRef={ref} key={i} in={inProp} appear={true} timeout={500} classNames='pop'>
-                        <IconButton nodeRef={ref} className={'category-nav-btn ' + button.className} key={i} icon={button.icon} >{button.label}</IconButton>
+                    return <CSSTransition noderef={ref} key={i} appear={true} in={true} timeout={timeout} classNames='pop'>
+                        <IconButton ref={ref} className={'category-nav-btn ' + button.className} key={i} icon={button.icon} >{button.label}</IconButton>
                     </CSSTransition>
                 })}
             </TransitionGroup>
-
-                        {/*tabs.map((button, i) => {
-                            const duration = i + 00
-                            const defaultStyle = {
-                                transition: 'all 300ms ease',
-                                transform: 'scale(0)'
-                            }
-                            const transitionStyles = {
-                                entering: { transform: 'scale(0)' },
-                                entered: { transform: 'scale(1)'}
-                            }
-                            return (
-                                
-                            )
-                        }) */}
-                    </div>
+        </div>
     )
 }
 
