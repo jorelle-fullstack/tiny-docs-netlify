@@ -1,7 +1,94 @@
-.login-image-enter {
-    transform: scale (0.0);
+/*
+===REMINDER ON USING CSS TRANSITIONS===
+
+The transitions below rely on the react-transition-group dependency,
+specifically the <CSSTransition> tag.  Official Documentation: http://reactcommunity.org/react-transition-group/css-transition
+
+Be sure to attach a node reference as follows: 
+
+1.  Create a const variable that will act as the reference:
+  const nodeRef = React.useRef(null)
+
+2.  Attach the nodeRef variable to your CSSTransition and tag:
+
+    <CSSTransition nodeRef={nodeRef} in={inProp} timeout={200} classNames='transition-name'>
+        <img ref={nodeRef} src={myImg.src} />
+    </CSSTransition>
+*/
+
+/* GLOBAL TRANSITIONS */
+
+// Pop
+.pop-enter { transform: scale(0); }
+.pop-enter-active {
+    transform: scale(1.05);
+    transition: all 300ms ease-in;
+}
+.pop-enter-done {
+    transform: scale(1);
+    transition: all 100ms ease;
+}
+.pop-exit { transform: scale(0) }
+.pop-exit-active {
+    transform: scale(0);
+    transition: all 300ms ease-in;
 }
 
-.login-image-enter.login-image-enter-active {
-    transform: scale (1.0);
+// Fade
+.fade-enter { opacity: 0; }
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
 }
+.fade-exit { opacity: 1; }
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+}
+
+// Fade Slide
+.fade-slide-right-enter {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+.fade-slide-right-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 500ms;
+}
+
+/* EXCLUSIVE TRANSITIONS */
+
+// Hero Image
+.login-image-enter {
+    opacity: 0;
+    transform: translateX(100px);
+}
+
+.login-image-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 500ms ease;
+}
+
+// Smile Button
+  .float-enter {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  .float-enter-active {
+    opacity: 1;
+    transform: translateY(-280px);
+    transition: all 500ms linear;
+  }
+  .float-enter-done {
+      opacity: 0;
+    transform: translateY(-360px);
+    transition: all 200ms linear;
+  }
+  .float-exit {
+    opacity: 1;
+  }
+  .float-exit-active {
+    opacity: 0;
+  }

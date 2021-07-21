@@ -45,7 +45,7 @@
       margin-bottom: 30px;
 
       display: flex;
-      > button {
+      .social-btn {
         width: 100%;
         &:first-child {
           margin-right: 30px;
@@ -58,6 +58,9 @@
     background-position: center;
     background-repeat: no-repeat;
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 .page-forgot,
@@ -117,6 +120,9 @@
 
 // Responsive View
 @include respond-to('sm-down') {
+  .page-login {
+    .second-wrapper { display: none; }
+  }
   .title, .form-title { font-size: 30px; }
   .content-holder { padding: 24px 16px; }
   input { height: 48px; font-size: 88%; margin-bottom: 15px; }

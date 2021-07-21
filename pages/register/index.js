@@ -1,21 +1,36 @@
-import { Button } from '../../components/global'
-import { useForm } from "react-hook-form";
+// Dependencies
+import { CSSTransition } from 'react-transition-group'
 import Link from 'next/link'
+import { useForm } from "react-hook-form"
 import { login, passwordBaseRegister } from '../../auth'
+import React, { useState, useEffect } from "react"
+import { useRouter } from 'next/router'
+
+// Components
+import { Button } from '../../components/global'
 import Input from '../../components/form/Input'
 
-import registerBg from '../../assets/images/register.svg'
+// Assets
+import registerBg from '../../assets/images/register-bg.svg'
 import googleImg from '../../assets/images/google.svg'
 import fbImg from '../../assets/images/facebook.svg'
-import { useState } from "react";
 
-import { useRouter } from 'next/router'
 
 const index = () => {
   const router = useRouter()
+  const nodeRef = React.useRef(null)
+  // State variables
+  const [inProp, setInProp] = useState(false);
   const [submitting, setsubmitting] = useState(false)
+
+  // React Forms
   const { register, handleSubmit, watch, setError, formState: { errors } } = useForm();
   const redirectLink = '/plans'
+
+  // Triggers animation on page load.
+  useEffect(() => { setInProp(true) })
+
+  // Methods
   const onSubmit = async (data) => {
     console.log(data)
     setsubmitting(true)
@@ -89,7 +104,10 @@ const index = () => {
           </Link>
         </div>
       </div>
-      <div className="second-wrapper" style={{ backgroundImage: `url(${registerBg.src})` }}>
+      <div className="second-wrapper">
+      <CSSTransition nodeRef={nodeRef} in={inProp} appear={inProp} timeout={500} classNames='login-image'>
+          <img ref={nodeRef} src={registerBg.src} />
+        </CSSTransition>
       </div>
     </div>
   )

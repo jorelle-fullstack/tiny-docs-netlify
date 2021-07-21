@@ -1,6 +1,10 @@
+// Dependencies
 import clsx from "clsx";
+
+// Components
 import Image from "next/image";
-import { Button } from "../../components/global";
+import { Button } from "../../components/global"
+import { CSSTransition } from "react-transition-group";
 
 const Banner = ({ title, description, btnColor, bannerImage, page, onClick = () => null }) => {
   const handleButtonClick = () => { onClick() }
@@ -16,6 +20,7 @@ const Banner = ({ title, description, btnColor, bannerImage, page, onClick = () 
           <div className="banner__wrapper--left">
             <h1>{title}</h1>
             <p>{description}</p>
+            <CSSTransition>
             <Button
               className={clsx({
                 "btn--yellow": btnColor === "yellow",
@@ -26,6 +31,7 @@ const Banner = ({ title, description, btnColor, bannerImage, page, onClick = () 
               })}
               onClick={handleButtonClick}
               >Learn More!</Button>
+            </CSSTransition>
           </div>
           <div className="banner__wrapper--right">
             <Image src={bannerImage} width={466} height={487} className="hero__image" alt="Hero Banner Image" />

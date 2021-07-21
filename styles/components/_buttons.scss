@@ -15,10 +15,8 @@
 
   transition: all 0.1s ease-in-out;
 
-  // &:hover {
-  //   transform: translateY(-5px);
-  //   // box-shadow: 0 5px rgb(106, 199, 192);
-  // }
+  &:hover { transform: scale(1.025); }
+  &:active { transform: scale(0.95); }
 
   &--blue {
     background: $primary-blue;
@@ -305,31 +303,4 @@
 
 .smile-particle {
   position: absolute;
-  animation: float 5s;
-}
-
-.float-appear {
-  opacity: 0;
-  left: 0%;
-  bottom: 0%;
-}
-.float-appear-active {
-  opacity: 1;
-  bottom: percentage(random(500)/100);
-}
-.float-enter {
-  opacity: 0;
-  left: percentage(random(500)/100);
-  bottom: percentage(random(600)/100);
-}
-.float-enter-active {
-  opacity: 1;
-  left: percentage(random(500)/100);
-  bottom: percentage(random(600)/100);
-}
-.float-exit {
-  opacity: 1;
-}
-.float-exit-active {
-  opacity: 0;
 }

@@ -47,12 +47,13 @@ const VideoPlayer = () => {
                     </div>
                 </div>
                 <div className='info'>
-                    <div className='left'>
-                    <div className='chips'>
+                <div className='chips'>
                         {chips.map((chip, i) => {
                             return <Chip key={i} label={chip} />
                         })}
                     </div>
+                    <div className='main'>
+                    <div className='left'>
                     <div className='wrapper'>
                         <h2>Featured Video Title</h2>
                         <p>Featured Video Description and Synopsis
@@ -62,6 +63,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue </p>
                     <div className='right'>
                     <SaveButton saved={false} />
                         <SmileButton count={4} />
+                    </div>
                     </div>
                     </div>
                 </div>
