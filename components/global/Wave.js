@@ -1,6 +1,6 @@
 const Wave = ({color}) => {
     return(
-        <div class={`wave wave-${color}`}></div>
+        <div className={`wave wave-${color}`}></div>
     )
 }
 

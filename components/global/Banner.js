@@ -1,6 +1,6 @@
 // Dependencies
-import React, {useState, useEffect } from "react";
-import clsx from "clsx";
+import React from "react"
+import clsx from "clsx"
 
 // Components
 import Image from "next/image";
@@ -9,13 +9,6 @@ import { CSSTransition } from "react-transition-group";
 
 const Banner = ({ title, description, btnColor, bannerImage, page, onClick = () => null }) => {
   const handleButtonClick = () => { onClick() }
-  const [transitionIn, setTransitionIn] = useState(false)
-  const {
-    buttonRef,
-    heroRef,
-    textRef
-  } = React.useRef(null)
-  useEffect(() => { setTransitionIn(true) })
   return (
     <div className={clsx("banner", {
       "banner--about-us": page === "About Us",
@@ -26,14 +19,13 @@ const Banner = ({ title, description, btnColor, bannerImage, page, onClick = () 
         <div className="container">
         <div className="banner__wrapper">
           <div className="banner__wrapper--left">
-          <CSSTransition in={transitionIn} nodeRef={textRef} timeout={500} classNames='fade-slide-left'>
-            <div nodeRef={textRef}>
+          <CSSTransition in={true} appear={true} timeout={200} classNames='fade-slide-left'>
+            <div>
             <h1>{title}</h1>
             <p>{description}</p>
             </div>
             </CSSTransition>
-            <CSSTransition in={transitionIn} nodeRef={buttonRef} timeout={500} classNames='pop'>
-            <div nodeRef={buttonRef}>
+            <CSSTransition in={true} appear={true} timeout={400} classNames='pop'>
             <Button
               className={clsx({
                 "btn--yellow": btnColor === "yellow",
@@ -44,12 +36,13 @@ const Banner = ({ title, description, btnColor, bannerImage, page, onClick = () 
               })}
               onClick={handleButtonClick}
               >Learn More!</Button>
-            </div>
             </CSSTransition>
           </div>
           <div className="banner__wrapper--right">
-          <CSSTransition in={transitionIn} nodeRef={heroRef} timeout={500} classNames='pop'>
-            <Image nodeRef={heroRef} src={bannerImage} width={466} height={487} className="hero__image" alt="Hero Banner Image" />
+          <CSSTransition in={true} appear={true} timeout={0} classNames='pop'>
+            <div className="hero__image">
+            <Image src={bannerImage} width={466} height={487} alt="Hero Banner Image" />
+            </div>
             </CSSTransition>
           </div>
         </div>

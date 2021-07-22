@@ -1,3 +1,6 @@
+// Dependencies
+import { CSSTransition } from 'react-transition-group'
+
 // Components
 import Image from 'next/image'
 import Button from '../../components/global/Button'
@@ -25,7 +28,10 @@ const index = () => {
                 </div>
             <div className='account-sidebar'>
                 {/* Account Info */}
+                <CSSTransition in={true} appear={true} classNames='pop'>
                 <div className='avatar'><Image src={account.avatar} width={248} height={248} /></div>
+                </CSSTransition>
+                <CSSTransition in={true} appear={true} classNames='fade-slide-right' timeout={400}>
                 <div className='info'>
                 <h3>{account.fname} {account.lname}</h3>
                 <p className='text-disabled'>Email: {account.email} <br />
@@ -66,6 +72,7 @@ const index = () => {
                 </div>
                 <Button className='btn--blue edit'>Update</Button>
                 </div>
+                </CSSTransition>
             </div>
             </div>
             </div>

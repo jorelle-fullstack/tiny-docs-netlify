@@ -34,14 +34,8 @@ const index = () => {
         })
       }
 
-    const [transitionIn, setTransitionIn] = useState(false)
-    // Transition References.
-    const {
-      bannerTitleRef,
-      bannerHeroRef,
-      navProfileIconRef,
-      navSearchRef
-    } = React.useRef(null)
+    const heroImageRef = React.createRef(null)
+
     // React Forms
       const {
         register,
@@ -50,8 +44,6 @@ const index = () => {
         setError,
         formState: { errors },
       } = useForm();
-
-    useEffect(() => { setTransitionIn(true) })
     return (
         <div className='page-parents'>
         <Head><title>Parents</title></Head>
@@ -64,14 +56,14 @@ const index = () => {
         <div className='nav-menu__wrapper'>
             {/* Profile Icon + Search Field */}
             <div className='nav-menu__wrapper--left'>
-            <CSSTransition nodeRef={navProfileIconRef} timeout={300} in={transitionIn} classNames='pop'>
-              <div className='profile-icon' nodeRef={navProfileIconRef}>
+            <CSSTransition timeout={0} in={true} appear={true} classNames='pop'>
+              <div className='profile-icon'>
               <Image className='profile-icon' src={account.profileIcon} width={73} height={73} />
               </div>
             </CSSTransition>
             {/* Search Field */}
-            <CSSTransition nodeRef={navProfileIconRef} timeout={300} in={transitionIn} classNames='fade-slide-right xccxz'>
-            <Search ref={navProfileIconRef} register={{ ...register("search", {}) }} errors={errors} placeholder='Search' onClick={handleSearch} />
+            <CSSTransition timeout={300} in={true} appear={true} classNames='fade-slide-right'>
+            <Search register={{ ...register("search", {}) }} errors={errors} placeholder='Search' onClick={handleSearch} />
             </CSSTransition>
             </div>
         {/* Categories Nav Buttons */}
@@ -79,11 +71,11 @@ const index = () => {
         </div>
         </div>
         <div className="banner__wrapper">
-          <CSSTransition nodeRef={bannerTitleRef} timeout={500} in={transitionIn} classNames='fade-slide-left'>
-          <h1 nodeRef={bannerTitleRef}>Catchy Hero Text Goes Here!</h1>
+          <CSSTransition timeout={500} in={true} appear={true} classNames='fade-slide-left'>
+          <h1>Catchy Hero Text Goes Here!</h1>
           </CSSTransition>
-          <CSSTransition nodeRef={bannerHeroRef} timeout={500} in={transitionIn} classNames='fade-slide-right'>
-        <div nodeRef={bannerHeroRef} className='hero-image'>
+          <CSSTransition timeout={500} in={true} appear={true} nodeRef={heroImageRef} classNames='fade-slide-right'>
+        <div className='hero-image' ref={heroImageRef}>
             <Image src={heroImage} width={424} height={404} alt="Hero Banner Image" />
             </div>
             </CSSTransition>
@@ -103,8 +95,8 @@ const index = () => {
         </div>
         <div className='categories-bar'>
             <div className='container'>
-                {categories.map((button) => {
-                return <Button className='btn--white-shadow category-btn'>{button.label}</Button>
+                {categories.map((button, i) => {
+                return <Button key={i} className='btn--white-shadow category-btn'>{button.label}</Button>
                 })}
             </div>
         </div>

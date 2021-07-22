@@ -3,13 +3,14 @@ import { CSSTransition } from 'react-transition-group'
 import Link from 'next/link'
 import { useForm } from "react-hook-form"
 import { login, passwordBaseRegister } from '../../auth'
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 // Components
 import { Button } from '../../components/global'
 import Input from '../../components/form/Input'
+import Image from 'next/image'
 
 // Assets
 import registerBg from '../../assets/images/register-bg.svg'
@@ -19,23 +20,13 @@ import fbImg from '../../assets/images/facebook.svg'
 
 const index = () => {
   const router = useRouter()
-  const {
-    formRef,
-    googleBtnRef,
-    facebookBtnRef,
-    heroImageRef
-  } = React.createRef(null)
 
   // State variables
-  const [inTransition, setInTransition] = useState(false);
   const [submitting, setsubmitting] = useState(false)
 
   // React Forms
   const { register, handleSubmit, watch, setError, formState: { errors } } = useForm();
   const redirectLink = '/plans'
-
-  // Triggers animation on page load.
-  useEffect(() => { setInTransition(true) })
 
   // Methods
   const onSubmit = async (data) => {
@@ -69,8 +60,10 @@ const index = () => {
       <Head><title>Register your Account</title></Head>
       <div className="first-wrapper">
         <div className="content-holder">
+        <CSSTransition in={true} appear={true} classNames='fade-slide-left' timeout={0}>
           <h1 className='title'>Sign up</h1>
-          <CSSTransition nodeRef={formRef} in={inTransition} classNames='fade-slide-left' timeout={500}>
+          </CSSTransition>
+          <CSSTransition in={true} appear={true} classNames='fade-slide-left' timeout={100}>
           <form onSubmit={handleSubmit(onSubmit)} className='form'>
             <div className="input-group">
               <Input register={{ ...register("fName", { required: true }) }} errors={errors} type="text" placeholder="First Name" />
@@ -99,19 +92,21 @@ const index = () => {
                 })
               }}
             />
+          <CSSTransition appear={true} in={true} classNames='pop' timeout={200}>
             <Button loading={submitting} type='submit' className='btn--red'>Sign Up</Button>
+          </CSSTransition>
           </form>
           </CSSTransition>
           <p>- Or Login With - </p>
           <div className="external-login-wrapper">
-          <CSSTransition nodeRef={googleBtnRef} appear={true} in={inTransition} classNames='pop' timeout={300}>
+          <CSSTransition appear={true} in={true} classNames='pop' timeout={300}>
             <div className='social-btn'>
-            <Button ref={googleBtnRef} onClick={e => handle3rdPartyRegister('google')}><img className='icon__google' src={googleImg.src} alt="" /></Button>
+            <Button onClick={e => handle3rdPartyRegister('google')}><img className='icon__google' src={googleImg.src} alt="" /></Button>
             </div>
           </CSSTransition> 
-          <CSSTransition nodeRef={facebookBtnRef} appear={true} in={inTransition} classNames='pop' timeout={300}>
+          <CSSTransition appear={true} in={true} classNames='pop' timeout={300}>
             <div className='social-btn'>
-            <Button ref={facebookBtnRef} onClick={e => handle3rdPartyRegister('facebook')}><img className='icon__facebook' src={fbImg.src} alt="" /></Button>
+            <Button onClick={e => handle3rdPartyRegister('facebook')}><img className='icon__facebook' src={fbImg.src} alt="" /></Button>
             </div>
           </CSSTransition>
           </div>
@@ -121,8 +116,8 @@ const index = () => {
         </div>
       </div>
       <div className="second-wrapper">
-      <CSSTransition nodeRef={heroImageRef} in={inTransition} appear={true} timeout={500} classNames='login-image'>
-          <img ref={heroImageRef} src={registerBg.src} />
+      <CSSTransition in={true} appear={true} timeout={0} classNames='pop'>
+          <Image width={525} height={601} src={registerBg.src} />
         </CSSTransition>
       </div>
     </div>

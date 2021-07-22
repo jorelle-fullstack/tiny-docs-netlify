@@ -21,7 +21,7 @@ import profileIcon from '../../assets/images/profile-icon.svg'
 import searchIcon from '../../assets/images/search-icon.svg'
 
 // Localizations
-import { pageButtons, categoryButtons, allVideos } from './local'
+import { categoryButtons, allVideos } from './local'
 import CategoryTabs from "../../components/global/CategoryTabs"
 
 const Videos = () => {
@@ -35,16 +35,9 @@ const Videos = () => {
         if (swiper) 
         swiper.slideTo(index)
     }
-    // Animation References
-    const [transitionIn, setTransitionIn] = useState(false)
-    const {
-        profileIconRef,
-        searchBarRef
-    } = React.useRef(null)
     // Gets current scrollbar position for knob components.
     const [scrollY, setScrollY] = useState(0)
     useEffect(() => {
-        setTransitionIn(true)
         const handleScroll = () => {
             setScrollY(window.scrollY)
         }
@@ -84,12 +77,12 @@ const Videos = () => {
                 <div className='body'>
                 <div className='container'>
                     <div className='top-section'>
-                        <CSSTransition in={transitionIn} nodeRef={profileIconRef} timeout={500} classNames='pop'>
-                        <div className='profile-icon' nodeRef={profileIconRef}>
+                        <CSSTransition in={true} appear={true} timeout={0} classNames='pop'>
+                        <div className='profile-icon'>
                         <Image width={93} height={93} src={account.profileIcon.src} />
                         </div>
                         </CSSTransition>
-                        <CSSTransition in={transitionIn} nodeRef={profileIconRef} timeout={500} classNames='fade-slide-right'>
+                        <CSSTransition in={true} appear={true} timeout={200} classNames='fade-slide-right'>
                     <form className='form' >
       <Input className="search-field" register={{ ...register("search", {}) }} errors={errors} type="text" placeholder="Search"
                 render={() => <button type="button" className="btn input-inline-button" onClick={(e) => handleSearch} ><Image width={26} height={26} src={searchIcon} /></button>}
@@ -103,7 +96,9 @@ const Videos = () => {
                 <div className='wave'></div>
             </div>
             <div className='category-buttons'>
-            <img className='tom' width={364} height={357} src={tom.src} />
+                <div className='tom'>
+                    <Image className='tom' width={364} height={357} src={tom.src} />
+                </div>
                 <div className='container'>
                 {categoryButtons.map((button, i) => {
                             return <IconButton className={'category-btn category-btn-'+ i + ' ' + button.className} key={i} icon={button.icon} onClick={(e) => handleCategorySwiper(i)} >{button.label}</IconButton>

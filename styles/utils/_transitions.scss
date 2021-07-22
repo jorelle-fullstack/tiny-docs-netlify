@@ -4,7 +4,8 @@
 The transitions below rely on the react-transition-group dependency,
 specifically the <CSSTransition> tag.  Official Documentation: http://reactcommunity.org/react-transition-group/css-transition
 
-Be sure to attach a node reference as follows: 
+For elements that will animate/transition when triggered via function, 
+be sure to attach a node reference as follows: 
 
 1.  Create a const variable that will act as the reference:
   const nodeRef = React.useRef(null)
@@ -14,23 +15,34 @@ Be sure to attach a node reference as follows:
     <CSSTransition nodeRef={nodeRef} in={inProp} timeout={200} classNames='transition-name'>
         <img ref={nodeRef} src={myImg.src} />
     </CSSTransition>
+
+
+For elements that you want to have an animated transition on page load,
+in your transition tag, set the 'in' and 'appear' parameter to 'true'.
+Disregard the usage of references for the transition and object.
 */
 
 /* GLOBAL TRANSITIONS */
 
 // Pop
-.pop-appear {
-  transform: scale(0);
-}
+.pop-appear { transform: scale(0); }
 .pop-appear-active {
     transform: scale(0);
-    transition: all 1s ease;
+    transition: all 300ms ease-out;
 }
 .pop-appear-done {
     transform: scale(1);
-    transition: all 1s ease-in;
+    transition: all 300ms ease-out;
 }
-
+.pop-enter { transform: scale(0); }
+.pop-enter-active {
+    transform: scale(0);
+    transition: all 300ms ease-out;
+}
+.pop-enter-done {
+    transform: scale(1);
+    transition: all 300ms ease-out;
+}
 .pop-exit { transform: scale(0) }
 .pop-exit-active {
     transform: scale(0);
@@ -38,6 +50,11 @@ Be sure to attach a node reference as follows:
 }
 
 // Fade
+.fade-appear { opacity: 0; }
+.fade-appear-active {
+    opacity: 1;
+    transition: opacity 300ms;
+}
 .fade-enter { opacity: 0; }
 .fade-enter-active {
     opacity: 1;
@@ -50,6 +67,24 @@ Be sure to attach a node reference as follows:
 }
 
 // Fade Slide
+.fade-slide-left-appear {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+.fade-slide-left-appear-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 400ms;
+}
+.fade-slide-right-appear {
+    opacity: 0;
+    transform: translateX(40px);
+}
+.fade-slide-right-appear-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 300ms;
+}
 .fade-slide-left-enter {
   opacity: 0;
   transform: translateX(-40px);

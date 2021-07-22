@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form"
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+import { CSSTransition } from 'react-transition-group'
+
 // Components
 import Head from 'next/head'
 import {
@@ -49,6 +51,8 @@ const Index = () => {
       }
 
       // Add subscription to account.  Variable "customer_id" is used as reference.
+      // Temporarily disabled due to errors (missing iata)
+      /*
       axios.post(addSubscription, payload).then((res) => {
           console.log(res)
           clearErrors()
@@ -57,6 +61,7 @@ const Index = () => {
           console.error(error)
           setError('discount', { type: "manual", message: 'Invalid discount code' })
         })
+        */
       console.log('%c ⚠ Compiling payload... ', 'color:yellow;background:black;padding:5px;',);
       return null
     } 
@@ -74,13 +79,21 @@ const Index = () => {
     <div className='container page-checkout'>
       <Head><title>Checkout</title></Head>
       <div className='steps'>
+        <CSSTransition in={true} appear={true} classNames='fade-slide-left' timeout={500}>
         <Email stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />
+        </CSSTransition>
+        <CSSTransition in={true} appear={true} classNames='fade-slide-left' timeout={700}>
         <Payment stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />
+        </CSSTransition>
+        <CSSTransition in={true} appear={true} classNames='fade-slide-left' timeout={900}>
         <Review stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />
+        </CSSTransition>
       </div>
+      <CSSTransition in={true} appear={true} classNames='fade-slide-right' timeout={900}>
       <div className="side-bar">
         <SideBar />
       </div>
+      </CSSTransition>
     </div>
   )
 }

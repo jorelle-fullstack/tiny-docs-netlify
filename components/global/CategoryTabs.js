@@ -1,5 +1,5 @@
 // Dependencies
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 // Components
 import IconButton from './IconButton'
@@ -42,7 +42,7 @@ const CategoryTabs = () => {
         <div className='category-tabs'>
             <TransitionGroup component={null}>
                 {tabs.map((button, i) => {
-                    let timeout = parseInt(`${i}00`)
+                    let timeout = parseInt(`${i*2}00`)
                     timeout = timeout + 400
                     const ref = React.createRef(null)
                     return <CSSTransition noderef={ref} key={i} appear={true} in={true} timeout={timeout} classNames='pop'>
