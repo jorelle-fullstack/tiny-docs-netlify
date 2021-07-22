@@ -1,78 +1,95 @@
 
 // Dependencies
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
+import React, { useState, useEffect } from 'react'
 // Components
 import Image from 'next/image'
-import { CSSTransition } from 'react-transition-group'
+import { Transition, TransitionGroup } from 'react-transition-group'
 
 // Assets
 import smileIcon from '../../assets/images/smile-icon.svg'
 
 const SmileButton = ({ onClick = () => null, count, smiled = false}) => {
-    const elements = []
-    const nodeRef = React.createRef(null)
-    const [inProp, setInProp] = useState(false)
-    const style = {
-      position: 'absolute',
-      width: '50px',
-      height: '50px'
-    }
+  // Smile particle elements.
+  const [elements, setElements] = useState([])
+
   const handleClick = (e) => {
-    showParticles()
-}
-  const showParticles = () => {
+    renderParticles()
+  }
+  const renderParticles = () => {
     const particles = 12
+    const els = []
     // Renders the particles tag where the floating smile icons will appear.
     // const particleArea = <div id='particles' className='particles' ref={this.tempParticles}></div>
     // ReactDOM.render(particleArea, document.getElementById('smile-btn'))
     for (var i = 0; i < particles; i++) {
 
+      /* RANDOMIZED VARIABLES FOR ANIMATION */
+
       // Size of particle.
-      const size = Math.floor(Math.random() * 50 + 5)
-      // Dynamic styling.
-      const style = {
-        position: 'absolute',
+      const size = Math.floor(Math.random() * (50 - 24) + 24)
+      // How far the particle travels.
+      const length = Math.floor((Math.random() * (400 - 100) + 100))
+      
+      // Deviation of the direction the particle travels towards.
+      let deviation = Math.floor((Math.random() * (250 - 50) + 50))
+      deviation *= Math.round(Math.random()) ? 1 : -1
+
+      // The duration of how long the particle stays alive.
+      const duration = `${i+2}000`
+
+      // Particle style.
+      const style= {
         width: size,
+        position: 'absolute',
         height: size
       }
-      
-      // Dynamic animation using React Transition Group <CSSTransition/>.
-      const classNames = {
-        
-      }
-      // Smile particle.
-            
-            const particle = <CSSTransition key={i} unmountOnExit nodeRef={nodeRef} in={inProp} classNames='float' timeout={500}>
-              <img ref={nodeRef} key={i} style={style} src={smileIcon.src} />
-            </CSSTransition>
 
-      elements.push(particle)
-      if (i == 0) { // no need to add the listener on all generated elements
-        // this.tempParticles.remove();
+      // Default transition state.
+      const defaultStyle = {
+        opacity: 0,
+        transition: 'all 800ms ease-in',
       }
+      
+      // Transition styles.
+      const tStyles = {
+        entering: {
+          opacity: 1,
+          transition: 'opacity 800ms ease-out'
+        },
+        entered: {
+          opacity: 0,
+          transform: `translate(${deviation}px, -${length}px)`
+        }
+      }
+
+      const Float = ({ in: inProp }) => (
+        <Transition in={inProp} timeout={duration}>
+          {state => (
+            <div style={{
+              ...defaultStyle,
+            ...tStyles[state]
+            }}>
+              <img key={i} style={style} src={smileIcon.src} />
+            </div>
+          )}
+        </Transition>
+      )
+      // Smile particle.
+      const particle = <Float />
+      els.push(particle)
     }
-    // ReactDOM.render(elements, document.getElementById('particles'))
-    setInProp(true)
-    // FOR DEBUGGING ONLY
-    setTimeout(() => {
-      //ReactDOM.render(null, document.getElementById('particles'))
-      setInProp(false)
-    }, 1000);
+    setElements(els)
   }
   return (
       <button id='smile-btn' className='btn smile-btn' onClick={handleClick}>
           <h3>{count}</h3>
           <div className=''>
-            <div id='particles' className='particles'>
-              {elements.map((element) => {
-                return element
-              })}
-            <CSSTransition unmountOnExit nodeRef={nodeRef} in={inProp} classNames='float' timeout={500}>
-              <img ref={nodeRef} tyle={style} src={smileIcon.src} />
-            </CSSTransition>
+          <TransitionGroup id='particles' className='particles'>
+                {elements.map((element) => { return element })}
+              </TransitionGroup>
+            <div className='smile'>
+              <Image width={42} height={42} src={smileIcon.src} />
             </div>
-            <img className='smile' src={smileIcon.src} />
           </div>
       </button>
   )

@@ -12,10 +12,8 @@
         .form {
             //display: none;
             width: 100%;
-            .input-wrapper {
-                max-width: 1042px;
-                height: 92px;
-            }
+            max-width: 1042px;
+            // height: 92px;
         }
         .back {
             img { transform: rotate(-180deg); }
@@ -26,11 +24,11 @@
         }
         .category-tabs {
             margin: 0;
-            display: none;
         }
     }
     .main {
         display: flex;
+        justify-content: space-between;
         .video-player {
             width: 100%;
             text-align: center;
@@ -40,6 +38,7 @@
             &__wrapper {
                 display: flex;
                 flex-direction: column;
+                background-color: $secondary-darker-blue;
             }
             .player {
                 width: 100%;
@@ -63,10 +62,10 @@
             .main {
                 width: 100%;
                 .left {
+                    max-width: 70%;
                     display: flex;
                     flex-direction: column;
                     .wrapper {
-                        max-width: 70%;
                         margin-left: 15px;
                         h2 {
                             margin-bottom: 5px;
@@ -86,10 +85,10 @@
         }
         .playlist {
             width: 100%;
-            max-width: 30%;
+            max-width: 25%;
             background-color: $primary-pink;
-            max-height: 100%;
-            overflow-y: auto;
+            // height: 800px;
+            // overflow-y: auto;
             .header {
                 margin: 20px;
                 padding: 8px;
@@ -104,6 +103,8 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                height: 800px;
+                overflow-y: auto;
             }
         }
     }

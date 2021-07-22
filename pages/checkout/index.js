@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 import { CSSTransition } from 'react-transition-group'
+import { useCookies } from 'react-cookie'
 
 // Components
 import Head from 'next/head'
@@ -15,7 +16,8 @@ import {
 import { addSubscription } from '../api'
 
 const Index = () => {
-
+  const [cookies, setCookie] = useCookies(['user'])
+  console.log(cookies)
   const {
     register,
     handleSubmit,
@@ -47,7 +49,6 @@ const Index = () => {
         email: localStorage.user.email,
         phone_number: localStorage.user.phoneNumber,
         name: localStorage.user.displayName,
-        customer_id: ''
       }
 
       // Add subscription to account.  Variable "customer_id" is used as reference.

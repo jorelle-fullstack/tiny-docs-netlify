@@ -1,7 +1,8 @@
 // Dependencies
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
-import { CSSTransition } from 'react-transition-group'
-
+import { CSSTransition, SwitchTransition } from 'react-transition-group'
+import { useRouter } from 'next/router'
 // Components
 import Head from 'next/head'
 import CategoryTabs from '../../components/global/CategoryTabs'
@@ -22,6 +23,7 @@ import searchIcon from '../../assets/images/search-icon.svg'
 import { allVideos, chips } from './local'
 
 const VideoPlayer = () => {
+    const router = useRouter()
     const {
         register,
         handleSubmit,
@@ -29,23 +31,37 @@ const VideoPlayer = () => {
         setError,
         formState: { errors },
       } = useForm();
+
+    const { searchBarRef } = React.useRef(null)
+    const [toggleSearchBar, toggleSearch] = useState(false)
+    const categoryTabs = <CategoryTabs />
+    const searchBar = <form className='form' ref={searchBarRef}>
+    <Input className='search-field' register={{ ...register("search", { required: false }) }} errors={errors} type="text" placeholder="Search" />
+    </form>
+    
+    const handleBack = () => { router.push('/videos') }
+    const handleSearchToggle = () => { toggleSearch(!toggleSearchBar) }
+    
     return(
-        <div className='page-video_player'>
+        <div className='page-video_player container'>
             <Head><title>Video Player | [Title Here]</title></Head>
             <div className='top-section'>
-                    <Fab className='back' icon={arrowIcon} />
-                    <CategoryTabs />
-                    <form className='form'>
-                        <Input className='search-field' register={{ ...register("search", { required: false }) }} errors={errors} type="text" placeholder="Search" />
-                    </form>
-                    <Fab className='search' icon={searchIcon} />
+                    <Fab className='back' icon={arrowIcon} onClick={handleBack} />
+                    <SwitchTransition>
+                        <CSSTransition key={toggleSearchBar} classNames='pop' timeout={0}>
+                            { toggleSearchBar ? searchBar : categoryTabs }
+                        </CSSTransition>
+                    </SwitchTransition>
+                    <Fab className='search' onClick={handleSearchToggle} icon={searchIcon} />
                 </div>
             <div className='main'>
                 <div className='video-player__wrapper'>
                 <div className='video-player'>
+                <CSSTransition in={true} appear={true} classNames='fade' timeout={600}>
                     <div className='player'>
                         <Image src={videoPlaceholder} width={1043} height={601} />
                     </div>
+                </CSSTransition>
                 </div>
                 <div className='info'>
                 <div className='chips'>
@@ -75,9 +91,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue </p>
                         <p>Tiny Docs Spotlight</p>
                     </div>
                     <div className='list'>
-                    {allVideos.map((video, i) => {
+                        <div>
+                        {allVideos.map((video, i) => {
                             return <VideoEntry key={i} route={'/videos/vid'} thumbnail={video.thumbnail} title={video.title} duration={video.duration} />
                         })}
+                        </div>
                     </div>
                 </div>
                 </div>

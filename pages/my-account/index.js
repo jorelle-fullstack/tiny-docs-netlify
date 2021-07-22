@@ -17,14 +17,22 @@ const index = () => {
             <div className='container'>
                 <div className='top-section'>
                     <CategoryTabs />
+                    <CSSTransition in={true} appear={true} classNames='fade-slide=left'>
                     <h1>My Account</h1>
+                    </CSSTransition>
                 </div>
             <div className='main-section'>
                 {/* Watch History */}
             <div className='videos-section'>
+                <CSSTransition in={true} appear={true} classNames='fade-slide-left' timeout={100}>
                 <VideoSlider title='Watch History' videos={watchHistory} type='history' />
+                </CSSTransition>
+                <CSSTransition in={true} appear={true} classNames='fade-slide-left' timeout={200}>
                 <VideoSlider title='Saved' videos={watchHistory} type='saved' />
+                </CSSTransition>
+                <CSSTransition in={true} appear={true} classNames='fade-slide-left' timeout={300}>
                 <VideoSlider title='Liked' videos={watchHistory} type='liked' />
+                </CSSTransition>
                 </div>
             <div className='account-sidebar'>
                 {/* Account Info */}

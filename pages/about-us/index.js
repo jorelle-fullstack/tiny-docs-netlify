@@ -5,6 +5,7 @@ import { Team } from "../../components/global";
 import { Advisors } from "../../components/global";
 import HeroImage from "../../assets/images/about-us-hero-image.png";
 
+import { useCookies } from 'react-cookie'
 const index = () => {
   const teamContent = [
     {
@@ -140,7 +141,8 @@ const index = () => {
       ],
     },
   ];
-
+  const [cookies, setCookie] = useCookies(['user']);
+  console.log(cookies)
   return (
     <div className="page-about-us">
       <Banner

@@ -116,25 +116,3 @@ Disregard the usage of references for the transition and object.
     transform: translateX(0);
     transition: all 300ms ease;
 }
-
-// Smile Button
-  .float-enter {
-    opacity: 0;
-    transform: translateY(0);
-  }
-  .float-enter-active {
-    opacity: 1;
-    transform: translateY(-280px);
-    transition: all 300ms linear;
-  }
-  .float-enter-done {
-      opacity: 0;
-    transform: translateY(-360px);
-    transition: all 300ms linear;
-  }
-  .float-exit {
-    opacity: 1;
-  }
-  .float-exit-active {
-    opacity: 0;
-  }

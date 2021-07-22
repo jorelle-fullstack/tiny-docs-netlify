@@ -44,9 +44,8 @@ const CategoryTabs = () => {
                 {tabs.map((button, i) => {
                     let timeout = parseInt(`${i*2}00`)
                     timeout = timeout + 400
-                    const ref = React.createRef(null)
-                    return <CSSTransition noderef={ref} key={i} appear={true} in={true} timeout={timeout} classNames='pop'>
-                        <IconButton ref={ref} className={'category-nav-btn ' + button.className} key={i} icon={button.icon} >{button.label}</IconButton>
+                    return <CSSTransition key={i} appear={true} in={true} timeout={timeout} classNames='pop'>
+                        <IconButton className={'category-nav-btn ' + button.className} key={i} icon={button.icon} >{button.label}</IconButton>
                     </CSSTransition>
                 })}
             </TransitionGroup>
