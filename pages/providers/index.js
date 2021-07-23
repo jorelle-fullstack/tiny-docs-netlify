@@ -30,7 +30,7 @@ const index = () => {
                 description="Short phrase explaining the mission or what Tiny Docs offers for providers."
                 btnColor="banner yellow"
                 bannerImage={heroImage}
-                onClick={(e) => {handleAnchorScroll}}
+                onClick={handleAnchorScroll}
             />
             {/* Information */}
             <div id="values" className='section-info'>
