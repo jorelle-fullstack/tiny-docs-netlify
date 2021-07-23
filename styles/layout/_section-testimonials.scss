@@ -9,7 +9,7 @@
     color: $secondary-darker-blue;
     background-color: $white;
     background-size: contain;
-    background-image: url("../../assets/images/dark-blue-wave.webp");
+    background-image: url("../../assets/images/green-wave.png");
     background-repeat: no-repeat;
     background-position: center bottom;
     border-radius: 20px;
@@ -32,6 +32,8 @@
       box-shadow: 0px 10px 0px #c2bdb4;
     }
   }
+  .green { background-image: url("../../assets/images/green-wave.png"); }
+    .dark-blue { background-image: url("../../assets/images/dark-blue-wave.webp"); }
 
   .swiper-button-prev,
   .swiper-button-next {

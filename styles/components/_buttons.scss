@@ -305,3 +305,7 @@
 .smile-particle {
   position: absolute;
 }
+
+.input-inline-button {
+  &:hover { background-color: $primary-blue; }
+}
