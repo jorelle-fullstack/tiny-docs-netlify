@@ -39,6 +39,7 @@
                     margin-right: 52px;
                     min-width: 93px;
                     min-height: 93px;
+                    @include respond-to(md-down) { margin-right: 0; }
                 }
                 .form {
                     width: 100%;
@@ -111,7 +112,6 @@
                         max-height: 128px;
                         font-size: 16px;
                         font-weight: 600;
-                        box-shadow: 0 3px;
                         img {
                             margin-right: 0;
                             margin-bottom: 3px;
