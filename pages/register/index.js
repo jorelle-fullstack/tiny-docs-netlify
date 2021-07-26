@@ -74,10 +74,10 @@ const index = () => {
               ...register("password",
                 {
                   required: true,
-                  pattern: {
-                    value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*.#?&])[A-Za-z\d@$!%.*#?&]{6,}$/,
-                    message: 'Strong passwords have at least 6 characters and a mix of letters and numbers'
-                  }
+                  // pattern: {
+                  //   value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*.#?&])[A-Za-z\d@$!%.*#?&]{6,}$/,
+                  //   message: 'Strong passwords have at least 6 characters and a mix of letters and numbers'
+                  // }
                 })
             }} errors={errors} type="password" placeholder="Password" />
             <Input

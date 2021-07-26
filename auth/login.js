@@ -92,7 +92,7 @@ export const passwordBaseRegister = async ({ email, password, fName, lName }) =>
     var customer_id = "";
     // Process Stripe, Get Customer ID first
     try {
-      await axios.post('/api/stripe/user/createUserWithoutCard', {
+      await axios.post('/api/stripe/users/createUserWithoutCard', {
         email: email,
         first_name: fName,
         last_name: lName
