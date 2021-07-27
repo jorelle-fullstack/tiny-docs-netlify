@@ -26,14 +26,28 @@ export const login = async (type) => {
     }
 
     //Firebase Auth with Google
-    const userCred = await firebase.auth().signInWithPopup(loginType)
+    const userCred = await firebase.auth().signInWithPopup(loginType);
     // Check if user is new
     var isNewUser = userCred.additionalUserInfo.isNewUser;
     var firstName, lastName, email = "";
-
+    var customer_id = "";
     console.log('%c ⚠ user Cred ', 'color:yellow;background:black;padding:5px;', userCred);
 
     if (isNewUser == true) {
+      try {
+        await axios.post('/api/stripe/users/createUserWithoutCard', {
+          email: userCred?.additionalUserInfo?.profile?.email,
+          first_name: firstName ? userCred?.additionalUserInfo?.profile?.given_name : userCred?.additionalUserInfo?.profile?.first_name,
+          last_name: lastName ? userCred?.additionalUserInfo?.profile?.family_name : userCred?.additionalUserInfo?.profile?.last_name,
+        })
+        .then((response) =>
+            customer_id = response.data.customer_details.id
+          )
+        }
+      catch(error){
+          console.log('%c ❌ Error on Getting Stripe Customer ID ', 'color:yellow;background:black;padding:5px;', error);
+      }
+
       await firebase
         .firestore()
         .collection("users")
@@ -43,6 +57,7 @@ export const login = async (type) => {
           lastName: lastName ? userCred?.additionalUserInfo?.profile?.family_name : userCred?.additionalUserInfo?.profile?.last_name,
           email: userCred?.additionalUserInfo?.profile?.email,
           user_type: "freemium",
+          customer_id: customer_id,
           time_stamp: firebase.firestore.Timestamp.now()
         })
 
