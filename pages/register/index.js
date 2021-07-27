@@ -2,7 +2,7 @@
 import { CSSTransition } from 'react-transition-group'
 import Link from 'next/link'
 import { useForm } from "react-hook-form"
-import { login, handleRegistrationData, passwordBaseRegister } from '../../auth'
+import { login, passwordBaseRegister } from '../../auth'
 import React, { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 import Head from 'next/head'
@@ -20,9 +20,10 @@ import fbImg from '../../assets/images/facebook.svg'
 
 const index = () => {
   const router = useRouter()
-
   useEffect(() => {
-    if (!localStorage.plan) { router.push('/') }
+      const tokenCheck = typeof window !== 'undefined' ? localStorage.getItem('plan') : null;
+      console.log(tokenCheck)
+      tokenCheck !== null ? "" : router.push('/login')
   })
 
   // State variables
@@ -34,13 +35,22 @@ const index = () => {
 
   // Methods
   const onSubmit = async (data) => {
-
+    const formData = data
+    formData.plan = localStorage.plan
     // Caches registration data.
     setsubmitting(true)
     const res = await passwordBaseRegister(data)
     setsubmitting(false)
 
-    if (!res.message) { return router.push('/plans') }
+    if (!res.message) {
+      let r = null
+      if (formData.plan === 'Freemium') {
+        r = router.push('/my-account')
+      } else {
+        r = router.push('/checkout')
+      }
+      return r
+    }
     
     if (res.message.includes('email')) {
       setError('email', {

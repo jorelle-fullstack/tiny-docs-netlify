@@ -12,7 +12,7 @@ import { Button } from "../../components/global"
 import Check from "../../assets/images/check.svg"
 import Close from "../../assets/images/close.svg"
 
-const Plans = ({ registration = false }) => {
+const Plans = () => {
   const router = useRouter()
 
   // Handles onClick event of pricing plan buttons.
@@ -121,7 +121,9 @@ const Plans = ({ registration = false }) => {
     <div className="section-plans">
       <div className="container">
         <div className="plan__wrapper">
+          <CSSTransition in={true} appear={true} classNames='pop'>
           <h1>Pricing Plans</h1>
+          </CSSTransition>
           <div className="plan__content">
           <TransitionGroup component={null}>
           {plans.map((plan, i) => {

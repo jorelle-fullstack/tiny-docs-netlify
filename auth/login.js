@@ -99,7 +99,7 @@ export const passwordBasedLogin = async ({ email, password }) => {
  *
  * @param {*} type register
  */
-export const passwordBaseRegister = async ({ email, password, fName, lName }) => {
+export const passwordBaseRegister = async ({ email, password, fName, lName, plan }) => {
 
   try {
     const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -147,7 +147,7 @@ export const passwordBaseRegister = async ({ email, password, fName, lName }) =>
         firstName: fName,
         lastName: lName,
         email,
-        user_type: "freemium",
+        user_type: plan,
         customer_id: customer_id,
         time_stamp: firebase.firestore.Timestamp.now()
       })
