@@ -156,7 +156,7 @@ export const passwordBaseRegister = async ({ email, password, fName, lName }) =>
  * @param {*} type newPasswordBased || ''
  * @returns
  */
-function handleSuccessAuthentication(data, type = '') {
+async function handleSuccessAuthentication(data, type = '') {
 
   if (!data) return
   const { credential, user } = data
@@ -164,9 +164,14 @@ function handleSuccessAuthentication(data, type = '') {
   if (type === 'passwordBased') {
     localStorage.token = user.Aa
     localStorage.user = JSON.stringify(user)
+    localStorage.cus_id = await getCustomerId(user.uid).then((res) => { return res })
     return
   }
-
   localStorage.token = credential.accessToken
   localStorage.user = JSON.stringify(user)
+  localStorage.cus_id = await getCustomerId(user.uid).then((res) => { return res })
+}
+
+async function getCustomerId(uid) {
+  return await firebase.firestore().collection('users').doc(uid).get().then((doc) => { return doc.data().customer_id })
 }

@@ -100,7 +100,7 @@ const index = () => {
             </div>
             </CSSTransition>
           </div>
-          <Link href='/register   ' passHref>
+          <Link href='/plans' passHref>
             <a className='member'>Not a Member? Sign Up Now!</a>
           </Link>
         </div>

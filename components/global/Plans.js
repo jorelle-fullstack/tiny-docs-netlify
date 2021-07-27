@@ -1,23 +1,24 @@
+// Dependencies
 import React from "react";
 import clsx from "clsx";
-import Image from "next/image";
 import { useRouter } from 'next/router'
-import { Button } from "../../components/global";
-import Check from "../../assets/images/check.svg";
-import Close from "../../assets/images/close.svg";
-import Link from 'next/link'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
-const Plans = () => {
+// Components
+import Image from "next/image";
+import { Button } from "../../components/global"
+
+// Assets
+import Check from "../../assets/images/check.svg"
+import Close from "../../assets/images/close.svg"
+
+const Plans = ({ registration = false }) => {
   const router = useRouter()
 
   // Handles onClick event of pricing plan buttons.
   function handlePlanOnClick (plan) {
-    const category = plan.category
-    if (category === 'Freemium') {
-      router.push('/')
-    } else {
-      router.push('/checkout')
-    }
+    localStorage.plan = plan.category
+    router.push('/register')
   }
   
   const plans = [
@@ -25,8 +26,8 @@ const Plans = () => {
       category: "Freemium",
       title: "Freemium",
       description: "This plan is best for..",
-      link: '/register',
-      inclusions: [
+      link: '/my-account',
+      inclusions: [ 
         {
           included: false,
           item: "You don’t get this",
@@ -122,8 +123,12 @@ const Plans = () => {
         <div className="plan__wrapper">
           <h1>Pricing Plans</h1>
           <div className="plan__content">
-            {plans.map((plan, i) => {
+          <TransitionGroup component={null}>
+          {plans.map((plan, i) => {
+              let timeout = parseInt(`${i*2}00`)
+              timeout = timeout + 500
               return (
+                <CSSTransition key={i} in={true} appear={true} classNames='pop' timeout={timeout}>
                 <div
                   key={i}
                   className={clsx("plan__holder", {
@@ -161,9 +166,7 @@ const Plans = () => {
                     <p className="plan__price">
                       $<span>{plan.price}</span>/month
                     </p>
-                    <Link href={plan.link}>
-                      <a>
-                        <Button
+                    <Button onClick={(e) => handlePlanOnClick(plan)}
                           className={clsx({
                             "btn--yellow": plan.category === "Freemium",
                             "btn--red": plan.category === "Individuals",
@@ -171,12 +174,13 @@ const Plans = () => {
                           })}
                         >
                           {plan.category !== 'Freemium' ? 'Buy Now' : 'Avail Now'}
-                        </Button></a>
-                    </Link>
+                        </Button>
                   </div>
                 </div>
-              );
+                </CSSTransition>
+              )
             })}
+          </TransitionGroup>
           </div>
         </div>
       </div>

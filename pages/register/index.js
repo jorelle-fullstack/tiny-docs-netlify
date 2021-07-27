@@ -2,8 +2,8 @@
 import { CSSTransition } from 'react-transition-group'
 import Link from 'next/link'
 import { useForm } from "react-hook-form"
-import { login, passwordBaseRegister } from '../../auth'
-import React, { useState } from "react"
+import { login, handleRegistrationData, passwordBaseRegister } from '../../auth'
+import React, { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
@@ -21,6 +21,10 @@ import fbImg from '../../assets/images/facebook.svg'
 const index = () => {
   const router = useRouter()
 
+  useEffect(() => {
+    if (!localStorage.plan) { router.push('/') }
+  })
+
   // State variables
   const [submitting, setsubmitting] = useState(false)
 
@@ -30,13 +34,14 @@ const index = () => {
 
   // Methods
   const onSubmit = async (data) => {
+
+    // Caches registration data.
     setsubmitting(true)
     const res = await passwordBaseRegister(data)
     setsubmitting(false)
-    if (!res.message) {
-      return router.push('/plans')
-    }
 
+    if (!res.message) { return router.push('/plans') }
+    
     if (res.message.includes('email')) {
       setError('email', {
         type: 'manual',
@@ -74,10 +79,10 @@ const index = () => {
               ...register("password",
                 {
                   required: true,
-                  // pattern: {
-                  //   value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*.#?&])[A-Za-z\d@$!%.*#?&]{6,}$/,
-                  //   message: 'Strong passwords have at least 6 characters and a mix of letters and numbers'
-                  // }
+                  pattern: {
+                    value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*.#?&])[A-Za-z\d@$!%.*#?&]{6,}$/,
+                    message: 'Strong passwords have at least 6 characters and a mix of letters and numbers'
+                  }
                 })
             }} errors={errors} type="password" placeholder="Password" />
             <Input

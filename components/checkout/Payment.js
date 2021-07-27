@@ -123,7 +123,7 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
               />
               <p className='sub-info' >Transactions are secure and encrypted</p>
 
-              <Input className='discount-field' disabled={discountValid} register={{ ...register("discount", {}) }} errors={errors} type="text" placeholder="Discount Code"
+              <Input className='discount-field' disabled={discountValid} register={{ ...register("discount", {}) }} errors={errors} type="text" placeholder="Promo Code"
                 render={() => <Button id="discount-btn" className={clsx('input-inline-button', {
                   'discount-valid': discountValid,
                   null: !discountValid

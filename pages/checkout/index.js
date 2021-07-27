@@ -52,7 +52,7 @@ const Index = () => {
       }
 
       // Add subscription to account.  Variable "customer_id" is used as reference.
-      // Temporarily disabled due to errors (missing iata)
+      // Temporarily disabled due to errors (missing data)
       /*
       axios.post(addSubscription, payload).then((res) => {
           console.log(res)

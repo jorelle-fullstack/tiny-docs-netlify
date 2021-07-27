@@ -4,7 +4,7 @@ import Plans from '../../components/global/Plans'
 const PlansPage = () => {
   return (
     <div className="plans-page">
-      <Plans />
+      <Plans registration={true} />
     </div>
   )
 }
