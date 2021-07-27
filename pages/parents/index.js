@@ -7,6 +7,7 @@ import heroImage from '../../assets/images/tam-clean.svg'
 import Button from '../../components/global/Button'
 import Head from 'next/head'
 import Image from 'next/image'
+import Router from 'next/router'
 import Input from '../../components/form/Input'
 import { useForm } from "react-hook-form"
 import Featured from '../../components/parents/Featured'
@@ -20,7 +21,18 @@ import profileIcon from '../../assets/images/profile-icon.svg'
 
 // Localizations
 import { categories, featuredResources, allResources } from './local.js'
+
+
+
 const index = () => {
+    
+    //Authentication Checking
+    useEffect(() => {
+      const tokenCheck = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+      console.log(tokenCheck);
+      tokenCheck != null ? "" : Router.push('/login');
+    }, []); 
+
     // Account Object.
     const account = {
         account_id: null,
@@ -33,7 +45,7 @@ const index = () => {
           message: 'Search field is empty.'
         })
       }
-
+      
     const heroImageRef = React.createRef(null)
 
     // React Forms

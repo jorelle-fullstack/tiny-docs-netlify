@@ -1,5 +1,5 @@
-// Dependencies
-import { useRouter } from 'next/router'
+//Dependencies
+import React, { useState, useEffect } from 'react'
 
 // Assets
 import heroImage from '../../assets/images/providers-page-avatar.webp'
@@ -11,6 +11,7 @@ import Testimony from '../../components/global/Testimony'
 import Image from 'next/image'
 import WhitePaper from '../../components/providers/WhitePaper'
 import Wave from '../../components/global/Wave'
+import Router from 'next/router'
 
 // Localizations
 import { testimonialContent, informationalContent } from './local'
@@ -20,6 +21,14 @@ const index = () => {
       const valuesSection = document.getElementById('values')
       valuesSection.scrollIntoView({behavior: 'smooth'})
     }
+
+    //Authentication Checking
+    useEffect(() => {
+        const tokenCheck = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+        console.log(tokenCheck);
+        tokenCheck != null ? "" : Router.push('/login');
+    }, []); 
+    
     return (
         <div className='page-providers'>
           <Head><title>Our Providers</title></Head>
