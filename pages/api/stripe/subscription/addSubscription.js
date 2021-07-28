@@ -29,18 +29,18 @@ export default async function handler (req, res) {
         exp_month: card_exp_month,
         exp_year: card_exp_year,
         cvc: card_cvc,
-        billing_details:{
-          address:{
-            city: city,
-            country: country,
-            postal_code: postal_code,
-            state: state
-          },
-          email: email,
-          name: name,
-          phone: phone_number
-        }
       },
+      billing_details:{
+        address:{
+          city: city,
+          country: country,
+          postal_code: postal_code,
+          state: state
+        },
+        email: email,
+        name: name,
+        phone: phone_number
+      }
     });
     await stripe.paymentMethods.attach(
       paymentMethod.id,
