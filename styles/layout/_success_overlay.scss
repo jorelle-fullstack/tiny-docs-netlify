@@ -2,24 +2,16 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items: center;
     height: 100%;
     width: 100%;
     z-index: 100;
     background-color: $secondary-brown;
     padding: 120px;
-    h1 {
-        color: black;
-        margin-top: 158px;
-        margin-bottom: 80px;
-    }
-    h5 {
-        font-size: 16px;
-        margin-bottom: 80px;
-    }
+    h1 { color: black; margin-top: 70px; }
+    h5 { font-size: 16px; }
     .check-circle {
-        margin-bottom: 78px;
         background-color :white;
         width: 92px;
         height: 92px;
@@ -33,5 +25,16 @@
     .go-to-home {
         width: 466px;
         height: 63px;
+        margin-bottom: 20px;
+    }
+
+    @include respond-to(md-down) {
+        padding: 36px;
+        justify-content: space-evenly;
+        h1 { text-align: center; }
+        h5 { text-align: center; }
+        .go-to-home {
+            width: 100%;
+        }
     }
 }

@@ -10,6 +10,11 @@
       width: 100%;
     }
   }
+  .wheel {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+  }
   .sign-header {
     display: flex;
     flex-direction: column;

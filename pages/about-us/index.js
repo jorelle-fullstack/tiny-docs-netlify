@@ -6,6 +6,7 @@ import Head from 'next/head'
 // Components
 import { Team, Wave, Advisors, Banner, Story } from '../../components/global'
 import Image from 'next/image'
+import SpinWheel from '../../components/about-us/SpinWheel'
 
 // Assets
 import signage from '../../assets/images/hanging-sign-small.svg'
@@ -44,6 +45,7 @@ const index = () => {
       </div>
       <div className='wheel'>
         {/* Wheel placeholder */}
+        <SpinWheel />
       </div>
       <Team title="Our Team" content={teamContent} />
       <Advisors
