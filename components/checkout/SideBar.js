@@ -37,7 +37,7 @@ const SideBar = () => {
     // Checks coupon validation.  Accepts coupon_id parameter.
     if (discount) {
       setDiscountLoading(true)
-      axios.post('http://localhost:3000/api/stripe/subscription/checkCouponValidation', {
+      axios.post('/api/stripe/subscription/checkCouponValidation', {
           coupon_id: discount
         }).then((res) => {
           console.log(res)
