@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 import axios from 'axios'
 import { CSSTransition } from 'react-transition-group'
 import { useCookies } from 'react-cookie'
+import { useRouter } from 'next/router'
 
 // Components
 import Head from 'next/head'
@@ -16,8 +17,7 @@ import {
 import { addSubscription } from '../api'
 
 const Index = () => {
-  const [cookies, setCookie] = useCookies(['user'])
-  console.log(cookies)
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -25,7 +25,11 @@ const Index = () => {
     setError,
     formState: { errors },
   } = useForm();
-
+  useEffect(() => {
+    if (!localStorage.plan) {
+      router.push('/plans')
+    }
+  })
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState('')
 
@@ -42,27 +46,25 @@ const Index = () => {
         country: inputData.country, 
         postal_code: inputData.zipCode, 
         state: inputData.state, 
-        paymentMethodType: '', 
-        user_type: '', 
-        coupon: inputData.coupon,
+        paymentMethodType: 'card', 
+        user_type: localStorage.plan, 
+        coupon: '',
         // Firebase Auth
-        email: localStorage.user.email,
-        phone_number: localStorage.user.phoneNumber,
-        name: localStorage.user.displayName,
+        email: inputData.email,
+        phone_number: inputData.phone,
+        name: inputData.fName + ' ' + inputData.lName,
+        customer_id: localStorage.cus_id
       }
-
-      // Add subscription to account.  Variable "customer_id" is used as reference.
-      // Temporarily disabled due to errors (missing data)
-      /*
+      console.log(payload)
+      // Add subscription to account
       axios.post(addSubscription, payload).then((res) => {
           console.log(res)
           clearErrors()
         })
         .catch((error) => {
-          console.error(error)
-          setError('discount', { type: "manual", message: 'Invalid discount code' })
+          console.error(error.message)
+          setError('discount', { type: "manual", message: error.message })
         })
-        */
       console.log('%c ⚠ Compiling payload... ', 'color:yellow;background:black;padding:5px;',);
       return null
     } 

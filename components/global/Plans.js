@@ -17,7 +17,7 @@ const Plans = () => {
 
   // Handles onClick event of pricing plan buttons.
   function handlePlanOnClick (plan) {
-    localStorage.plan = plan.category
+    localStorage.setItem('plan', plan.category)
     router.push('/register')
   }
   

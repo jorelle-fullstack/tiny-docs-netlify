@@ -48,11 +48,13 @@ export default async function handler (req, res) {
     );
 
     try {
-      if (user_type == "family"){
+      // if (user_type == "family"){
+      if (user_type == "Individuals") {
         price = "price_1J64OtAEed2wp5pxeetSP29D";
         amount = 1000;
       }
-      else if(user_type == "pediatric"){
+      // else if(user_type == "pediatric"){
+      else if (user_type == "Providers") {
         price = "price_1J64PkAEed2wp5pxzfrVvtPP";
         amount = 2000;
       }

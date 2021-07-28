@@ -190,3 +190,13 @@ async function handleSuccessAuthentication(data, type = '') {
 async function getCustomerId(uid) {
   return await firebase.firestore().collection('users').doc(uid).get().then((doc) => { return doc.data().customer_id })
 }
+
+// TODO:  Migrate to react-cookie.
+export function handleRegistrationData (data) {
+  const regData = { 
+    fName: data.fName,
+    lName: data.lName,
+    email: data.email
+  }
+  localStorage.setItem('regData', JSON.stringify(regData))
+}

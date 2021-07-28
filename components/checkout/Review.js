@@ -19,10 +19,10 @@ const Email = ({ step, stepSubmitCallback, formData, editCallback }) => {
 
   const onSubmit = async (data) => {
     // setLoadingStatus(true)
-    stepSubmitCallback(data)
+    stepSubmitCallback(formData)
   };
 
-  const FormJSX = () => <form onSubmit={handleSubmit(onSubmit(formData))} className='form' >
+  const FormJSX = () => <form onSubmit={handleSubmit(onSubmit)} className='form' >
     <p>Review your information and purchase when you’re ready.</p>
     <Button className='btn--blue' type='submit' loading={loadingStatus}>Purchase</Button>
   </form>

@@ -141,7 +141,6 @@ const index = () => {
       ],
     },
   ];
-  const [cookies, setCookie] = useCookies(['user']);
   return (
     <div className="page-about-us">
       <Banner

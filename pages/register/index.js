@@ -2,10 +2,11 @@
 import { CSSTransition } from 'react-transition-group'
 import Link from 'next/link'
 import { useForm } from "react-hook-form"
-import { login, passwordBaseRegister } from '../../auth'
+import { login, passwordBaseRegister, handleRegistrationData } from '../../auth'
 import React, { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import { useCookies } from 'react-cookie'
 
 // Components
 import { Button } from '../../components/global'
@@ -20,6 +21,7 @@ import fbImg from '../../assets/images/facebook.svg'
 
 const index = () => {
   const router = useRouter()
+  const [regData, setCookie] = useCookies(['regData'])
   useEffect(() => {
       const tokenCheck = typeof window !== 'undefined' ? localStorage.getItem('plan') : null;
       console.log(tokenCheck)
@@ -39,11 +41,15 @@ const index = () => {
     formData.plan = localStorage.plan
     // Caches registration data.
     setsubmitting(true)
-    const res = await passwordBaseRegister(data)
+    const res = await passwordBaseRegister(formData)
     setsubmitting(false)
 
     if (!res.message) {
       let r = null
+      // handleRegistrationData(formData)
+      setCookie('fName', data.fName)
+      setCookie('lName', data.lName)
+      setCookie('email', data.email)
       if (formData.plan === 'Freemium') {
         r = router.push('/my-account')
       } else {

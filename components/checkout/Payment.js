@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form"
 import axios from 'axios'
 import clsx from 'clsx'
+import { useCookies } from 'react-cookie'
 
 // Components
 import Input from '../../components/form/Input'
@@ -15,7 +16,7 @@ import CreditCardInput from 'react-credit-card-input'
 import checkIcon from '../../assets/images/check.svg'
 
 const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
-
+  const [regData] = useCookies(['regData'])
   // State variables
   const [discountLoading, setDiscountLoading] = useState(false)
   const [discountValid, setDiscountValidity] = useState(false)
@@ -39,7 +40,12 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
     setError,
     clearErrors,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      fName: regData.fName,
+      lName: regData.lName
+    }
+  });
 
   const onSubmit = async (data) => {
     console.log(data)

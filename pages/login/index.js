@@ -4,7 +4,6 @@ import { login, passwordBasedLogin } from '../../auth'
 import React, { useState } from "react";
 import { useRouter } from 'next/router'
 import { CSSTransition } from 'react-transition-group'
-import { useCookies } from 'react-cookie'
 
 // Components
 import { Button } from "../../components/global"
@@ -23,7 +22,6 @@ const index = () => {
 
   // State variables
   const [submitting, setsubmitting] = useState(false)
-  const [cookies, setCookie] = useCookies(['user'])
   const redirectLink = '/about-us'
 
   const {
@@ -40,8 +38,6 @@ const index = () => {
     setsubmitting(false)
 
     if (!res.message) {
-      // Creation of user cookie.
-      setCookie('user', res.user)
       return router.push(redirectLink)
     } else if (res.message.includes('password') || res.message.includes('email')) {
       setError('email', {
