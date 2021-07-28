@@ -14,10 +14,9 @@ import Close from "../../assets/images/close.svg"
 
 const Plans = () => {
   const router = useRouter()
-
   // Handles onClick event of pricing plan buttons.
   function handlePlanOnClick (plan) {
-    localStorage.setItem('plan', plan.category)
+    document.cookie = `plan=${plan.category}`
     router.push('/register')
   }
   

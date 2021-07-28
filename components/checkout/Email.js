@@ -1,13 +1,11 @@
 
 import Input from '../../components/form/Input'
 import { Button } from '../../components/global'
-import { useForm } from "react-hook-form";
-import clsx from 'clsx';
-import { useCookies } from 'react-cookie'
+import { useForm } from "react-hook-form"
+import clsx from 'clsx'
 
 
-const Email = ({ step, stepSubmitCallback, formData, editCallback }) => {
-  const [regData] = useCookies(['regData'])
+const Email = ({ step, stepSubmitCallback, formData, editCallback, email }) => {
   const {
     register,
     handleSubmit,
@@ -15,14 +13,11 @@ const Email = ({ step, stepSubmitCallback, formData, editCallback }) => {
     setError,
     formState: { errors },
   } = useForm({
-    defaultValues: {
-      email: regData.email
-    }
+    defaultValues: { email: email }
   });
   const onSubmit = async (data) => {
     stepSubmitCallback(data)
   }
-
   const FormJSX = () => <form onSubmit={handleSubmit(onSubmit)} className='form' >
     <Input register={{ ...register("email", { required: 'This field is required' }) }} errors={errors} type="email" placeholder="Enter Email" />
     <Button className='btn--blue' type='submit' >Continue</Button>
@@ -47,7 +42,5 @@ const Email = ({ step, stepSubmitCallback, formData, editCallback }) => {
       </div>
     </>
   )
-
 }
-
 export default Email

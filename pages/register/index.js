@@ -4,9 +4,9 @@ import Link from 'next/link'
 import { useForm } from "react-hook-form"
 import { login, passwordBaseRegister, handleRegistrationData } from '../../auth'
 import React, { useState, useEffect } from "react"
-import { useRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
 import Head from 'next/head'
-import { useCookies } from 'react-cookie'
+import cookies from 'next-cookies'
 
 // Components
 import { Button } from '../../components/global'
@@ -19,13 +19,8 @@ import googleImg from '../../assets/images/google.svg'
 import fbImg from '../../assets/images/facebook.svg'
 
 
-const index = () => {
+const Index = ({ plan }) => {
   const router = useRouter()
-  const [regData, setCookie] = useCookies(['regData'])
-  useEffect(() => {
-      const tokenCheck = typeof window !== 'undefined' ? localStorage.getItem('plan') : null;
-      tokenCheck !== null ? "" : router.push('/login')
-  })
 
   // State variables
   const [submitting, setsubmitting] = useState(false)
@@ -33,11 +28,12 @@ const index = () => {
   // React Forms
   const { register, handleSubmit, watch, setError, formState: { errors } } = useForm();
   const redirectLink = '/plans'
+  console.log(plan)
 
   // Methods
   const onSubmit = async (data) => {
     const formData = data
-    formData.plan = localStorage.plan
+    formData.plan = plan
     // Caches registration data.
     setsubmitting(true)
     const res = await passwordBaseRegister(formData)
@@ -45,10 +41,11 @@ const index = () => {
 
     if (!res.message) {
       let r = null
-      // handleRegistrationData(formData)
-      setCookie('fName', data.fName)
-      setCookie('lName', data.lName)
-      setCookie('email', data.email)
+
+      document.cookie = `fName=${formData.fName}`
+      document.cookie = `lName=${formData.lName}`
+      document.cookie = `email=${formData.email}`
+      
       if (formData.plan === 'Freemium') {
         r = router.push('/my-account')
       } else {
@@ -143,5 +140,18 @@ const index = () => {
     </div>
   )
 }
-
-export default index
+export async function getServerSideProps(ctx) {
+  const { plan } = cookies(ctx)
+  if (plan) {
+    return {
+      props: { plan: plan }
+    }
+  } else {
+    return {
+      redirect: {
+        destination: '/plans'
+      }
+    }
+  }
+}
+export default Index

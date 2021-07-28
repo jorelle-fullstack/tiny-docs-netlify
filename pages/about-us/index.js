@@ -1,6 +1,5 @@
 // Dependencies
 import React from "react";
-import { useCookies } from 'react-cookie'
 import Head from 'next/head'
 
 // Components

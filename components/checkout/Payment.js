@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form"
 import axios from 'axios'
 import clsx from 'clsx'
-import { useCookies } from 'react-cookie'
+//import { useCookies } from 'react-cookie'
 
 // Components
 import Input from '../../components/form/Input'
@@ -12,8 +12,8 @@ import Select from '../../components/form/Select'
 import { Button } from '../../components/global'
 import CreditCardInput from 'react-credit-card-input'
 
-const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
-  const [regData] = useCookies(['regData'])
+const Payment = ({ step, stepSubmitCallback, formData, editCallback, fName, lName }) => {
+  //const [regData] = useCookies(['regData'])
   const [discountCode, setDiscountCode] = useState('')
   // State variables
   const [discountLoading, setDiscountLoading] = useState(false)
@@ -41,8 +41,8 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      fName: regData.fName,
-      lName: regData.lName
+      fName: fName,
+      lName: lName
     }
   });
   const discount = watch('discount')
@@ -161,7 +161,7 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
                   register={{ ...register("state", {}) }} errors={errors} type="text" placeholder="Address 2"
                 />
               </div>
-              <Input register={{ ...register("phone", {}) }} errors={errors} type="text" placeholder="Phone Number" />
+              <Input register={{ ...register("phone", { required: true }) }} errors={errors} type="text" placeholder="Phone Number" />
               <Button className='btn--blue' type='submit' >Continue</Button>
             </form>
             : formData.fName &&
@@ -173,6 +173,9 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
   )
 
 }
-
+Payment.getInitialProps = async (ctx) => {
+  const { fName, lName } = cookies(ctx)
+  return { fName: fName, lName: lName }
+}
 export default Payment
 

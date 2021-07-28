@@ -1,32 +1,35 @@
 
 // Dependencies
-import React from 'react'
+import React, { useEffect } from 'react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { CSSTransition } from 'react-transition-group'
-import { useCookies } from 'react-cookie'
+import cookies from 'next-cookies'
 
 // Components
 import Image from 'next/image'
-import { Button } from '../global'
+import { Button } from '../../components/global'
 
 // Assets
 import check from '../../assets/images/check-green.svg'
 
-const SuccessOverlay = () => {
-    
+const SuccessOverlay = ({ checkoutSuccess }) => {
     const router = useRouter()
-
-    const [regData, removeCookie] = useCookies(['regData'])
-
     const handleClick = () => {
-        router.push('/about-us')
-        // Remove temporary data for checkout flow.
         localStorage.removeItem('cus_id')
         localStorage.removeItem('plan')
-        removeCookie('fName')
-        removeCookie('lName')
-        removeCookie('email')
+        document.cookie = `email=;`
+        document.cookie = `fName=;`
+        document.cookie = `lName=;`
+        document.cookie = `plan=;`
+        document.cookie = `checkoutSuccess=;`
+        console.log(checkoutSuccess)
+        router.push('/about-us')
     }
+
+    useEffect(() => {
+        console.log(checkoutSuccess)
+    })
     const {
         checkRef,
         titleRef,
@@ -34,10 +37,12 @@ const SuccessOverlay = () => {
         buttonRef
     } = React.useRef(null)
     return(
-        <CSSTransition in={true} appear={true} timeout={0} classNames='fade'>
+        <div className='checkout-success'>
+            <Head><title>Checkout Completed Successfully</title></Head>
+            <CSSTransition in={true} appear={true} timeout={0} classNames='fade'>
             <div className='success-overlay'>
-            <CSSTransition nodeRef={titleRef} in={true} appear={true} timeout={0} classNames='fade-slide-up'>
-            <h1 nodeRef={titleRef}>Your Transaction was Successful!</h1>
+            <CSSTransition noderef={titleRef} in={true} appear={true} timeout={0} classNames='fade-slide-up'>
+            <h1 noderef={titleRef}>Your Transaction was Successful!</h1>
             </CSSTransition>
             <CSSTransition nodeRef={checkRef} in={true} appear={true} timeout={300} classNames='pop'>
             <div ref={checkRef} className='check-circle'>
@@ -52,7 +57,24 @@ const SuccessOverlay = () => {
             </CSSTransition>
         </div>
         </CSSTransition>
+        </div>
     )
 }
+
+export async function getServerSideProps(ctx) {
+    const { checkoutSuccess } = cookies(ctx)
+    if (checkoutSuccess === 'complete') {
+        return {
+            props: { checkoutSuccess: checkoutSuccess }
+        }
+        
+    } else {
+        return {
+            redirect: {
+                destination: '/about-us'
+            }
+        }
+    }
+  }
 
 export default SuccessOverlay

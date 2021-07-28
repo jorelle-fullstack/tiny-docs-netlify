@@ -1,39 +1,25 @@
 // Dependencies
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useForm } from "react-hook-form"
-import ReactDOM from 'react-dom'
 import axios from 'axios'
-import { CSSTransition, SwitchTransition } from 'react-transition-group'
+import { CSSTransition } from 'react-transition-group'
 import { useRouter } from 'next/router'
+import cookies from 'next-cookies'
 
 // Components
 import Head from 'next/head'
 import { Email, Payment, SideBar, Review } from '../../components/checkout'
-import SuccessOverlay from '../../components/checkout/SuccessOverlay'
 
-// APIs
-// import { addSubscription } from '../api'
-
-const Index = () => {
+const Index = ({ email, fName, lName, plan }) => {
   // State variables
   const [loadingStatus, setLoadingStatus] = useState(false)
-
   const router = useRouter()
   const {
-    register,
-    handleSubmit,
-    watch,
     setError,
     formState: { errors },
   } = useForm();
-  useEffect(() => {
-    if (!localStorage.plan) {
-      router.push('/plans')
-    }
-  })
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState('')
-  const [checkoutSuccess, setCheckoutSuccess] = useState(false)
 
   const stepSubmitCallback = (inputData) => {
     console.log('%c ⚠ inputData ', 'color:yellow;background:black;padding:5px;', inputData);
@@ -52,7 +38,7 @@ const Index = () => {
         postal_code: inputData.zipCode, 
         state: inputData.state, 
         paymentMethodType: 'card', 
-        user_type: localStorage.plan,
+        user_type: plan,
         coupon: inputData.discount,
         // Firebase Auth
         email: inputData.email,
@@ -66,7 +52,8 @@ const Index = () => {
           console.log(res)
           if (res.status === 200) {
             // Show checkout success dialog.
-            setCheckoutSuccess(true)
+            document.cookie = `checkoutSuccess=complete`
+            router.push('/checkout/success')
           }
         })
         .catch((error) => {
@@ -88,16 +75,14 @@ const Index = () => {
 
 
   return (
-    <>
-    {checkoutSuccess ? <SuccessOverlay /> : 
     <div className='container page-checkout'>
     <Head><title>Checkout</title></Head>
     <div className='steps'>
       <CSSTransition in={true} appear={true} classNames='fade-slide-left' timeout={500}>
-      <Email stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />
+      <Email stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} email={email} editCallback={editCallback} />
       </CSSTransition>
       <CSSTransition in={true} appear={true} classNames='fade-slide-left' timeout={700}>
-      <Payment stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} editCallback={editCallback} />
+      <Payment stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} fName={fName} lName={lName} editCallback={editCallback} />
       </CSSTransition>
       <CSSTransition in={true} appear={true} classNames='fade-slide-left' timeout={900}>
       <Review stepSubmitCallback={stepSubmitCallback} loadingStatus={loadingStatus} step={step} formData={formData} editCallback={editCallback} />
@@ -109,10 +94,22 @@ const Index = () => {
     </div>
     </CSSTransition>
   </div>
-    }
-    </>
   )
 }
 
+export async function getServerSideProps(ctx) {
+  const { email, fName, lName, plan } = cookies(ctx)
+  if (email && fName && lName) {
+    return {
+      props: { email: email, fName: fName, lName: lName, plan: plan }
+    }
+  } else {
+    return {
+      redirect: {
+        destination: '/plans'
+      }
+    }
+  }
+}
 
 export default Index

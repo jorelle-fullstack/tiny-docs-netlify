@@ -177,6 +177,7 @@ async function handleSuccessAuthentication(data, type = '') {
   const { credential, user } = data
 
   if (type === 'passwordBased') {
+    // TODO: Migrate to cookies
     localStorage.token = user.Aa
     localStorage.user = JSON.stringify(user)
     localStorage.cus_id = await getCustomerId(user.uid).then((res) => { return res })
@@ -191,7 +192,7 @@ async function getCustomerId(uid) {
   return await firebase.firestore().collection('users').doc(uid).get().then((doc) => { return doc.data().customer_id })
 }
 
-// TODO:  Migrate to react-cookie.
+// TODO:  Migrate to cookies
 export function handleRegistrationData (data) {
   const regData = { 
     fName: data.fName,
