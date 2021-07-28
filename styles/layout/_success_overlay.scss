@@ -2,16 +2,36 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 100%;
     width: 100%;
     z-index: 100;
     background-color: $secondary-brown;
+    padding: 120px;
+    h1 {
+        color: black;
+        margin-top: 158px;
+        margin-bottom: 80px;
+    }
+    h5 {
+        font-size: 16px;
+        margin-bottom: 80px;
+    }
     .check-circle {
+        margin-bottom: 78px;
         background-color :white;
         width: 92px;
         height: 92px;
         border-radius: 50%;
+        padding: 7px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .go-to-home {
+        width: 466px;
+        height: 63px;
     }
 }

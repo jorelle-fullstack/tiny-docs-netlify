@@ -24,7 +24,6 @@ const index = () => {
   const [regData, setCookie] = useCookies(['regData'])
   useEffect(() => {
       const tokenCheck = typeof window !== 'undefined' ? localStorage.getItem('plan') : null;
-      console.log(tokenCheck)
       tokenCheck !== null ? "" : router.push('/login')
   })
 

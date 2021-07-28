@@ -12,11 +12,9 @@ import Select from '../../components/form/Select'
 import { Button } from '../../components/global'
 import CreditCardInput from 'react-credit-card-input'
 
-// Assets
-import checkIcon from '../../assets/images/check.svg'
-
 const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
   const [regData] = useCookies(['regData'])
+  const [discountCode, setDiscountCode] = useState('')
   // State variables
   const [discountLoading, setDiscountLoading] = useState(false)
   const [discountValid, setDiscountValidity] = useState(false)
@@ -37,6 +35,7 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
     register,
     handleSubmit,
     watch,
+    setValue,
     setError,
     clearErrors,
     formState: { errors },
@@ -46,13 +45,14 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
       lName: regData.lName
     }
   });
-
+  const discount = watch('discount')
   const onSubmit = async (data) => {
-    console.log(data)
-    stepSubmitCallback({ ...data, ...cardDetails })
+    const paymentData = data
+    console.log(discount)
+    if (discountCode) { paymentData.discount = discountCode }
+    stepSubmitCallback({ ...paymentData, ...cardDetails })
   };
 
-  const discount = watch('discount')
   const handleDiscount = () => {
     // Checks coupon validation.  Accepts coupon_id parameter.
     if (discount) {
@@ -62,10 +62,13 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
         }).then((res) => {
           console.log(res)
           clearErrors()
+          setDiscountCode(discount)
           setDiscountValidity(true)
         })
         .catch((error) => {
           console.error(error)
+          setValue('discount', null)
+          setDiscountCode('')
           setDiscountValidity(false)
           setError('discount', { type: "manual", message: 'Invalid discount code' })
         })

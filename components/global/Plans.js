@@ -121,7 +121,7 @@ const Plans = () => {
     <div className="section-plans">
       <div className="container">
         <div className="plan__wrapper">
-          <CSSTransition in={true} appear={true} classNames='pop'>
+          <CSSTransition in={true} appear={true} classNames='pop' timeout={0}>
           <h1>Pricing Plans</h1>
           </CSSTransition>
           <div className="plan__content">

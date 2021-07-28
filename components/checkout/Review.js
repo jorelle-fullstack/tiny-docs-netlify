@@ -7,8 +7,7 @@ import { useState } from 'react/cjs/react.development';
 // Components
 import { Button } from '../../components/global'
 
-const Email = ({ step, stepSubmitCallback, formData, editCallback }) => {
-  const [loadingStatus, setLoadingStatus] = useState(false)
+const Email = ({ step, stepSubmitCallback, formData, editCallback, loadingStatus }) => {
   const {
     register,
     handleSubmit,
@@ -17,8 +16,7 @@ const Email = ({ step, stepSubmitCallback, formData, editCallback }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    // setLoadingStatus(true)
+  const onSubmit = async () => {
     stepSubmitCallback(formData)
   };
 

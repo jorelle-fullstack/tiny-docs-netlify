@@ -20,10 +20,12 @@ const SideBar = () => {
   // State variables
   const [discountLoading, setDiscountLoading] = useState(false)
   const [discountValid, setDiscountValidity] = useState(false)
+  const [discountCode, setDiscountCode] = useState('')
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     setError,
     clearErrors,
     formState: { errors },
@@ -40,10 +42,13 @@ const SideBar = () => {
         }).then((res) => {
           console.log(res)
           clearErrors()
+          setDiscountCode(discount)
           setDiscountValidity(true)
         })
         .catch((error) => {
           console.error(error)
+          setValue('discount', null, true)
+          setDiscountCode('')
           setDiscountValidity(false)
           setError('discount', { type: "manual", message: 'Invalid discount code' })
         })
@@ -52,6 +57,7 @@ const SideBar = () => {
   }
   const onSubmit = async (data) => {
     console.log(data)
+    if (discountCode) { paymentData.discount = discountCode }
     stepSubmitCallback({ ...data, ...cardDetails })
   }
 

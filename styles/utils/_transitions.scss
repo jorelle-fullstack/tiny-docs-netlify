@@ -85,6 +85,24 @@ Disregard the usage of references for the transition and object.
     transform: translateX(0);
     transition: all 300ms;
 }
+.fade-slide-up-appear {
+    opacity: 0;
+    transform: translateY(-40px);
+}
+.fade-slide-up-appear-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 300ms;
+}
+.fade-slide-down-appear {
+    opacity: 0;
+    transform: translateY(40px);
+}
+.fade-slide-down-appear-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 300ms;
+}
 .fade-slide-left-enter {
   opacity: 0;
   transform: translateX(-40px);
@@ -103,7 +121,6 @@ Disregard the usage of references for the transition and object.
     transform: translateX(0);
     transition: all 300ms;
 }
-
 /* EXCLUSIVE TRANSITIONS */
 // Hero Image
 .login-image-enter {
