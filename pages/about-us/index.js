@@ -1,148 +1,22 @@
+// Dependencies
 import React from "react";
-import { Banner } from "../../components/global";
-import { Story } from "../../components/global";
-import { Team } from "../../components/global";
-import { Advisors } from "../../components/global";
+import { useCookies } from 'react-cookie'
+import Head from 'next/head'
+
+// Components
+import { Team, Wave, Advisors, Banner, Story } from '../../components/global'
+import Image from 'next/image'
+
+// Assets
+import signage from '../../assets/images/hanging-sign-small.svg'
 import HeroImage from "../../assets/images/about-us-hero-image.png";
 
-import { useCookies } from 'react-cookie'
+// Localization
+import { teamContent, advisorContent1, advisorContent2, advisorContent3} from './local'
 const index = () => {
-  const teamContent = [
-    {
-      name: "Axia Barrios",
-      position: "Lead Digital Artist",
-      image: require("../../assets/images/axia-barrios.png"),
-      link: "https://www.twitter.com/",
-    },
-    {
-      name: "Dustin Claretto",
-      position: "COO",
-      image: require("../../assets/images/dustin-claretto.png"),
-      link: "https://www.twitter.com/",
-    },
-    {
-      name: "Sunny Williams",
-      position: "CEO",
-      image: require("../../assets/images/sunny-williams.png"),
-      link: "https://www.twitter.com/",
-    },
-    {
-      name: "Vivek Poola",
-      position: "CTO",
-      image: require("../../assets/images/vivek-poola.png"),
-      link: "https://www.twitter.com/",
-    },
-    {
-      name: "Meredith Mendosa",
-      position: "Chief Design Officer",
-      image: require("../../assets/images/meredith-mendosa.png"),
-      link: "https://www.twitter.com/",
-    },
-  ];
-
-  const advisorContent1 = [
-    {
-      name: "Rebecca Mitsos, CCLS",
-      information: [
-        {
-          informationItem: "Lurie Children’s Hospital",
-        },
-        {
-          informationItem: "Child Life Specialist",
-        },
-      ],
-    },
-    {
-      name: "Jeff Bomze, MD",
-      information: [
-        {
-          informationItem: "Memphis Street Pediatrics",
-        },
-        {
-          informationItem: "Pediatrician, Adolescent Medicine Physician",
-        },
-      ],
-    },
-  ];
-
-  const advisorContent2 = [
-    {
-      name: "Clarisse Valencia, MD",
-      information: [
-        {
-          informationItem: "Kaiser Permanente",
-        },
-        {
-          informationItem: "Family Medicine Physician",
-        },
-      ],
-    },
-    {
-      name: "Nneka Onyezia, PhD, ABPP",
-      information: [
-        {
-          informationItem: "Nneka E. Onyezia, PhD LLC",
-        },
-        {
-          informationItem: "Psychologist",
-        },
-      ],
-    },
-    {
-      name: "Diane Morales",
-      information: [
-        {
-          informationItem: "Child Life Specialist",
-        },
-        {
-          informationItem: "Miami Children’s Health System",
-        },
-      ],
-    },
-  ];
-
-  const advisorContent3 = [
-    {
-      name: "Charlotte Cole",
-      information: [
-        {
-          informationItem: "Executive Director",
-        },
-        {
-          informationItem: "Blue Butterfly Collaborative",
-        },
-      ],
-    },
-    {
-      name: "Greg Woodburn",
-      information: [
-        {
-          informationItem: "Right to Play",
-        },
-        {
-          informationItem: "Program Manager",
-        },
-      ],
-    },
-    {
-      name: "Mary R. Ciccarelli, MD",
-      information: [
-        {
-          informationItem: "Idiana University School of Medicine",
-        },
-        {
-          informationItem: (
-            <>
-              Professor of Clinical Medicine and Clinical Pediatrics; Chair for
-              Education in Pediatrics
-            </>
-          ),
-        },
-      ],
-    },
-  ];
   return (
     <div className="page-about-us">
+      <Head><title>About Us</title></Head>
       <Banner
         page="About Us"
         title="Our Mission"
@@ -164,6 +38,13 @@ const index = () => {
           </>
         }
       />
+      <div className='signage'>
+      <Wave color='white' />
+        <div className='sign-header'> <h1>MAGIC</h1> </div>
+      </div>
+      <div className='wheel'>
+        {/* Wheel placeholder */}
+      </div>
       <Team title="Our Team" content={teamContent} />
       <Advisors
         title="Our Advisors"

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 
 // Components
 import Head from 'next/head'
+import Fab from '../../components/global/Fab'
 import { useRouter } from "next/router"
 import Input from '../../components/form/Input'
 import Image from 'next/image'
@@ -12,7 +13,7 @@ import Search from '../../components/form/Search'
 
 // Assets
 import searchIcon from '../../assets/images/search-icon.svg'
-
+import arrow from '../../assets/images/arrow.svg'
 // Localizations
 import { watchRecords } from './local.js'
 
@@ -51,6 +52,7 @@ const WatchRecords = () => {
               {/* Title and Category Tabs */}
               <div class='top-section'>
                   <CategoryTabs />
+                  <Fab icon={arrow} onClick={(e) => router.push('/my-account')} />
                   <h1>{title}</h1>
               </div>
               {/* Search Bar */}
@@ -64,7 +66,9 @@ const WatchRecords = () => {
                 })}
               </div>
               <div class='pagination'>
-                
+                <button className='btn pagination-btn active'>
+                  <h3>1</h3>0
+                </button>
               </div>
             </div>
         </div>

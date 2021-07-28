@@ -15,8 +15,6 @@ import Resource from '../../components/parents/Resource'
 import CategoryTabs from '../../components/global/CategoryTabsSmall'
 import Search from '../../components/form/Search'
 // Assets
-import searchIcon from '../../assets/images/search-icon.svg'
-import whiteboardIcon from '../../assets/images/whiteboard-icon.svg'
 import profileIcon from '../../assets/images/profile-icon.svg'
 
 // Localizations

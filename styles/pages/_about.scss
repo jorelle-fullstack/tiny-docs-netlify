@@ -1,3 +1,32 @@
 .page-about-us {
   background-color: $secondary-brown;
+  .signage {
+    position: relative;
+    max-height: 280px;
+    display: flex;
+    justify-content: center;
+    .wave {
+      z-index: 2;
+      width: 100%;
+    }
+  }
+  .sign-header {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: flex-end;
+    background-image: url('../../assets/images/hanging-sign-small.svg');
+    background-size: contain;
+    width: 233px;
+    height: 233px;
+    z-index: 0;
+    top: 0;
+    h1 {
+      color: white !important;
+      text-align: center;
+      position: inherit;
+      bottom: 30px;
+      left: 35px;
+    }
+  }
 }

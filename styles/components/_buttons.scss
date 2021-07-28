@@ -307,10 +307,22 @@
   height: 30px;
 }
 
-.smile-particle {
-  position: absolute;
-}
+.smile-particle { position: absolute; }
 
-.input-inline-button {
-  &:hover { background-color: $primary-blue; }
+.input-inline-button { &:hover { background-color: $primary-blue; } }
+
+.pagination-btn {
+  padding: 10px;
+  width: 63px;
+  height: 63px;
+  background-color: #ffffff00;
+  h3 {
+    color: $secondary-darker-blue;
+    font-weight: 700;
+  }
+  &:focus {
+    border-radius: 50%;
+    box-shadow: 0 5px 5px #00000050;
+    background-color: white;
+  }
 }

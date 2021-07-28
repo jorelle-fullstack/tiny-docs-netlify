@@ -17,6 +17,14 @@
         @include respond-to(md-down) {
             h1 { text-align: center; }
         }
+        .fab {
+            height: 63px;
+            width: 63px;
+            margin-bottom: 60px;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 5px 5px #00000050;
+        }
     }
     .search-section {
         max-width: 50%;

@@ -118,6 +118,22 @@ const watchRecords = [
     {
         thumbnail: thumbnail1,
         title: 'Related Content Title'
+    },
+    {
+        thumbnail: thumbnail1,
+        title: 'Related Content Title'
+    },
+    {
+        thumbnail: thumbnail2,
+        title: 'Related Content Title'
+    },
+    {
+        thumbnail: thumbnail3,
+        title: 'Related Content Title'
+    },
+    {
+        thumbnail: thumbnail1,
+        title: 'Related Content Title'
     }
 ]
 export { account, watchHistory, watchRecords }

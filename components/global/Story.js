@@ -1,19 +1,36 @@
-import React from "react";
+// Dependencies
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+
+// Components
+import Knob from './Knob'
+
+// Assets
 import Tam from "../../assets/images/tam.png";
-import Knob1 from "../../assets/images/knob-1.png";
-import Knob2 from "../../assets/images/knob-2.png";
-import Knob3 from "../../assets/images/knob-3.png";
 
 const Story = ({ title, content }) => {
+
+  // Gets current scrollbar position for knob components.
+  const [scrollY, setScrollY] = useState(0)
+  useEffect(() => {
+      const handleScroll = () => {
+          setScrollY(window.scrollY)
+      }
+      handleScroll()
+      window.addEventListener('scroll', handleScroll)
+      return () => { window.removeEventListener('scroll', handleScroll) }
+  }, []);
+
   return (
     <div className="section-our-story">
       <div className="container">
         <div className="content__wrapper">
           <div className="content__wrapper--knob">
-            <Image src={Knob1} className="" alt="Knob" />
-            <Image src={Knob2} className="" alt="Knob" />
-            <Image src={Knob3} className="" alt="Knob" />
+            <div className='knobs'>
+                        <Knob scrollPos={scrollY} />
+                        <Knob scrollPos={scrollY} />
+                        <Knob scrollPos={scrollY} />
+                    </div>
           </div>
           <div className="content__wrapper--inner">
             <p>{title}</p>

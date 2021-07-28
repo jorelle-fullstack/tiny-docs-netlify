@@ -105,7 +105,7 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback }) => {
   useEffect(() => {
     axios.get('https://restcountries.eu/rest/v2/all').then(({ data }) => {
       const options = data.map(option => ({
-        value: option.name,
+        value: option.alpha2Code,
         label: option.name
       }))
       setCountryOptions(options)

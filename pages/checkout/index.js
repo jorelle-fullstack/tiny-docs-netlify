@@ -46,7 +46,7 @@ const Index = () => {
         country: inputData.country, 
         postal_code: inputData.zipCode, 
         state: inputData.state, 
-        paymentMethodType: 'card', 
+        paymentMethodType: '', 
         user_type: localStorage.plan, 
         coupon: '',
         // Firebase Auth
@@ -63,7 +63,7 @@ const Index = () => {
         })
         .catch((error) => {
           console.error(error.message)
-          setError('discount', { type: "manual", message: error.message })
+          setError('addSubscription', { type: "manual", message: error.message })
         })
       console.log('%c ⚠ Compiling payload... ', 'color:yellow;background:black;padding:5px;',);
       return null
