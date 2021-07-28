@@ -9,9 +9,8 @@ import { useRouter } from 'next/router'
 
 // Components
 import Head from 'next/head'
-import {
-  Email, Payment, SideBar, Review
-} from '../../components/checkout'
+import { Email, Payment, SideBar, Review } from '../../components/checkout'
+import SuccessOverlay from '../../components/checkout/SuccessOverlay'
 
 // APIs
 import { addSubscription } from '../api'
@@ -37,17 +36,19 @@ const Index = () => {
     console.log('%c ⚠ inputData ', 'color:yellow;background:black;padding:5px;', inputData);
     if (step === 3) {
       console.log('%c ⚠ purchasing... ', 'color:yellow;background:black;padding:5px;',);
+      const expYear = '20' + inputData.expiry.substring(5)
+      const expMonth = inputData.expiry.substring(0,2)
       const payload = {
         card_number: inputData.cardNumber,
-        card_exp_month: inputData.expiry.substring(0,2), 
-        card_exp_year: inputData.expiry.substring(5,2),
-        card_cvc:inputData.cvc, 
+        card_exp_month: expMonth,
+        card_exp_year: expYear,
+        card_cvc: inputData.cvc, 
         city: inputData.city, 
         country: inputData.country, 
         postal_code: inputData.zipCode, 
         state: inputData.state, 
-        paymentMethodType: '', 
-        user_type: localStorage.plan, 
+        paymentMethodType: 'card', 
+        user_type: 'family', 
         coupon: '',
         // Firebase Auth
         email: inputData.email,
@@ -55,11 +56,13 @@ const Index = () => {
         name: inputData.fName + ' ' + inputData.lName,
         customer_id: localStorage.cus_id
       }
-      console.log(payload)
+    console.log('%c ⚠ Payload ', 'color:yellow;background:black;padding:5px;', payload);
       // Add subscription to account
       axios.post(addSubscription, payload).then((res) => {
           console.log(res)
-          clearErrors()
+          if (res.status === 200) {
+            // ..
+          }
         })
         .catch((error) => {
           console.error(error.message)
@@ -79,6 +82,8 @@ const Index = () => {
 
 
   return (
+    <>
+      {/* <SuccessOverlay /> */}
     <div className='container page-checkout'>
       <Head><title>Checkout</title></Head>
       <div className='steps'>
@@ -98,6 +103,7 @@ const Index = () => {
       </div>
       </CSSTransition>
     </div>
+    </>
   )
 }
 

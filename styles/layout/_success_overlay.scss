@@ -1,0 +1,17 @@
+.success-overlay {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    background-color: $secondary-brown;
+    .check-circle {
+        background-color :white;
+        width: 92px;
+        height: 92px;
+        border-radius: 50%;
+    }
+}

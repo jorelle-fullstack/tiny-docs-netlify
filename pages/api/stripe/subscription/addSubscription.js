@@ -28,19 +28,19 @@ export default async function handler (req, res) {
         number: card_number,
         exp_month: card_exp_month,
         exp_year: card_exp_year,
-        cvc: card_cvc,
+        cvc: card_cvc
       },
       billing_details:{
-        address:{
-          city: city,
-          country: country,
-          postal_code: postal_code,
-          state: state
-        },
-        email: email,
-        name: name,
-        phone: phone_number
-      }
+          address:{
+            city: city,
+            country: country,
+            postal_code: postal_code,
+            state: state
+          },
+          email: email,
+          name: name,
+          phone: phone_number
+        }
     });
     await stripe.paymentMethods.attach(
       paymentMethod.id,
@@ -48,13 +48,11 @@ export default async function handler (req, res) {
     );
 
     try {
-      // if (user_type == "family"){
-      if (user_type == "Individuals") {
+      if (user_type == "family"){
         price = "price_1J64OtAEed2wp5pxeetSP29D";
         amount = 1000;
       }
-      // else if(user_type == "pediatric"){
-      else if (user_type == "Providers") {
+      else if(user_type == "pediatric"){
         price = "price_1J64PkAEed2wp5pxzfrVvtPP";
         amount = 2000;
       }
