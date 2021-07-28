@@ -12,7 +12,7 @@ import { Email, Payment, SideBar, Review } from '../../components/checkout'
 import SuccessOverlay from '../../components/checkout/SuccessOverlay'
 
 // APIs
-import { addSubscription } from '../api'
+// import { addSubscription } from '../api'
 
 const Index = () => {
   // State variables
@@ -52,7 +52,7 @@ const Index = () => {
         postal_code: inputData.zipCode, 
         state: inputData.state, 
         paymentMethodType: 'card', 
-        user_type: 'family',
+        user_type: localStorage.plan,
         coupon: inputData.discount,
         // Firebase Auth
         email: inputData.email,
@@ -62,7 +62,7 @@ const Index = () => {
       }
     console.log('%c ⚠ Payload ', 'color:yellow;background:black;padding:5px;', payload);
       // Add subscription to account
-      axios.post(addSubscription, payload).then((res) => {
+      axios.post('/api/stripe/subscription/addSubscription', payload).then((res) => {
           console.log(res)
           if (res.status === 200) {
             // Show checkout success dialog.
