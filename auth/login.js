@@ -2,9 +2,7 @@
 import firebase from 'firebase/app'
 import '../services/firebase'
 import "firebase/firestore"
-import { useRouter } from 'next/router'
 import axios from 'axios'
-
 /**
  * 3rd party Login
  * @param {*} type facebook || google
@@ -175,17 +173,26 @@ async function handleSuccessAuthentication(data, type = '') {
 
   if (!data) return
   const { credential, user } = data
+  const customer_id = await getCustomerId(user.uid).then((res) => { return res })
 
   if (type === 'passwordBased') {
+
     // TODO: Migrate to cookies
-    localStorage.token = user.Aa
-    localStorage.user = JSON.stringify(user)
-    localStorage.cus_id = await getCustomerId(user.uid).then((res) => { return res })
+    //document.cookie = `token=${user.Aa}; path=/`
+    //document.cookie = `user=${JSON.stringify(user)}; path=/`
+    //document.cookie = `cus_id=${customer_id}; path=/`
+    
+    localStorage.setItem('token', user.Aa)
+    localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('cus_id', customer_id)
+    return
+  } else {
+    localStorage.setItem('token', credential.accessToken)
+    localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('cus_id', customer_id)
     return
   }
-  localStorage.token = credential.accessToken
-  localStorage.user = JSON.stringify(user)
-  localStorage.cus_id = await getCustomerId(user.uid).then((res) => { return res })
+  
 }
 
 async function getCustomerId(uid) {

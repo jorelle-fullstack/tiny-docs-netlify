@@ -94,6 +94,25 @@ Disregard the usage of references for the transition and object.
     transform: translateY(0);
     transition: all 300ms;
 }
+.fade-slide-up-enter {
+    opacity: 0;
+    transform: translateY(-40px);
+}
+.fade-slide-up-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 300ms;
+}
+.fade-slide-up-exit {
+    opacity: 0;
+    transform: translateY(-40px);
+}
+.fade-slide-up-exit-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 300ms;
+}
+
 .fade-slide-down-appear {
     opacity: 0;
     transform: translateY(40px);

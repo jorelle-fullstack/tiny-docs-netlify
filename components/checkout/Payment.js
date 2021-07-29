@@ -12,7 +12,7 @@ import Select from '../../components/form/Select'
 import { Button } from '../../components/global'
 import CreditCardInput from 'react-credit-card-input'
 
-const Payment = ({ step, stepSubmitCallback, formData, editCallback, fName, lName }) => {
+const Payment = ({ step, stepSubmitCallback, formData, editCallback, snackbarCallback = () => {}, fName, lName }) => {
   //const [regData] = useCookies(['regData'])
   const [discountCode, setDiscountCode] = useState('')
   // State variables
@@ -23,14 +23,24 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback, fName, lNam
     expiry: '',
     cvc: ''
   })
+  const [cardError, setCardError] = useState({
+    message: '',
+    field: ''
+  })
   const [countryOptions, setCountryOptions] = useState([])
 
   const handleCardDetails = (e, key) => {
     const value = e.target.value
-
     setcardDetails({ ...cardDetails, [key]: value })
+    if (cardError) { setCardError({message: '', field: ''}) }
   }
-
+  const handleCardValidation = (message, field) => {
+    if (message) {
+      setCardError({message: message, field: field})
+    } else {
+      setCardError({message: '', field: ''})
+    }
+  }
   const {
     register,
     handleSubmit,
@@ -47,10 +57,14 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback, fName, lNam
   });
   const discount = watch('discount')
   const onSubmit = async (data) => {
-    const paymentData = data
-    console.log(discount)
-    if (discountCode) { paymentData.discount = discountCode }
-    stepSubmitCallback({ ...paymentData, ...cardDetails })
+    if (cardError.message && cardError.field) {
+      snackbarCallback(cardError, 'error')
+    } else {
+      const paymentData = data
+      console.log(discount)
+      if (discountCode) { paymentData.discount = discountCode }
+      stepSubmitCallback({ ...paymentData, ...cardDetails })
+    }
   };
 
   const handleDiscount = () => {
@@ -125,9 +139,9 @@ const Payment = ({ step, stepSubmitCallback, formData, editCallback, fName, lNam
             <form onSubmit={handleSubmit(onSubmit)} className='form' >
 
               <CreditCardInput
-                cardNumberInputProps={{ value: cardDetails.cardNumber, onChange: e => handleCardDetails(e, 'cardNumber') }}
-                cardExpiryInputProps={{ value: cardDetails.expiry, onChange: e => handleCardDetails(e, 'expiry') }}
-                cardCVCInputProps={{ value: cardDetails.cvc, onChange: e => handleCardDetails(e, 'cvc') }}
+                cardNumberInputProps={{ value: cardDetails.cardNumber, onChange: e => handleCardDetails(e, 'cardNumber'), onError: e => handleCardValidation(e, 'cardNumber') }}
+                cardExpiryInputProps={{ value: cardDetails.expiry, onChange: e => handleCardDetails(e, 'expiry'), onError: e => handleCardValidation(e, 'expiry') }}
+                cardCVCInputProps={{ value: cardDetails.cvc, onChange: e => handleCardDetails(e, 'cvc'), onError: e => handleCardValidation(e, 'cvc') }}
                 fieldClassName="card-input"
               />
               <p className='sub-info' >Transactions are secure and encrypted</p>

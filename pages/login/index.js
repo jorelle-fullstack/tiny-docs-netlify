@@ -4,6 +4,7 @@ import { login, passwordBasedLogin } from '../../auth'
 import React, { useState } from "react";
 import { useRouter } from 'next/router'
 import { CSSTransition } from 'react-transition-group'
+import cookies from 'next-cookies'
 
 // Components
 import { Button } from "../../components/global"
@@ -17,9 +18,9 @@ import teamShot from '../../assets/images/team-shot.svg'
 import googleImg from '../../assets/images/google.svg'
 import fbImg from '../../assets/images/facebook.svg'
 
-const index = () => {
+const index = ({ token }) => {
   const router = useRouter()
-
+  console.log(token)
   // State variables
   const [submitting, setsubmitting] = useState(false)
   const redirectLink = '/about-us'
@@ -35,10 +36,10 @@ const index = () => {
   const onSubmit = async (data) => {
     setsubmitting(true)
     const res = await passwordBasedLogin(data)
-    setsubmitting(false)
+    
 
     if (!res.message) {
-      return router.push(redirectLink)
+      return setTimeout(() => {setsubmitting(false); router.push(redirectLink)}, 500)
     } else if (res.message.includes('password') || res.message.includes('email')) {
       setError('email', {
         type: 'manual',
@@ -109,5 +110,15 @@ const index = () => {
     </div>
   );
 };
+export async function getServerSideProps(ctx) {
+  const { user, token } = cookies(ctx)
+  let loggedIn = false
+  if (!loggedIn) {
+    loggedIn = true
+  }
+  return {
+    props: { loggedIn: loggedIn, token: token }
+  }
+}
 
 export default index;

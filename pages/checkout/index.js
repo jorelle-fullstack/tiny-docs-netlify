@@ -8,11 +8,16 @@ import cookies from 'next-cookies'
 
 // Components
 import Head from 'next/head'
+import { Snackbar } from '../../components/global'
 import { Email, Payment, SideBar, Review } from '../../components/checkout'
 
 const Index = ({ email, fName, lName, plan }) => {
   // State variables
   const [loadingStatus, setLoadingStatus] = useState(false)
+  const [show, showSnackbar] = useState(false)
+  const [snackbarMessage, setSnackbarMessage] = useState('')
+  const [snackbarColor, setSnackbarColor] = useState('')
+
   const router = useRouter()
   const {
     setError,
@@ -20,6 +25,19 @@ const Index = ({ email, fName, lName, plan }) => {
   } = useForm();
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState('')
+
+  // Used to hide the snackbar automatically based on timeout value.
+  const snackbarCallback = (hide) => {
+    if (show) {
+      showSnackbar(hide)
+    setSnackbarMessage('')
+    }
+  }
+  const setSnackbar = (data, color) => {
+    setSnackbarColor(color)
+    setSnackbarMessage(data.message)
+    showSnackbar(true)  
+  }
 
   const stepSubmitCallback = (inputData) => {
     console.log('%c ⚠ inputData ', 'color:yellow;background:black;padding:5px;', inputData);
@@ -57,8 +75,10 @@ const Index = ({ email, fName, lName, plan }) => {
           }
         })
         .catch((error) => {
-          console.error(error.message)
-          setError('addSubscription', { type: "manual", message: error.message })
+          // TEMPORARY
+          console.error(error)
+            const msg = 'Error!  Credit card information is invalid.  Please use a different card.'
+            setSnackbar({message: msg}, 'error')
         })
         .finally(() => { setLoadingStatus(false) })
       console.log('%c ⚠ Compiling payload... ', 'color:yellow;background:black;padding:5px;',);
@@ -75,6 +95,8 @@ const Index = ({ email, fName, lName, plan }) => {
 
 
   return (
+    <>
+    <Snackbar message={snackbarMessage} show={show} color={snackbarColor} callback={snackbarCallback} />
     <div className='container page-checkout'>
     <Head><title>Checkout</title></Head>
     <div className='steps'>
@@ -82,10 +104,10 @@ const Index = ({ email, fName, lName, plan }) => {
       <Email stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} email={email} editCallback={editCallback} />
       </CSSTransition>
       <CSSTransition in={true} appear={true} classNames='fade-slide-left' timeout={700}>
-      <Payment stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} fName={fName} lName={lName} editCallback={editCallback} />
+      <Payment stepSubmitCallback={stepSubmitCallback} step={step} formData={formData} fName={fName} lName={lName} editCallback={editCallback} snackbarCallback={setSnackbar} />
       </CSSTransition>
       <CSSTransition in={true} appear={true} classNames='fade-slide-left' timeout={900}>
-      <Review stepSubmitCallback={stepSubmitCallback} loadingStatus={loadingStatus} step={step} formData={formData} editCallback={editCallback} />
+      <Review stepSubmitCallback={stepSubmitCallback} loadingStatus={loadingStatus} step={step} formData={formData} />
       </CSSTransition>
     </div>
     <CSSTransition in={true} appear={true} classNames='fade-slide-right' timeout={900}>
@@ -94,6 +116,7 @@ const Index = ({ email, fName, lName, plan }) => {
     </div>
     </CSSTransition>
   </div>
+  </>
   )
 }
 

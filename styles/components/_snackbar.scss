@@ -1,0 +1,29 @@
+.snackbar {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    top: 5%;
+    z-index: 999;
+    &-wrapper {
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 24px;
+        background-color: $primary-pink;
+        border-radius: 10px;
+        min-width: 25%;
+        max-width: 75vw;
+        max-height: 180px;
+    }
+    p {
+        color: white;
+        font-weight: 500;
+        font-size: 16px;
+    }
+    .close {
+        color: white;
+        border: none;
+        background: none;
+    }
+    .error { background-color: $error }
+}

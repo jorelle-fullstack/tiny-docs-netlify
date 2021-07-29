@@ -25,7 +25,6 @@ const index = () => {
     //Authentication Checking
     useEffect(() => {
         const tokenCheck = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-        console.log(tokenCheck);
         tokenCheck != null ? "" : Router.push('/login');
     }, []); 
     

@@ -1,15 +1,47 @@
-import React, { useState, useRef } from "react";
+// Dependencies
+import React, { useState, useEffect, useRef } from "react";
+import clsx from "clsx";
+// Components
 import Image from "next/image";
 import Link from "next/link";
-import clsx from "clsx";
+import { Button } from '../../components/global'
+import Logout from "./Logout"
+
+// Assets
 import Logo from "../../assets/images/logo.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isShown, setIsShown] = useState(false);
-  const ref = useRef(null);
+  const [loggedIn, setLoginState] = useState()
+  const [logoutDialog, showLogoutDialog] = useState(false)
 
+
+  const toggleLogout = () => {
+    if (!logoutDialog) {
+      showLogoutDialog(true)
+    } else {
+      showLogoutDialog(false)
+    }
+  }
+  // Check login state with token (temporarily using localStorage for debugging purposes).
+  useEffect(() => {
+    let token = null
+    if (typeof window !== 'undefined') {
+      token = window.localStorage.getItem('token')
+      if (token) {
+        setLoginState(true)
+        console.log("logged in!")
+      } else {
+        setLoginState(false)
+        console.log("logged out!")
+      }
+    }
+  })
+
+  const ref = useRef(null);
   return (
+    <>
+       { logoutDialog ? <Logout callback={toggleLogout} /> : null }
     <header
       className={clsx("header", { "header__menu--open": isOpen })}
       ref={ref}
@@ -43,11 +75,24 @@ const Header = () => {
                   <a className="menu__list--link">About Us</a>
                 </Link>
               </li>
+              { loggedIn ? 
+            <li className="menu__list--item">
+            <Link href="/my-account">
+              <a className="menu__list--link">My Account</a>
+            </Link>
+          </li> : null  
+            }
+              { loggedIn ?
               <li className="menu__list--item">
+                <button className="logout-button menu__list--link" onClick={toggleLogout}>Log Out</button>
+              </li>
+              :
+                <li className="menu__list--item">
                 <Link href="/login">
                   <a className="menu__list--link">Log In</a>
                 </Link>
               </li>
+              }
             </ul>
           </div>
           <button
@@ -63,6 +108,7 @@ const Header = () => {
         </div>
       </div>
     </header>
+    </>
   );
 };
 

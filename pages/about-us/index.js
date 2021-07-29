@@ -1,6 +1,7 @@
 // Dependencies
 import React from "react";
 import Head from 'next/head'
+import cookies from 'next-cookies'
 
 // Components
 import { Team, Wave, Advisors, Banner, Story } from '../../components/global'
@@ -13,7 +14,7 @@ import HeroImage from "../../assets/images/about-us-hero-image.png";
 
 // Localization
 import { teamContent, advisorContent1, advisorContent2, advisorContent3} from './local'
-const index = () => {
+const index = ({token}) => {
   return (
     <div className="page-about-us">
       <Head><title>About Us</title></Head>
@@ -56,6 +57,16 @@ const index = () => {
       />
     </div>
   );
-};
+}
+export async function getServerSideProps(ctx) {
+  const { token } = cookies(ctx)
+  let loggedIn = false
+  if (token) {
+    loggedIn = true
+  }
+  return {
+    props: { loggedIn: loggedIn, token: token }
+  }
+}
 
 export default index;

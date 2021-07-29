@@ -17,6 +17,7 @@ import Testimonials from './Testimonials'
 import Testimony from './Testimony'
 import Video from './Video'
 import Wave from './Wave'
+import Snackbar from './Snackbar'
 
 export {
   Advisors,
@@ -36,5 +37,6 @@ export {
   Testimonials,
   Testimony,
   Video,
-  Wave
+  Wave,
+  Snackbar
 }
