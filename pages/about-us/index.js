@@ -1,21 +1,28 @@
 // Dependencies
-import React from "react";
+import React, { useState } from "react"
 import Head from 'next/head'
-import cookies from 'next-cookies'
+import { CSSTransition, SwitchTransition } from 'react-transition-group'
 
 // Components
-import { Team, Wave, Advisors, Banner, Story } from '../../components/global'
-import Image from 'next/image'
+import { Wave, Advisors, Banner, Story } from '../../components/global'
+import Team from '../../components/about-us/Team'
 import SpinWheel from '../../components/about-us/SpinWheel'
 
 // Assets
-import signage from '../../assets/images/hanging-sign-small.svg'
 import HeroImage from "../../assets/images/about-us-hero-image.png";
 
-// Localization
-import { teamContent, advisorContent1, advisorContent2, advisorContent3} from './local'
+// Localizations
+import { values, teamContent, advisorContent1, advisorContent2, advisorContent3} from './local'
 
-const index = ({token}) => {
+const index = () => {
+
+  const [valueIndex, setValueIndex] = useState(0)
+  const wheelCallback = () => {
+      let newIndex = valueIndex+1;
+      if (newIndex >= values.length) { newIndex = 0 }
+      setValueIndex(newIndex)
+  }
+
   return (
     <div className="page-about-us">
       <Head><title>About Us</title></Head>
@@ -42,11 +49,19 @@ const index = ({token}) => {
       />
       <div className='signage'>
       <Wave color='white' />
-        <div className='sign-header'> <h1>MAGIC</h1> </div>
+      {/* Dynamic Sign */}
+        <div className='sign-header'>
+        <div className='body'>
+          <SwitchTransition>
+            <CSSTransition key={valueIndex} classNames='fade'>
+            <h1>{values[valueIndex].sign}</h1>
+            </CSSTransition>
+          </SwitchTransition>
+          </div>
+        </div>
       </div>
       <div className='wheel'>
-        {/* Wheel placeholder */}
-        <SpinWheel />
+        <SpinWheel index={valueIndex} values={values} callback={wheelCallback} />
       </div>
       <Team title="Our Team" content={teamContent} />
       <Advisors
@@ -58,16 +73,6 @@ const index = ({token}) => {
       />
     </div>
   );
-}
-export async function getServerSideProps(ctx) {
-  const { token } = cookies(ctx)
-  let loggedIn = false
-  if (token) {
-    loggedIn = true
-  }
-  return {
-    props: { loggedIn: loggedIn, token: token }
-  }
 }
 
 export default index;

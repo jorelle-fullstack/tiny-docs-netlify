@@ -20,18 +20,27 @@
     flex-direction: column;
     position: absolute;
     justify-content: flex-end;
+    align-items: center;
     background-image: url('../../assets/images/hanging-sign-small.svg');
+    background-repeat: no-repeat;
+    background-position-x: center;
     background-size: contain;
-    width: 233px;
+    min-width: 233px;
+    max-width: 600px;
     height: 233px;
     z-index: 0;
     top: 0;
-    h1 {
-      color: white !important;
-      text-align: center;
-      position: inherit;
-      bottom: 30px;
-      left: 35px;
+    .body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+     background-color: $secondary-darker-blue;
+     border-radius: 17px;
+     height: 111px;
+     min-width: 233px;
+     padding: 8px 16px;
+     transition-duration: 0.5s;
     }
+    h1 { color: white !important; }
   }
 }

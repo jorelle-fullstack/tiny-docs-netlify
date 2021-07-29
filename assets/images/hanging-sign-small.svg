@@ -1,11 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<svg xmlns="http://www.w3.org/2000/svg" width="511.92" height="511.92" viewBox="0 0 2133 2133">
   <defs>
     <style>
       .cls-1 {
-        fill: #033367;
+        fill: #003b76;
         fill-rule: evenodd;
       }
     </style>
   </defs>
-  <path id="Rounded_Rectangle_1" data-name="Rounded Rectangle 1" class="cls-1" d="M417-9h11V267H417V-9ZM76-9H87V267H76V-9ZM40,267H472a40,40,0,0,1,40,40V472a40,40,0,0,1-40,40H40A40,40,0,0,1,0,472V307A40,40,0,0,1,40,267Z"/>
+  <path class="cls-1" d="M316-33.9h47.847V1113H316V-33.9Z"/>
+  <path id="Rectangle_1_copy" data-name="Rectangle 1 copy" class="cls-1" d="M1738-33.9h47.85V1113H1738V-33.9Z"/>
 </svg>

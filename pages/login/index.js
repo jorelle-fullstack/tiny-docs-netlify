@@ -111,13 +111,17 @@ const index = ({ token }) => {
   );
 };
 export async function getServerSideProps(ctx) {
-  const { user, token } = cookies(ctx)
-  let loggedIn = false
-  if (!loggedIn) {
-    loggedIn = true
-  }
-  return {
-    props: { loggedIn: loggedIn, token: token }
+  let{ token } = cookies(ctx)
+  if (token) {
+    return {
+      redirect: {
+        destination: '/'
+      }
+    }
+  } else {
+    return {
+      props: {}
+    }
   }
 }
 

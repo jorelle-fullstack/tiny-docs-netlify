@@ -12,7 +12,6 @@ import Knob from './Knob'
 import Loading from './Loading'
 import Plans from './Plans'
 import Story from './Story'
-import Team from './Team'
 import Testimonials from './Testimonials'
 import Testimony from './Testimony'
 import Video from './Video'
@@ -33,7 +32,6 @@ export {
   Loading,
   Plans,
   Story,
-  Team,
   Testimonials,
   Testimony,
   Video,
