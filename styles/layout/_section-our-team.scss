@@ -23,9 +23,11 @@
         align-items: center;
         justify-content: center;
         width: 19%;
-
         text-align: center;
-
+        .photo {
+          overflow: hidden;
+          border-radius: 50%;
+        }
         p {
           &:first-of-type {
             margin: 15px 0;

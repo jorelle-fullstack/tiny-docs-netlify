@@ -14,6 +14,7 @@ import HeroImage from "../../assets/images/about-us-hero-image.png";
 
 // Localization
 import { teamContent, advisorContent1, advisorContent2, advisorContent3} from './local'
+
 const index = ({token}) => {
   return (
     <div className="page-about-us">
