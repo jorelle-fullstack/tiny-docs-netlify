@@ -15,7 +15,7 @@ import Search from '../../components/form/Search'
 import searchIcon from '../../assets/images/search-icon.svg'
 import arrow from '../../assets/images/arrow.svg'
 // Localizations
-import { watchRecords } from './local.js'
+import { watchRecords } from '../../localizations/my-account/local'
 
 const WatchRecords = () => {
   const router = useRouter()

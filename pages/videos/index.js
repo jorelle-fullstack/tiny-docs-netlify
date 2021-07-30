@@ -21,7 +21,7 @@ import profileIcon from '../../assets/images/profile-icon.svg'
 import searchIcon from '../../assets/images/search-icon.svg'
 
 // Localizations
-import { categoryButtons, allVideos } from './local'
+import { categoryButtons, allVideos } from '../../localizations/videos/local'
 import CategoryTabs from "../../components/global/CategoryTabs"
 
 const Videos = () => {

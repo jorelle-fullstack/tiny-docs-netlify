@@ -1,5 +1,5 @@
 //Dependencies
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 // Assets
 import heroImage from '../../assets/images/providers-page-avatar.webp'
@@ -11,10 +11,9 @@ import Testimony from '../../components/global/Testimony'
 import Image from 'next/image'
 import WhitePaper from '../../components/providers/WhitePaper'
 import Wave from '../../components/global/Wave'
-import Router from 'next/router'
 
 // Localizations
-import { testimonialContent, informationalContent } from './local'
+import { testimonialContent, informationalContent } from '../../localizations/providers/local'
 
 const index = () => {
     const handleAnchorScroll = () => {

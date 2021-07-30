@@ -8,7 +8,7 @@ import VideoSlider from '../../components/account/VideoSlider'
 import CategoryTabs from '../../components/global/CategoryTabsSmall'
 import Head from 'next/head'
 // Localalizations
-import { account, watchHistory } from './local.js'
+import { account, watchHistory } from '../../localizations/my-account/local'
 
 const index = () => {
     return (

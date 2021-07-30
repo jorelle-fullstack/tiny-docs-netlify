@@ -1,6 +1,4 @@
-import { useCollection } from "react-firebase-hooks/firestore";
-import React from "react";
-import firebase from "./firebase";
+import "../../../../services/firebase"
 
 export default function handler(req, res) {
   if (req.method === 'POST') {

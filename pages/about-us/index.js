@@ -17,7 +17,7 @@ import { values,
   advisorContent1,
   advisorContent2,
   advisorContent3
-} from './local'
+} from '../../localizations/about-us/local'
 
 const index = () => {
 

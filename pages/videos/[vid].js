@@ -20,7 +20,7 @@ import arrowIcon from '../../assets/images/arrow-white.png'
 import searchIcon from '../../assets/images/search-icon.svg'
 
 // Localizations
-import { allVideos, chips } from './local'
+import { allVideos, chips } from '../../localizations/videos/local'
 
 const VideoPlayer = () => {
     const router = UseRouter()

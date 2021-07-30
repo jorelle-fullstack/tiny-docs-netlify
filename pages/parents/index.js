@@ -17,9 +17,7 @@ import profileIcon from '../../assets/images/profile-icon.svg'
 import heroImage from '../../assets/images/tam-clean.svg'
 
 // Localizations
-import { categories, featuredResources, allResources } from './local.js'
-
-
+import { categories, featuredResources, allResources } from '../../localizations/parents/local'
 
 const index = () => {
 
