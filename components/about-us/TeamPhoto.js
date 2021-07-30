@@ -17,10 +17,10 @@ const TeamPhoto = ({ index, image, babyImage, name, position, twitter}) => {
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
               >
-                <SwitchTransition mode='out-in'>
+                <SwitchTransition key={index} mode='out-in'>
                   <CSSTransition key={ hovered ? 'baby-'+name : name } addEndListener={(node, done) => {
                     node.addEventListener("transitionend", done, false);
-                  }} classNames='pop' timeout={150}
+                  }} classNames='pop' timeout={200}
                   >
                 <div className='photo'>
                       {hovered ? 

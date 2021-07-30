@@ -3,6 +3,7 @@ import Tim from "../../assets/images/tim.png";
 import IAmTim from "../../assets/images/i-am-tim.png";
 
 const Advisors = ({ title, description, advisorsCol1, advisorsCol2, advisorsCol3 }) => {
+  
   return (
     <div className="section-our-advisors">
       <div className="container">
@@ -48,10 +49,12 @@ const Advisors = ({ title, description, advisorsCol1, advisorsCol2, advisorsCol3
             })}
           </div>
           <div className="image__wrapper">
-            <Image src={Tim} className="" alt="Tim" />
-            <div className="image__wrapper--bubble">
-              <Image src={IAmTim} className="" alt="I am Tim" />
-            </div>
+          <div className='tom'>
+                <div className='speech'>
+                    <Image src={IAmTim} height={58} width={174} />
+                </div>
+                <img className='caretoon' src={Tim.src} height={285} width={278} />
+        </div>
           </div>
         </div>
       </div>

@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 // Assets
 import knobArrow from '../../assets/images/wheel-arrow.svg'
+import tom from '../../assets/images/tom-right.png'
+import tomSpeech from '../../assets/images/tom-speech-bubble-about-us.png'
 
 // Components
 import Image from 'next/image'
@@ -13,6 +15,12 @@ const SpinWheel = ({ index, values, callback = () => null }) => {
 
     return(
         <div className='spin-wheel'>
+            <div className='tom'>
+                <div className='speech'>
+                    <Image src={tomSpeech} height={57} width={398} />
+                </div>
+                <img className='caretoon' src={tom.src} height={285} width={278} />
+        </div>
             <div className='wrapper'>
                 <SwitchTransition >
                     <CSSTransition key={index}

@@ -21,12 +21,6 @@ const index = () => {
       const valuesSection = document.getElementById('values')
       valuesSection.scrollIntoView({behavior: 'smooth'})
     }
-
-    //Authentication Checking
-    useEffect(() => {
-        const tokenCheck = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-        tokenCheck != null ? "" : Router.push('/login');
-    }, []); 
     
     return (
         <div className='page-providers'>

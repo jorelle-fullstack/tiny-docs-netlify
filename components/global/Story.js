@@ -7,6 +7,7 @@ import Knob from './Knob'
 
 // Assets
 import Tam from "../../assets/images/tam.png";
+import tamSpeech from "../../assets/images/tam-speech-about-us.png";
 
 const Story = ({ title, content }) => {
 
@@ -37,7 +38,12 @@ const Story = ({ title, content }) => {
             <p>{content}</p>
           </div>
           <div className="content__wrapper--image">
-            <Image src={Tam} className="" alt="Tam" />
+          <div className='speech'>
+                    <Image src={tamSpeech} height={85} width={148} />
+                </div>
+                <div className='caretoon'>
+                <img src={Tam.src} alt="Tam" />
+                </div>
           </div>
         </div>
       </div>

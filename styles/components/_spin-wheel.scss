@@ -3,8 +3,47 @@
     height: 881px;
     background-image: url('../../assets/images/wheel-base.png');
     background-size: contain;
-    background-repeat: none;
-    
+    background-repeat: no-repeat;
+    position: relative;
+    margin-top: 2%;
+    margin-bottom: 7%;
+    .tom {
+        position: absolute;
+        z-index: 2;
+        height: 360px;
+        width: 360px;
+        left: 2%;
+        bottom: 34%;
+        &:hover {
+            .speech {
+                display: block;
+                opacity: 1;
+                transform: scale(1);
+            }
+            .caretoon {
+                animation: talk 400ms ease;
+                height: 285px;
+                width: 278px;
+            }
+        }
+        .speech {
+            opacity: 0;
+            transform: scale(0);
+            position: absolute;
+            max-width: 398px;
+            max-height: 57px;
+            z-index: 5;
+            left: -120px;
+            top: 37%;
+            transition-duration: 0.3s;
+        }
+        .caretoon {
+            position: absolute;
+            z-index: 4;
+            left: -80px;
+            top: 40%;
+        }
+      }
     .wrapper {
         display: flex;
         position: relative;
@@ -55,6 +94,13 @@
                     border-radius: 50%;
                     background-color: #c9803b;
                 }   
+            }
+        }
+    }
+    @include respond-to(sm-down) {
+        .wrapper {
+            .values {
+                h2 { font-size: 16px; }
             }
         }
     }

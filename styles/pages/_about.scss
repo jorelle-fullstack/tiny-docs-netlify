@@ -43,4 +43,15 @@
     }
     h1 { color: white !important; }
   }
+
+  @include respond-to(sm-down) {
+    .sign-header {
+      height: 140px;
+      .body { height: 70px; }
+    }
+    .wheel {
+      margin-top: 120px;
+      padding: 12px;
+    }
+  }
 }
