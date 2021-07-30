@@ -46,26 +46,26 @@ const WatchRecords = () => {
         formState: { errors },
       } = useForm();
     return(
-        <div class='records-section'>
+        <div className='records-section'>
             <Head><title>My Account - {title}</title></Head>
-            <div class='container'>
+            <div className='container'>
               {/* Title and Category Tabs */}
-              <div class='top-section'>
+              <div className='top-section'>
                   <CategoryTabs />
                   <Fab icon={arrow} onClick={(e) => router.push('/my-account')} />
                   <h1>{title}</h1>
               </div>
               {/* Search Bar */}
-                <div class='search-section'>
+                <div className='search-section'>
                   <Search register={{ ...register("search", {}) }} errors={errors} placeholder='Search'/>
                 </div>
               {/* Video Collection */}
-              <div class='videos'>
-                {watchRecords.map((video) => {
-                  return <WatchEntry thumbnail={video.thumbnail} title={video.title} />
+              <div className='videos'>
+                {watchRecords.map((video, i) => {
+                  return <WatchEntry key={i} thumbnail={video.thumbnail} title={video.title} />
                 })}
               </div>
-              <div class='pagination'>
+              <div className='pagination'>
                 <button className='btn pagination-btn active'>
                   <h3>1</h3>0
                 </button>

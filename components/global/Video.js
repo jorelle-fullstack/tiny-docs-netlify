@@ -3,15 +3,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 const Video = ({title, thumbnail, duration, route}) => {
     return (
-        <Link href={{
+        <Link passHref href={{
             pathname: '/videos/[vid]',
             // Put video ID under "vid".
             query: {vid: 'test'}
         }}>
             <div className='video-wrapper'>
-            <div class='thumbnail'>
+            <div className='thumbnail'>
                 <div className='length'><p>{duration}</p></div>
-                <Image height={206} src={thumbnail} />
+                <Image height={206} src={thumbnail} alt='' />
             </div>
             <div className='info'>
                 <div className='title'>

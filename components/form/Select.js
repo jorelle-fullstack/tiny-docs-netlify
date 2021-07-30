@@ -7,7 +7,7 @@ const Select = ({ register, errors, placeholder, options, defaultValue, type, sh
     <div className='input-wrapper'>
       <select defaultValue={defaultValue} placeholder={placeholder} {...register} type={type} {...rest} >
         {options.map(({ value, label }) =>
-          <option value={value}>{label}</option>
+          <option key={label} value={value}>{label}</option>
         )}
       </select>
 

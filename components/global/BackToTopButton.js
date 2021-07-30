@@ -7,7 +7,7 @@ const BackToTopButton = () => {
     const handleScroll = () => { window.scrollTo({top: 0, behavior: 'smooth'}) }
     return(
         <button className='btn btn--back-to-top' onClick={handleScroll}>
-            <Image src={goBackUp} width={133} height={132} />
+            <Image src={goBackUp} width={133} height={132} alt='' />
         </button>
     )
 }

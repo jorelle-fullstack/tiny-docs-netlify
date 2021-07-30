@@ -1,8 +1,8 @@
 // Dependencies
-import React, { useState } from 'react'
-import { useForm } from "react-hook-form"
+import React, { useState as UseState } from 'react'
+import { useForm as UseForm } from "react-hook-form"
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
-import { useRouter } from 'next/router'
+import { useRouter as UseRouter } from 'next/router'
 // Components
 import Head from 'next/head'
 import CategoryTabs from '../../components/global/CategoryTabs'
@@ -23,17 +23,17 @@ import searchIcon from '../../assets/images/search-icon.svg'
 import { allVideos, chips } from './local'
 
 const VideoPlayer = () => {
-    const router = useRouter()
+    const router = UseRouter()
     const {
         register,
         handleSubmit,
         watch,
         setError,
         formState: { errors },
-      } = useForm();
+      } = UseForm();
 
     const { searchBarRef } = React.useRef(null)
-    const [toggleSearchBar, toggleSearch] = useState(false)
+    const [toggleSearchBar, toggleSearch] = UseState(false)
     const categoryTabs = <CategoryTabs />
     const searchBar = <form className='form' ref={searchBarRef}>
     <Input className='search-field' register={{ ...register("search", { required: false }) }} errors={errors} type="text" placeholder="Search" />
@@ -59,7 +59,7 @@ const VideoPlayer = () => {
                 <div className='video-player'>
                 <CSSTransition in={true} appear={true} classNames='fade' timeout={600}>
                     <div className='player'>
-                        <Image src={videoPlaceholder} width={1043} height={601} />
+                        <Image src={videoPlaceholder} width={1043} height={601} alt='' />
                     </div>
                 </CSSTransition>
                 </div>

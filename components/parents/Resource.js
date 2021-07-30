@@ -11,7 +11,7 @@ import activityIcon from '../../assets/images/activity-icon.svg'
 const Resource = ({index, title, desc, thumbnail, type, route                                                                                                                   }) => {
     return (
         <div key={index} className='resource-wrapper'>
-            <Image className='thumbnail' height={159} src={thumbnail} />
+            <Image className='thumbnail' height={159} src={thumbnail} alt='' />
             <div className='info'>
                 <div className='title'>
                     <h4>{title}</h4>
@@ -22,12 +22,12 @@ const Resource = ({index, title, desc, thumbnail, type, route                   
                     'resource-btn--activity': type === 'Activity'
                 })
                     } >
-                        <img src={clsx({
+                        <Image width={22} height={22} src={clsx({
                             [videoIcon.src]: type === 'Video',
                             [blogIcon.src]: type === 'Blog',
                             [podcastIcon.src]: type === 'Podcast',
                             [activityIcon.src]: type === 'Activity'
-                        })} /></button>
+                        })} alt='' /></button>
                 </div>
                 <p>{desc}</p>
             </div>

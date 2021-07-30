@@ -46,11 +46,11 @@ const SuccessOverlay = ({ checkoutSuccess }) => {
             </CSSTransition>
             <CSSTransition nodeRef={checkRef} in={true} appear={true} timeout={300} classNames='pop'>
             <div ref={checkRef} className='check-circle'>
-                <Image width={64} height={47} src={check} />
+                <Image width={64} height={47} src={check} alt='check' />
             </div>
             </CSSTransition>
             <CSSTransition nodeRef={descRef} in={true} appear={true} timeout={400} classNames='pop'>
-            <h5 ref={descRef} className='text-disabled'>You now have access to all of Tiny Docs' Premium Resources!</h5>
+            <h5 ref={descRef} className='text-disabled'>You now have access to all of Tiny Docs&apos; Premium Resources!</h5>
             </CSSTransition>
             <CSSTransition nodeRef={buttonRef} in={true} appear={true} timeout={500} classNames='fade-slide-down'>
             <Button ref={buttonRef} className='go-to-home btn--blue' onClick={handleClick}>Go To Home Page</Button>

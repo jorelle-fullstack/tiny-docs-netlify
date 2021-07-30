@@ -16,25 +16,25 @@ const CategoryTabs = () => {
         {
             className: 'pink-shadow',
             label: 'Videos',
-            icon: videosIcon.src,
+            icon: videosIcon,
             route: ''
         },
         {
             className: 'light-blue-shadow',
             label: 'Play',
-            icon: playIcon.src,
+            icon: playIcon,
             route: ''
         },
         {
             className: 'yellow-shadow',
             label: 'Blog',
-            icon: blogIcon.src,
+            icon: blogIcon,
             route: ''
         },
         {
             className: 'blue-shadow',
             label: 'Learn',
-            icon: learnIcon.src,
+            icon: learnIcon,
             route: ''
         },
     ]

@@ -2,9 +2,9 @@
 import { CSSTransition } from 'react-transition-group'
 import Link from 'next/link'
 import { useForm } from "react-hook-form"
-import { login, passwordBaseRegister, handleRegistrationData } from '../../auth'
-import React, { useState, useEffect } from "react"
-import Router, { useRouter } from 'next/router'
+import { login, passwordBaseRegister } from '../../auth'
+import React, { useState as UseState } from "react"
+import { useRouter as UseRouter } from 'next/router'
 import Head from 'next/head'
 import cookies from 'next-cookies'
 
@@ -20,10 +20,10 @@ import fbImg from '../../assets/images/facebook.svg'
 
 
 const Index = ({ plan }) => {
-  const router = useRouter()
+  const router = UseRouter()
 
   // State variables
-  const [submitting, setsubmitting] = useState(false)
+  const [submitting, setsubmitting] = UseState(false)
 
   // React Forms
   const { register, handleSubmit, watch, setError, formState: { errors } } = useForm();
@@ -116,16 +116,24 @@ const Index = ({ plan }) => {
           </CSSTransition>
           <p>- Or Login With - </p>
           <div className="external-login-wrapper">
-          <CSSTransition appear={true} in={true} classNames='pop' timeout={300}>
-            <div className='social-btn'>
-            <Button onClick={e => handle3rdPartyRegister('google')}><img className='icon__google' src={googleImg.src} alt="" /></Button>
+            <CSSTransition appear={true} in={true} classNames='pop' timeout={600}>
+            <div className='social-btn' >
+            <Button className='social' onClick={e => handle3rdPartyLogin('google')}>
+              <div className='icon__google'>
+              <Image src={googleImg} width={44} height={44} alt="" />
+              </div>
+            </Button>
             </div>
-          </CSSTransition> 
-          <CSSTransition appear={true} in={true} classNames='pop' timeout={300}>
-            <div className='social-btn'>
-            <Button onClick={e => handle3rdPartyRegister('facebook')}><img className='icon__facebook' src={fbImg.src} alt="" /></Button>
+            </CSSTransition>
+            <CSSTransition in={true} appear={true} classNames='pop' timeout={600}>
+            <div className='social-btn' >
+            <Button className='social' onClick={e => handle3rdPartyLogin('facebook')}>
+              <div className='icon__facebook'>
+              <Image src={fbImg} width={44} height={44} alt="" />
+              </div>
+              </Button>
             </div>
-          </CSSTransition>
+            </CSSTransition>
           </div>
           <Link href='/login' passHref>
             <a className='member'>Already a member? Login</a>
@@ -134,7 +142,7 @@ const Index = ({ plan }) => {
       </div>
       <div className="second-wrapper">
       <CSSTransition in={true} appear={true} timeout={0} classNames='pop'>
-          <Image width={525} height={601} src={registerBg.src} />
+          <Image width={525} height={601} src={registerBg} alt='' />
         </CSSTransition>
       </div>
     </div>

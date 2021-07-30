@@ -1,16 +1,15 @@
 import { Button } from '../../components/global'
 import Link from 'next/link'
-import { useForm } from "react-hook-form";
-import { useRouter } from 'next/router'
+import { useForm as UseForm } from "react-hook-form";
+import { useRouter as UseRouter } from 'next/router'
 import Input from '../../components/form/Input'
-import { useState } from "react";
+import { useState as UseState } from "react";
 import axios from 'axios'
 
 const index = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const [submitting, setsubmitting] = useState(false)
-
-  const router = useRouter()
+  const { register, handleSubmit, watch, formState: { errors } } = UseForm();
+  const [submitting, setsubmitting] = UseState(false)
+  const router = UseRouter()
   const onSubmit = async (data) => {
 
     try {

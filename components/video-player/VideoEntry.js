@@ -8,16 +8,16 @@ import IconButton from '../../components/global/IconButton'
 import dotsIcon from '../../assets/images/dots-vertical-icon.svg'
 const VideoEntry = ({thumbnail, title, route}) => {
     return(
-        <Link href={{
+        <Link passHref href={{
             pathname: '/videos/[vid]',
             // Put video ID under "vid".
             query: {vid: 'test'}
         }}>
             <div className='video-entry-wrapper'>
-            <Image height={133} src={thumbnail} />
+            <Image height={133} src={thumbnail} alt='' />
             <div className='title'>
             <h4>{title}</h4>
-            <button className='btn dots-btn'><Image src={dotsIcon} /></button>
+            <button className='btn dots-btn'><Image src={dotsIcon} alt='' /></button>
             </div>
         </div>
         </Link>   

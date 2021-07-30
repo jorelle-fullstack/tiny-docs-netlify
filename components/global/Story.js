@@ -39,10 +39,10 @@ const Story = ({ title, content }) => {
           </div>
           <div className="content__wrapper--image">
           <div className='speech'>
-                    <Image src={tamSpeech} height={85} width={148} />
+                  <Image src={tamSpeech} height={85} width={148} alt='' />
                 </div>
                 <div className='caretoon'>
-                <img src={Tam.src} alt="Tam" />
+                  <Image width={355} height={366} src={Tam} alt="Tam" />
                 </div>
           </div>
         </div>

@@ -13,14 +13,14 @@ const Logout = ({ callback = () => null }) => {
         document.cookie = 'user=; path=/'
         document.cookie = 'cus_id=; path=/'
         callback()
-        router.push('/about-us')
+        router.reload()
     }
     return(
         <div className='logout'>
             <div className='logout__wrapper'>
                 <div className='title'>
                     <h1>Log Out of your Account</h1>
-                    <h3>Are you sure you want to log out?  You won't be able to access to your paid content.</h3>
+                    <h3>Are you sure you want to log out?  You won&apos;t be able to access to your paid content.</h3>
                 </div>
             <div className='buttons'>
             <Button className='btn btn--blue' onClick={handleLogout}>Yes, Logout</Button>

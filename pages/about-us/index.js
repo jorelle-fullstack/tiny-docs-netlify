@@ -1,5 +1,5 @@
 // Dependencies
-import React, { useState } from "react"
+import React, { useState as UseState } from "react"
 import Head from 'next/head'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 
@@ -21,7 +21,7 @@ import { values,
 
 const index = () => {
 
-  const [valueIndex, setValueIndex] = useState(0)
+  const [valueIndex, setValueIndex] = UseState(0)
   const wheelCallback = () => {
       let newIndex = valueIndex+1;
       if (newIndex >= values.length) { newIndex = 0 }
@@ -48,11 +48,11 @@ const index = () => {
       content={
         <>
           We started Tiny Docs in 2015 to bridge the communcation gap between
-          doctors, kids, and families. We can't measure success in just
-          dollars and cents because a child's health is far too important. So
+          doctors, kids, and families. We can&apos;t measure success in just
+          dollars and cents because a child&apos;s health is far too important. So
           instead, we dream big and measure our impact in smiles and health
           outcomes. <br /> <br /> We provide children and families with the
-          tools to make informed, empowered healthcare decisions. It's
+          tools to make informed, empowered healthcare decisions. It&apos;s
           changing the world with cartoons for any child in any language.
         </>
       }

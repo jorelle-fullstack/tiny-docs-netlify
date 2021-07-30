@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState as UseState} from 'react'
 import firebase from 'firebase/app'
 import '../../../services/firebase'
 import 'firebase/firestore'
 
 const loginWithFirebase = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = UseState();
+  const [password, setPassword] = UseState();
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();

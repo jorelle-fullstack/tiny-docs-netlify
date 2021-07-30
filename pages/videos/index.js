@@ -1,6 +1,6 @@
 // Dependencies
-import { useForm } from "react-hook-form"
-import React, { useEffect, useState } from 'react'
+import { useForm as UseForm } from "react-hook-form"
+import React, { useEffect as UseEffect, useState as UseState } from 'react'
 import { CSSTransition } from "react-transition-group"
 
 // Components
@@ -30,14 +30,14 @@ const Videos = () => {
     }
     let categoryIndex = '';
     // Category swiper instance.
-    const [swiper, setSwiper] = useState(null);
+    const [swiper, setSwiper] = UseState(null);
     const slideTo = (index) => {
         if (swiper) 
         swiper.slideTo(index)
     }
     // Gets current scrollbar position for knob components.
-    const [scrollY, setScrollY] = useState(0)
-    useEffect(() => {
+    const [scrollY, setScrollY] = UseState(0)
+    UseEffect(() => {
         const handleScroll = () => {
             setScrollY(window.scrollY)
         }
@@ -55,11 +55,9 @@ const Videos = () => {
     // Also for search bar.
     const {
         register,
-        handleSubmit,
-        watch,
         setError,
         formState: { errors },
-      } = useForm();
+      } = UseForm();
 
     // Handle category swiping.
     const handleCategorySwiper = (index) => {
@@ -70,8 +68,12 @@ const Videos = () => {
     }
     return (
         <div className='page-videos'>
-            <img className='tam' src={tam.src} />
-            <img className='tim' src={tim.src} />
+            <div className='tam'>
+                <Image src={tam} width={449} height={447} alt='' />
+            </div>
+            <div className='tim'>
+                <Image src={tim} width={429} height={404} alt='' />
+            </div>
         <Head><title>Videos</title></Head>
             <div className='banner banner--kids-videos'>
                 <div className='body'>
@@ -79,13 +81,13 @@ const Videos = () => {
                     <div className='top-section'>
                         <CSSTransition in={true} appear={true} timeout={0} classNames='pop'>
                         <div className='profile-icon'>
-                        <Image width={93} height={93} src={account.profileIcon.src} />
+                        <Image width={93} height={93} src={account.profileIcon} alt='' />
                         </div>
                         </CSSTransition>
                         <CSSTransition in={true} appear={true} timeout={200} classNames='fade-slide-right'>
                     <form className='form' >
       <Input className="search-field" register={{ ...register("search", {}) }} errors={errors} type="text" placeholder="Search"
-                render={() => <button type="button" className="btn input-inline-button" onClick={(e) => handleSearch} ><Image width={26} height={26} src={searchIcon} /></button>}
+                render={() => <button type="button" className="btn input-inline-button" onClick={(e) => handleSearch} ><Image width={26} height={26} src={searchIcon} alt='' /></button>}
               />
       </form>
       </CSSTransition>
@@ -97,7 +99,7 @@ const Videos = () => {
             </div>
             <div className='category-buttons'>
                 <div className='tom'>
-                    <Image className='tom' width={364} height={357} src={tom.src} />
+                    <Image className='tom' width={364} height={357} src={tom} alt='' />
                 </div>
                 <div className='container'>
                 {categoryButtons.map((button, i) => {

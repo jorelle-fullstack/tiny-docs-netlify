@@ -1,6 +1,8 @@
 // Dependencies
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState as UseState, useEffect as UseEffect } from "react";
 import clsx from "clsx";
+import { CSSTransition, SwitchTransition } from 'react-transition-group'
+
 // Components
 import Image from "next/image";
 import Link from "next/link";
@@ -11,9 +13,9 @@ import Logout from "./Logout"
 import Logo from "../../assets/images/logo.png";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [loggedIn, setLoginState] = useState()
-  const [logoutDialog, showLogoutDialog] = useState(false)
+  const [isOpen, setIsOpen] = UseState(false);
+  const [loggedIn, setLoginState] = UseState()
+  const [logoutDialog, showLogoutDialog] = UseState(false)
 
 
   const toggleLogout = () => {
@@ -24,7 +26,7 @@ const Header = () => {
     }
   }
   // Check login state with token (temporarily using localStorage for debugging purposes).
-  useEffect(() => {
+  UseEffect(() => {
     let token = null
     if (typeof window !== 'undefined') {
       token = window.localStorage.getItem('token')
@@ -36,12 +38,18 @@ const Header = () => {
         console.log("logged out!")
       }
     }
-  })
+  }, [])
 
-  const ref = useRef(null);
+  const ref = React.useRef(null);
   return (
     <>
-       { logoutDialog ? <Logout callback={toggleLogout} /> : null }
+    <SwitchTransition>
+      <CSSTransition key={logoutDialog} classNames='fade' addEndListener={(node, done) => {
+                    node.addEventListener("transitionend", done, false);
+                  }} timeout={150}>
+      { logoutDialog ? <Logout callback={toggleLogout} /> : <></> }
+      </CSSTransition>
+    </SwitchTransition>
     <header
       className={clsx("header", { "header__menu--open": isOpen })}
       ref={ref}

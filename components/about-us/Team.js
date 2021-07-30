@@ -10,7 +10,7 @@ const Team = ({ title, content }) => {
           {content.map((member, i) => {
             return (
               <TeamPhoto
-              index={i}
+              key={i}
               name={member.name}
               image={member.image}
               babyImage={member.babyImage}

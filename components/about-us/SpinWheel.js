@@ -1,6 +1,6 @@
 // Dependencies
-import { useState } from 'react'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
+
 // Assets
 import knobArrow from '../../assets/images/wheel-arrow.svg'
 import tom from '../../assets/images/tom-right.png'
@@ -10,16 +10,16 @@ import tomSpeech from '../../assets/images/tom-speech-bubble-about-us.png'
 import Image from 'next/image'
 
 const SpinWheel = ({ index, values, callback = () => null }) => {
-    
     const handleClick = () => callback()
-
     return(
         <div className='spin-wheel'>
             <div className='tom'>
                 <div className='speech'>
-                    <Image src={tomSpeech} height={57} width={398} />
+                    <Image src={tomSpeech} height={57} width={398} alt='' />
                 </div>
-                <img className='caretoon' src={tom.src} height={285} width={278} />
+                <div className='caretoon'>
+                <Image src={tom} height={285} width={278} alt='' />
+                </div>
         </div>
             <div className='wrapper'>
                 <SwitchTransition >
@@ -35,7 +35,7 @@ const SpinWheel = ({ index, values, callback = () => null }) => {
                 </SwitchTransition>
                 <div className='spinner'>
                 <div className='arrow'>
-                <Image src={knobArrow} width={85} height={110} />
+                <Image src={knobArrow} width={85} height={110} alt='' />
             </div>
             <div className='knob'>
                 <button onClick={handleClick} />

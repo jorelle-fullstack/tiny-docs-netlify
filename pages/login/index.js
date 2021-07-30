@@ -1,8 +1,8 @@
 // Dependencies
-import { useForm } from "react-hook-form";
+import { useForm as UseForm } from "react-hook-form";
 import { login, passwordBasedLogin } from '../../auth'
-import React, { useState } from "react";
-import { useRouter } from 'next/router'
+import React, { useState as UseState } from "react";
+import { useRouter as UseRouter } from 'next/router'
 import { CSSTransition } from 'react-transition-group'
 import cookies from 'next-cookies'
 
@@ -19,10 +19,10 @@ import googleImg from '../../assets/images/google.svg'
 import fbImg from '../../assets/images/facebook.svg'
 
 const index = ({ token }) => {
-  const router = useRouter()
+  const router = UseRouter()
   console.log(token)
   // State variables
-  const [submitting, setsubmitting] = useState(false)
+  const [submitting, setsubmitting] = UseState(false)
   const redirectLink = '/about-us'
 
   const {
@@ -31,7 +31,7 @@ const index = ({ token }) => {
     watch,
     setError,
     formState: { errors },
-  } = useForm();
+  } = UseForm();
 
   const onSubmit = async (data) => {
     setsubmitting(true)
@@ -88,12 +88,20 @@ const index = ({ token }) => {
           <div className="external-login-wrapper">
             <CSSTransition appear={true} in={true} classNames='pop' timeout={600}>
             <div className='social-btn' >
-            <Button className='social' onClick={e => handle3rdPartyLogin('google')}><img className='icon__google' src={googleImg.src} alt="" /></Button>
+            <Button className='social' onClick={e => handle3rdPartyLogin('google')}>
+              <div className='icon__google'>
+              <Image src={googleImg} width={44} height={44} alt="" />
+              </div>
+            </Button>
             </div>
             </CSSTransition>
             <CSSTransition in={true} appear={true} classNames='pop' timeout={600}>
             <div className='social-btn' >
-            <Button className='social' onClick={e => handle3rdPartyLogin('facebook')}><img className='icon__facebook' src={fbImg.src} alt="" /></Button>
+            <Button className='social' onClick={e => handle3rdPartyLogin('facebook')}>
+              <div className='icon__facebook'>
+              <Image src={fbImg} width={44} height={44} alt="" />
+              </div>
+              </Button>
             </div>
             </CSSTransition>
           </div>
@@ -104,7 +112,7 @@ const index = ({ token }) => {
       </div>
       <div className="second-wrapper">
         <CSSTransition in={true} appear={true} timeout={0} classNames='pop'>
-          <Image width={442} height={555} src={teamShot.src} />
+          <Image width={442} height={555} src={teamShot} alt='' />
         </CSSTransition>
       </div>
     </div>

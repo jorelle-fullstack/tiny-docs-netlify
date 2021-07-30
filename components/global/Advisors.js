@@ -51,9 +51,11 @@ const Advisors = ({ title, description, advisorsCol1, advisorsCol2, advisorsCol3
           <div className="image__wrapper">
           <div className='tom'>
                 <div className='speech'>
-                    <Image src={IAmTim} height={58} width={174} />
+                  <Image src={IAmTim} height={58} width={174} alt='' />
                 </div>
-                <img className='caretoon' src={Tim.src} height={285} width={278} />
+                <div className='caretoon'>
+                  <Image  src={Tim.src} height={285} width={278} alt='' />
+                </div>
         </div>
           </div>
         </div>

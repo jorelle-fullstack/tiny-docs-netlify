@@ -1,21 +1,20 @@
 // Dependencies
-import React, { useState, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
+import React from 'react'
+import { useForm as UseForm } from "react-hook-form"
 
 // Components
-import heroImage from '../../assets/images/tam-clean.svg'
 import Button from '../../components/global/Button'
 import Head from 'next/head'
 import Image from 'next/image'
-import Router from 'next/router'
-import Input from '../../components/form/Input'
-import { useForm } from "react-hook-form"
 import Featured from '../../components/parents/Featured'
 import Resource from '../../components/parents/Resource'
 import CategoryTabs from '../../components/global/CategoryTabsSmall'
 import Search from '../../components/form/Search'
+
 // Assets
 import profileIcon from '../../assets/images/profile-icon.svg'
+import heroImage from '../../assets/images/tam-clean.svg'
 
 // Localizations
 import { categories, featuredResources, allResources } from './local.js'
@@ -23,13 +22,6 @@ import { categories, featuredResources, allResources } from './local.js'
 
 
 const index = () => {
-    
-    //Authentication Checking
-    useEffect(() => {
-      const tokenCheck = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-      console.log(tokenCheck);
-      tokenCheck != null ? "" : Router.push('/login');
-    }, []); 
 
     // Account Object.
     const account = {
@@ -53,7 +45,7 @@ const index = () => {
         watch,
         setError,
         formState: { errors },
-      } = useForm();
+      } = UseForm();
     return (
         <div className='page-parents'>
         <Head><title>Parents</title></Head>
@@ -68,7 +60,7 @@ const index = () => {
             <div className='nav-menu__wrapper--left'>
             <CSSTransition timeout={0} in={true} appear={true} classNames='pop'>
               <div className='profile-icon'>
-              <Image className='profile-icon' src={account.profileIcon} width={73} height={73} />
+              <Image className='profile-icon' src={account.profileIcon} width={73} height={73}  alt=''/>
               </div>
             </CSSTransition>
             {/* Search Field */}
@@ -113,7 +105,7 @@ const index = () => {
         <div className='resources'>
             <div className='container'>
                 {allResources.map((resource, i) => {
-                return <Resource index={i} type={resource.type} thumbnail={resource.thumbnail} title={resource.title} desc={resource.desc} />
+                return <Resource key={i} index={i} type={resource.type} thumbnail={resource.thumbnail} title={resource.title} desc={resource.desc} />
                 })}
             </div>
         </div>

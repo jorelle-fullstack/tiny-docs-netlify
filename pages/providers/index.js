@@ -41,7 +41,7 @@ const index = () => {
                         informationalContent.map((info, i) => {
                             return(
                                 <div key={i} className='sub-section'>
-                                    <Image className='info-icon' width={info.iconWidth} height={info.iconHeight} src={info.icon} />
+                                    <Image className='info-icon' width={info.iconWidth} height={info.iconHeight} src={info.icon} alt='' />
                                     <h2>{info.description}</h2>
                                 </div>
                             );
@@ -56,7 +56,7 @@ const index = () => {
                 <div className='testimony__wrapper'>
             <h1>Testimonials</h1>
             <div className='t-container'>
-            {testimonialContent.map((testimony, i) => { return <Testimony index={i} infoColor='dark blue' name={testimony.name} desc={testimony.description} statement={testimony.statement} /> })}
+            {testimonialContent.map((testimony, i) => { return <Testimony key={i} index={i} infoColor='dark blue' name={testimony.name} desc={testimony.description} statement={testimony.statement} /> })}
             </div>
                 </div>
             </div>

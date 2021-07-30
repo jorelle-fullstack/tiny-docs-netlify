@@ -5,7 +5,7 @@ const Fab = ({icon, className = null, onClick = () => null}) => {
     const handleClick = () => { onClick() }
     return(
         <button className={`btn fab ${className}`} onClick={handleClick}>
-            <Image src={icon} />
+            <Image src={icon} alt='' />
         </button>
     )
 }

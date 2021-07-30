@@ -7,7 +7,9 @@ import bookmarkIcon from '../../assets/images/bookmark-icon.svg'
 const SaveButton = ({saved = false}) => {
     return(
         <button className='btn save-video-btn'>
-            <img className='icon' src={bookmarkIcon.src} />
+            <div className='icon'>
+            <Image src={bookmarkIcon.src} width={56} height={59} alt='' />
+            </div>
             <h3>Save</h3>
         </button>
     )

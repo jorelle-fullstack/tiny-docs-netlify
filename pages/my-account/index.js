@@ -37,7 +37,7 @@ const index = () => {
             <div className='account-sidebar'>
                 {/* Account Info */}
                 <CSSTransition in={true} appear={true} classNames='pop'>
-                <div className='avatar'><Image src={account.avatar} width={248} height={248} /></div>
+                <div className='avatar'><Image src={account.avatar} width={248} height={248} alt='' /></div>
                 </CSSTransition>
                 <CSSTransition in={true} appear={true} classNames='fade-slide-right' timeout={400}>
                 <div className='info'>
@@ -68,9 +68,9 @@ const index = () => {
                 {/* My Subscription Plans */}
                 <h3>My Plans</h3>
                 <div className='subscription-plans'>
-                    {account.plans.map((plan) => {
+                    {account.plans.map((plan, i) => {
                         return (
-                            <div className='plan'>
+                            <div key={i} className='plan'>
                             <p className='title text-disabled'>{plan.type} Subscription</p>
                             <hr className='divider' />
                             <p className='desc text-disabled'>{plan.name} ${plan.amount}<br />Renewing {plan.renewal}</p>

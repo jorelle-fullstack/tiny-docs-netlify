@@ -9,7 +9,7 @@ const Search = ({register, placeholder, errors, onClick = () => null}) => {
     return(
       <form className='form' >
         <Input className="searchField" register={register} errors={errors} type="text" placeholder={placeholder}
-                render={() => <button type="button" className="input-inline-button" onClick={handleClick} ><Image width={26} height={26} src={searchIcon} /></button>}
+                render={() => <button type="button" className="input-inline-button" onClick={handleClick} ><Image width={26} height={26} src={searchIcon} alt='' /></button>}
               />
       </form>
     )

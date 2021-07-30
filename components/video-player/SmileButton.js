@@ -19,8 +19,6 @@ const SmileButton = ({ onClick = () => null, count, smiled = false}) => {
     const particles = 12
     const els = []
     // Renders the particles tag where the floating smile icons will appear.
-    // const particleArea = <div id='particles' className='particles' ref={this.tempParticles}></div>
-    // ReactDOM.render(particleArea, document.getElementById('smile-btn'))
     for (var i = 0; i < particles; i++) {
 
       /* RANDOMIZED VARIABLES FOR ANIMATION */
@@ -69,7 +67,7 @@ const SmileButton = ({ onClick = () => null, count, smiled = false}) => {
               ...defaultStyle,
             ...tStyles[state]
             }}>
-              <img key={i} style={style} src={smileIcon.src} />
+              <Image key={i} style={style} width={size} height={size} src={smileIcon.src} alt='' />
             </div>
           )}
         </Transition>
@@ -88,7 +86,7 @@ const SmileButton = ({ onClick = () => null, count, smiled = false}) => {
                 {elements.map((element) => { return element })}
               </TransitionGroup>
             <div className='smile'>
-              <Image width={42} height={42} src={smileIcon.src} />
+              <Image width={42} height={42} src={smileIcon.src} alt='' />
             </div>
           </div>
       </button>
