@@ -43,7 +43,7 @@ const VideoPlayer = () => {
     const handleSearchToggle = () => { toggleSearch(!toggleSearchBar) }
     
     return(
-        <div className='page-video_player container'>
+        <div className='page-video_player'>
             <Head><title>Video Player | [Title Here]</title></Head>
             <div className='top-section'>
                     <Fab className='back' icon={arrowIcon} onClick={handleBack} />

@@ -14,10 +14,14 @@ const VideoEntry = ({thumbnail, title, route}) => {
             query: {vid: 'test'}
         }}>
             <div className='video-entry-wrapper'>
-            <Image height={133} src={thumbnail} alt='' />
+                <div className='thumbnail'>
+                    <Image src={thumbnail} alt='' />
+                </div>
             <div className='title'>
             <h4>{title}</h4>
-            <button className='btn dots-btn'><Image src={dotsIcon} alt='' /></button>
+            <button className='btn dots-btn'>
+                <Image src={dotsIcon} alt='' />
+                </button>
             </div>
         </div>
         </Link>   

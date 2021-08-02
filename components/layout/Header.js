@@ -10,7 +10,7 @@ import { Button } from '../../components/global'
 import Logout from "./Logout"
 
 // Assets
-import Logo from "../../assets/images/logo.png";
+import Logo from "../../assets/images/logo.png"
 
 const Header = () => {
   const [isOpen, setIsOpen] = UseState(false);
@@ -21,6 +21,7 @@ const Header = () => {
   const toggleLogout = () => {
     if (!logoutDialog) {
       showLogoutDialog(true)
+      setIsOpen(false)
     } else {
       showLogoutDialog(false)
     }

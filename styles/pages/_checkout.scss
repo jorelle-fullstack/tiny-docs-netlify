@@ -153,7 +153,12 @@
         }
       }
     
-    .input-inline-button { max-width: 40px; height: 43px; padding: 0 28px; }
+    .input-inline-button {
+      max-width: 64px;
+      font-size: 12px;
+      height: 43px;
+      padding: 0 28px;
+    }
     .card-input {
       height: 48px;
       .credit-card-input { padding: 0; }

@@ -116,7 +116,7 @@
     }
     @include respond-to(md-down) {
         .top-section {
-            height: 80px;
+            height: 100%;
             padding: 10px 8px;
             .search, .back {
                 width: 36px;

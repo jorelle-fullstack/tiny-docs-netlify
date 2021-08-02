@@ -120,7 +120,7 @@
 
 // Responsive View
 @include respond-to('sm-down') {
-  .page-login {
+  .page-login, .page-register {
     .second-wrapper { display: none; }
   }
   .title, .form-title { font-size: 30px; }
